@@ -1,0 +1,1087 @@
+{
+  "name": "Pipeline hackaton dashboard",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "CV0",
+        "options": {
+          "keepSource": "binary"
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        4512,
+        -688
+      ],
+      "id": "9c5bb063-7c2b-4ba9-b58b-c7e0a00cf9d5",
+      "name": "Extract from File",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"required\": [\"name\", \"phone\", \"email\", \"date\"],\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\",\n      \"description\": \"Nome e cognome completi della persona, oppure 'Non disponibile' se assente\",\n      \"default\": \"Non disponibile\",\n      \"pattern\": \"^[A-Za-zÀ-ÖØ-öø-ÿ'\\\\- ]+$|^Non disponibile$\"\n    },\n    \"phone\": {\n      \"type\": \"string\",\n      \"description\": \"Numero di telefono con prefisso internazionale (es. \\\"+39 333 123 4567\\\")\",\n      \"pattern\": \"^\\\\+?\\\\d[\\\\d\\\\s\\\\-().]{6,}\\\\d$\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"description\": \"Indirizzo e-mail valido\",\n      \"format\": \"email\",\n      \"pattern\": \"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$\"\n    },\n    \"date\": {\n      \"type\": \"string\",\n      \"description\": \"Data in formato italiano (gg/mm/aaaa)\",\n      \"pattern\": \"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\\\d{4}$\"\n    },\n    \"linkedin\": {\n      \"type\": \"string\",\n      \"description\": \"URL del profilo LinkedIn, oppure 'Non disponibile' se non presente\",\n      \"pattern\": \"^(https:\\\\/\\\\/([a-z]{2,3}\\\\.)?linkedin\\\\.com\\\\/.*|Non disponibile)$\"\n    }\n  }\n}\n\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1,
+      "position": [
+        4880,
+        -480
+      ],
+      "id": "ef7f3b3c-bd69-4126-bf4c-f9f0c7bd3730",
+      "name": "Information Extractor1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5",
+          "mode": "list",
+          "cachedResultName": "gpt-5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4960,
+        -624
+      ],
+      "id": "66eef489-6c7b-458c-b23e-48ce8a55a6e9",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "gSye8DXbJ0bmLvgb",
+          "name": "OpenAi account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5",
+          "mode": "list",
+          "cachedResultName": "GPT-5"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $('Extract from File').item.json.text }}"
+            },
+            {
+              "content": "=Sei un Talent Acquisition Specialist con 20+ anni di esperienza. Inoltre, deduci e restituisci il ruolo principale del candidato in base alle sue esperienze lavorative, anche se il ruolo non è esplicitamente dichiarato (es: \"Commessa\", \"Content Creator\", \"Videomaker\", \"Amministrativa\", ecc.). Se ci sono più ruoli possibili, seleziona quello più coerente con l’esperienza pregressa effettiva.\n\n\n### Compito\n\nValuta il curriculum che ti fornirò subito dopo queste istruzioni e assegna punteggi oggettivi secondo i criteri indicati.\n\n\n### Criteri di valutazione (0 = pessimo, 10 = eccellente)\n\n\n\n\nesperienza_rilevante – Coerenza e profondità dell'esperienza lavorativa con il ruolo target. Dai particolare rilievo a chi ha esperienza pratica come creator (es. YouTube, Instagram), anche senza esperienza aziendale tradizionale. L'esperienza sul campo prevale sempre su quella accademica.\n\n\n\nformazione_qualifiche – Valuta soprattuto  formazione sul campo e percorsi formativi concreti che abbiano una ricaduta pratica sul ruolo. Non considerare la sola accademia come criterio sufficiente. L'assenza di percorsi formali non è penalizzante se compensata da portfolio o esperienze reali.\n\n\ncompetenze_tecniche – Hard skills specifiche come uso di tool (es. Premiere, Excel, Notion) o esperienza nella creazione di contenuti multimediali. La gestione di un canale YouTube o Instagram attivo è considerata un plus rilevante.\n\n\ncompetenze_trasversali – Valuta la capacità di organizzarsi in autonomia, assegnarsi task, lavorare sia in team che in modo indipendente, e la precisione nell'esecuzione. Evita valutazioni generiche e assegna punteggi solo se queste qualità emergono chiaramente dal CV o portfolio.\n\n\nlingue – Conoscenza e livello delle lingue straniere utili al ruolo. Valuta anche la forma linguistica del CV stesso: ortografia, grammatica, tono e stile di scrittura devono essere curati e professionali. Errori gravi sono penalizzanti.\n\n\nadattamento_culturale – Valuta l'allineamento ai valori aziendali se esplicitati. Inoltre, se il candidato non è perfettamente in linea con il ruolo target ma mostra un'elevata compatibilità con un altro ruolo potenzialmente più adatto, segnala la cosa all'interno della valutazione (non nel JSON).\n\n\npresentazione_formattazione – Cura del layout, chiarezza, struttura, sintesi. Penalizza fortemente CV in formato Europass o con gravi errori grammaticali, mancanza di personalizzazione, scarsa cura estetica.\n\n\n\n### Output\n\nRestituisci esclusivamente un oggetto JSON con questa forma esatta — nessun testo aggiuntivo, nessun commento:\n\n{\n  \"ruolo_deducibile\": \"<string: es. commessa, content creator, ecc.>\",\n  \"punteggi\": {\n    \"esperienza_rilevante\": <int 0-10>,\n    \"formazione_qualifiche\": <int 0-10>,\n    \"competenze_tecniche\": <int 0-10>,\n    \"competenze_trasversali\": <int 0-10>,\n    \"lingue\": <int 0-10>,\n    \"adattamento_culturale\": <int 0-10>,\n    \"presentazione_formattazione\": <int 0-10>\n  },\n  \"punteggio_totale\": <int 0-70>,\n  \"valutazione_finale\": \"<string: poco idoneo | nella media | idoneo>\"\n}\n",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        5424,
+        -480
+      ],
+      "id": "9efc03aa-2416-41ba-adbc-630d121e976a",
+      "name": "Evaluator1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "gSye8DXbJ0bmLvgb",
+          "name": "OpenAi account 3"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "CV",
+        "name": "={{ $('Gmail2').item.json.from?.value?.[0]?.name ? 'cv-' +  $('Gmail2').item.json.from.value[0].name : 'cv' }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1n6aQRbdYVrgztBDhVqZK01Z-MM9VobkP",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5008,
+        -160
+      ],
+      "id": "92ec712c-05b7-42fe-88b0-5051f2d920c7",
+      "name": "Google Drive",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "gaxFsEru0ehM0DUr",
+          "name": "Google Drive account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        5968,
+        -176
+      ],
+      "id": "69fc6ca3-c9fd-434a-95c2-307fc8c5731d",
+      "name": "Merge",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const binary = items[0].binary;\nconst output = [];\n\nconst cvKeywords = ['cv', 'resume', 'curriculum'];\nconst portfolioKeywords = ['portfolio'];\n\nlet foundCV = false;\nlet foundPortfolio = false;\nlet foundOther = false;\n\nfor (const [key, data] of Object.entries(binary)) {\n  let fileName = (data.fileName || '').toLowerCase();\n  let newKey = key;\n\n  if (cvKeywords.some(keyword => fileName.includes(keyword))) {\n    newKey = 'CV';\n    foundCV = true;\n  } else if (portfolioKeywords.some(keyword => fileName.includes(keyword))) {\n    newKey = 'Portfolio';\n    foundPortfolio = true;\n  } else {\n    newKey = 'Altro';\n    foundOther = true;\n  }\n\n  output.push({\n    json: {},\n    binary: {\n      [newKey]: data\n    }\n  });\n}\n\nif (!foundCV) {\n  output.push({\n    json: { placeholder: true, type: 'CV' },\n    binary: {}\n  });\n}\n\nif (!foundPortfolio) {\n  output.push({\n    json: { placeholder: true, type: 'Portfolio' },\n    binary: {}\n  });\n}\n\nif (!foundOther) {\n  output.push({\n    json: { placeholder: true, type: 'Altro' },\n    binary: {}\n  });\n}\n\nreturn output;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3824,
+        -144
+      ],
+      "id": "e073a657-27eb-49bf-89a7-656f92ea4ff8",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "Portfolio",
+        "name": "={{ $('Gmail2').item.json.from?.value?.[0]?.name ? 'portfolio-' +  $('Gmail2').item.json.from.value[0].name : 'portfolio' }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1VUKexyJjwJnd1wPodTBjlsPXYMZto0Nl",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5008,
+        80
+      ],
+      "id": "2777223c-efce-41e6-b729-9099a9d7694b",
+      "name": "Google Drive1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "gaxFsEru0ehM0DUr",
+          "name": "Google Drive account 6"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2dc4f21d-db29-49f9-ae2e-e6fbad1c7b50",
+              "leftValue": "={{ Object.keys($binary).length > 0 ? ['cv', 'curriculum', 'resume'].some(word => Object.values($binary)[0].fileName.toLowerCase().includes(word)) : $json.type === 'CV' }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4528,
+        -144
+      ],
+      "id": "cb0d9641-9f79-457c-be53-d6ce92a7c61e",
+      "name": "If",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        6320,
+        64
+      ],
+      "id": "20f1e8a5-00ba-454e-87b6-0dd7bb4e7fdd",
+      "name": "Merge1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19pHEjvDOk3mSa92bZPo8lyLwW1mIqehc7_sPPjUC3w8",
+          "mode": "list",
+          "cachedResultName": "Andrea CV",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19pHEjvDOk3mSa92bZPo8lyLwW1mIqehc7_sPPjUC3w8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Foglio1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19pHEjvDOk3mSa92bZPo8lyLwW1mIqehc7_sPPjUC3w8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Score": "={{ (() => { try { return $json.message.content.valutazione_finale || \"Non disponibile\" } catch (e) { return \"Non disponibile\" } })() }}",
+            "Candidato": "={{ (() => { try { return $('Information Extractor1').item.json.output.name || \"Non disponibile\" } catch (e) { return \"Non disponibile\" } })() }} ",
+            "Telefono": "=\"{{ (() => { try { return $('Information Extractor1').item.json.output.phone || \"Non disponibile\" } catch (e) { return \"Non disponibile\" } })() }}\"",
+            "Email": "={{ (() => { try { return $('Information Extractor1').item.json.output.email || \"Non disponibile\" } catch (e) { return \"Non disponibile\" } })() }}  ",
+            "Linkedin": "={{ (() => { try { return $('Information Extractor1').item.json.output.linkedin || \"Non disponibile\" } catch (e) { return \"Non disponibile\" } })() }}",
+            "Portfolio": "={{ $('Merge1').item.json.webViewLink === $('Merge').item.json.webViewLink ? \"Non disponibile\" : $('Merge1').item.json.webViewLink || \"Non disponibile\" }}",
+            "Altro": "={{ $('Merge2').item.json.webViewLink === $('Merge').item.json.webViewLink ? \"Non disponibile\" : $('Merge2').item.json.webViewLink || \"Non disponibile\" }}",
+            "Link Mail": "={{(() => { try {return $json.emailLink ||\"Non disponibile\";}catch(e){return\"Non disponibile\";} })() }}",
+            "Data invio": "={{ (() => {try {return $json.createdTime ?new Date($json.createdTime).toLocaleDateString('it-IT') : 'non disponibile';} catch (e) {return 'non disponibile';} })() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data invio",
+              "displayName": "Data invio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Candidato",
+              "displayName": "Candidato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Score",
+              "displayName": "Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CV",
+              "displayName": "CV",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Portfolio",
+              "displayName": "Portfolio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Altro",
+              "displayName": "Altro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Linkedin",
+              "displayName": "Linkedin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link Mail",
+              "displayName": "Link Mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        7392,
+        672
+      ],
+      "id": "46988c64-0002-4531-88a4-dfbd0eacd39c",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "qy0FKJnv9ON0a5H9",
+          "name": "Google Sheets account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2dc4f21d-db29-49f9-ae2e-e6fbad1c7b50",
+              "leftValue": "={{ Object.keys($binary).length > 0 ? Object.values($binary)[0].fileName.toLowerCase().includes('portfolio') : $json.type === 'Portfolio' }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4752,
+        160
+      ],
+      "id": "133d5f7b-5f48-4e8b-bc88-3a7886078aa8",
+      "name": "If1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "Altro",
+        "name": "={{ $('Gmail2').item.json.from?.value?.[0]?.name ? 'altro-' +  $('Gmail2').item.json.from.value[0].name : 'altro' }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1Oe3kj3jwvs0MFNlPWXy8fvVvbJqtX4eo",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5008,
+        304
+      ],
+      "id": "b05b0aa4-214e-4517-8b47-521c26899c64",
+      "name": "Google Drive2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "gaxFsEru0ehM0DUr",
+          "name": "Google Drive account 6"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        6608,
+        288
+      ],
+      "id": "d66601dc-cf20-4371-8324-ecb95920fea8",
+      "name": "Merge2",
+      "alwaysOutputData": true,
+      "notesInFlow": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08TKKWV588",
+          "mode": "list",
+          "cachedResultName": "pipeline-notifications"
+        },
+        "text": "=📥  Evento: NUOVO CV\n\n*Mittente:* {{ (() => {\n  try {\n    return $json.Candidato || 'non disponibile';\n  } catch (e) {\n    return 'non disponibile';\n  }\n})() }}\n\n*Valutazione:* {{ $('Merge3').item.json.message.content.valutazione_finale ? $('Merge3').item.json.message.content.valutazione_finale : 'Non disponibile' }}\n\n*Profilo:* {{ $('Evaluator1').item.json.message.content.ruolo_deducibile ? $('Evaluator1').item.json.message.content.ruolo_deducibile : 'Non disponibile' }}\n\n*Link:* <https://docs.google.com/spreadsheets/d/1POCG0_7cux5T282UE3OV2stfsd25llV8dDfTV_ynAKs/edit?gid=0|Apri link>\n",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        7648,
+        672
+      ],
+      "id": "d903da21-2690-4886-a2bc-eb8c16d25e3b",
+      "name": "Slack",
+      "webhookId": "0ff49c0b-6ef2-406e-8aa1-79f3feba68f3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Gestione dei placeholder per i nodi Google Drive\nif ($json.placeholder === true) {\n  // Se è un placeholder, restituisci un oggetto con i campi necessari\n  return [{\n    json: {\n      webViewLink: `Non disponibile (nessun ${$json.type} trovato)`,\n      placeholder: true\n    }\n  }];\n}\n\n// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nconst binaryKeys = Object.keys(items[0].binary);\n\nconst keywords = ['cv', 'curriculum', 'resume', 'vitae', 'curr', 'curric', 'résumé', 'curiculum'];\n\nfor (const key of binaryKeys) {\n  const fileName = items[0].binary[key].fileName?.toLowerCase() || \"\";\n\n  if (keywords.some(k => fileName.includes(k))) {\n    return [{\n      json: {},\n      binary: {\n        CV0: items[0].binary[key] // Rinominato come CV0\n      }\n    }];\n  }\n}\n\n// Se non troviamo un CV, restituisci un placeholder\nreturn [{\n  json: {\n    placeholder: true,\n    type: 'CV',\n    text: 'Nessun CV trovato tra gli allegati.'\n  },\n  binary: {}\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3824,
+        -496
+      ],
+      "id": "ee188d52-4dc0-469a-afbb-7c4fe789d37a",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8b18b951-7f0d-415b-9583-bd1210c64e89",
+              "leftValue": "={{ Object.keys($binary).length > 0 && Object.values($binary)[0].fileName.toLowerCase().includes('.pdf') }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4160,
+        -496
+      ],
+      "id": "cfb24a07-5ab7-46b4-9dcb-1e6154fc8b05",
+      "name": "If3",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Gmail2').item.json.from.value[0].address }}",
+        "subject": "Grazie di averci scritto!",
+        "message": "Ciao, questa è una mail automatica :)  Grazie per averci inviato la tua candidatura! Leggiamo con attenzione tutti i CV che riceviamo e, se il tuo profilo risulterà in linea con le nostre esigenze, ti contatteremo per un approfondimento. Nel frattempo, qui puoi consultare la nostra informativa sulla privacy per sapere come gestiremo i tuoi dati personali: [https://drive.google.com/file/d/1UNlif6azSac41jdEyCXgYoyymUXu_NXH/view?usp=sharing].",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        8192,
+        672
+      ],
+      "id": "dbdf0617-80fd-4c72-a932-c8ab54c9403e",
+      "name": "Gmail",
+      "webhookId": "c283017d-b9e9-4084-a8d3-19fa247b6941",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "R3mDIeP4Cw3gS9kw",
+          "name": "Gmail account 13"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "https://drive.google.com/file/d/1UNlif6azSac41jdEyCXgYoyymUXu_NXH/view",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        7904,
+        672
+      ],
+      "id": "e5b23870-2add-46ad-aa5d-54e128a2f441",
+      "name": "Google Drive3",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "gaxFsEru0ehM0DUr",
+          "name": "Google Drive account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ottieni i dati dall'input\nconst inputData = items[0].json;\n\n// Estrai l'ID del messaggio nel formato corretto\nlet messageId = '';\n\n// Cerca prima nel campo id o messageId\nif (inputData.id) {\n  // Se il campo id contiene un indirizzo email, estrai solo la parte dell'ID\n  if (inputData.id.includes('@mail.gmail.com')) {\n    messageId = inputData.id.replace(/[<>]/g, '').split('@')[0];\n  } else {\n    messageId = inputData.id;\n  }\n} else if (inputData.messageId) {\n  // Stessa logica per messageId\n  if (inputData.messageId.includes('@mail.gmail.com')) {\n    messageId = inputData.messageId.replace(/[<>]/g, '').split('@')[0];\n  } else {\n    messageId = inputData.messageId;\n  }\n} else {\n  // Se non troviamo un ID chiaro, usiamo altri campi per la ricerca\n  messageId = 'search/' + encodeURIComponent(inputData.subject || '');\n}\n\n// Crea il link con il numero account corretto (5 invece di 0)\nconst emailLink = `https://mail.google.com/mail/u/5/#inbox/${messageId}`;\n\n// Restituisci i dati originali più il link all'email\nreturn [{\n  json: {\n    ...inputData,\n    emailLink: emailLink\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3360,
+        672
+      ],
+      "id": "c6b07540-add2-4fea-8cf4-472fb9391f30",
+      "name": "Code2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        6960,
+        672
+      ],
+      "id": "3f6fcad2-59b8-423c-bb1d-f15b05926561",
+      "name": "Merge3",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": true,
+        "simple": false,
+        "filters": {
+          "q": "has:attachment -from:me",
+          "readStatus": "unread"
+        },
+        "options": {
+          "downloadAttachments": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2944,
+        -688
+      ],
+      "id": "6ea285c3-2e32-4ef9-a3c8-206a89cad347",
+      "name": "Gmail2",
+      "webhookId": "7c369f6c-9020-4b91-9aef-82deff6d76f1",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "R3mDIeP4Cw3gS9kw",
+          "name": "Gmail account 13"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3248,
+        -688
+      ],
+      "id": "a367d344-0606-435c-afeb-de39abe94d87",
+      "name": "Loop Over Items",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2608,
+        -688
+      ],
+      "id": "a6784c67-5ae6-47a1-a95c-a5a3f3f69541",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail2').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        8432,
+        672
+      ],
+      "id": "2eca55dc-ca0b-4bf6-a5f4-191bc548a71c",
+      "name": "Mark As Read",
+      "webhookId": "d262d0d2-0266-4ff4-b16e-00c676a931dd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "R3mDIeP4Cw3gS9kw",
+          "name": "Gmail account 13"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Questo nodo genera un placeholder per i nodi Google Drive\n// quando non ci sono file di un certo tipo\n\n// Se l'input è già un placeholder, passalo semplicemente avanti\nif ($json.placeholder === true) {\n  return items;\n}\n\n// Se siamo qui, significa che abbiamo un file reale da elaborare\n// Verifichiamo se è un file PDF\nif (Object.keys($binary).length > 0) {\n  // Abbiamo un file binario, procedi normalmente\n  return items;\n} else {\n  // Non abbiamo un file binario, crea un placeholder\n  return [{\n    json: {\n      placeholder: true,\n      type: 'CV',\n      text: 'Placeholder per CV mancante'\n    }\n  }];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4512,
+        -480
+      ],
+      "id": "ea84fc60-fc4a-4b49-839c-8465a9eea630",
+      "name": "Placeholder Generator",
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor1": {
+      "main": [
+        [
+          {
+            "node": "Evaluator1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluator1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Drive2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Placeholder Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive3": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "Mark As Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack": {
+      "main": [
+        [
+          {
+            "node": "Google Drive3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gmail2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark As Read": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Placeholder Generator": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "73723b39-e3a8-4e37-a30b-7dca604c7ed4",
+  "meta": {
+    "instanceId": "2cc7d976326515c974f4ddcc074dc96e4bcec39ca6761479df0cbbab230212bf"
+  },
+  "id": "DTTSeX0aU5k4MlEh",
+  "tags": [
+    {
+      "updatedAt": "2026-03-10T14:50:50.849Z",
+      "createdAt": "2026-03-10T14:50:50.849Z",
+      "id": "ZcycEq4t1MGGp4RM",
+      "name": "Hackaton"
+    }
+  ]
+}
