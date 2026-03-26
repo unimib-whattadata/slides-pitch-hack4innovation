@@ -6,7 +6,7 @@ highlighter: shiki
 lineNumbers: false
 info: |
   ## Hack4Innovation Bicocca
-  Pipeline automatizzata per la valutazione CV con AI
+  Automated pipeline for AI-powered CV evaluation
 drawings:
   persist: false
 transition: slide-left
@@ -1299,71 +1299,71 @@ title: Hack4Innovation Bicocca — Whattadata
 </div>
 
 <div class="relative z-10 flex flex-col items-center justify-center h-full gap-6">
-  <div class="hero-subtitle">Hack4Innovation Bicocca · 27 Marzo 2026</div>
+  <div class="hero-subtitle">Hack4Innovation Bicocca · March 27, 2026</div>
 
-  <h1 class="hero-title">Pipeline AI per<br/>la <span>Talent Acquisition</span></h1>
+  <h1 class="hero-title">AI Pipeline for<br/>the <span>Talent Acquisition</span></h1>
 
   <p class="hero-desc">
-    Da email a candidate scoring in pochi minuti.<br/>
-    Zero intervento manuale, dati strutturati, decisioni data-driven.
+    From email to candidate scoring in minutes.<br/>
+    Zero manual intervention, structured data, data-driven decisions.
   </p>
 
 <span class="hero-badge" @click="$slidev.nav.next">
-Scopri la Pipeline →
+Discover the Pipeline →
 </span>
 
 </div>
 
 ---
 
-<!-- SLIDE 2: IL PROBLEMA -->
+<!-- SLIDE 2: THE PROBLEM -->
 <div class="prob-bg"></div>
 
 <div class="relative z-10 px-14 pt-0 pb-6 h-full flex flex-col">
 
   <div class="prob-header mb-1">
-    <span class="prob-eyebrow">Il problema</span>
-    <h2 class="prob-title">Lo screening CV è <em>rotto</em></h2>
-    <p class="prob-subtitle">I recruiter perdono ore ogni settimana su task ripetitivi, soggettivi, non misurabili.</p>
+    <span class="prob-eyebrow">The problem</span>
+    <h2 class="prob-title">CV screening is <em>broken</em></h2>
+    <p class="prob-subtitle">Recruiters lose hours every week on repetitive, subjective, unmeasurable tasks.</p>
   </div>
 
   <div class="prob-grid flex-1">
     <div class="prob-item" v-click>
       <div class="prob-item-num">01</div>
       <div class="prob-icon-wrap pi-amber">⏱️</div>
-      <h3>Gestione manuale e isolata</h3>
-      <p>CV via email gestiti uno per uno, senza automazione. Il tempo cresce, la qualità no.</p>
+      <h3>Manual and isolated management</h3>
+      <p>CVs via email handled one by one, with no automation. Time grows, quality doesn't.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">02</div>
       <div class="prob-icon-wrap pi-rose">⚖️</div>
-      <h3>Valutazioni soggettive</h3>
-      <p>Nessuno standard condiviso: bias e inconsistenza nelle decisioni, candidati validi esclusi per errore.</p>
+      <h3>Subjective evaluations</h3>
+      <p>No shared standard: bias and inconsistency in decisions, valid candidates excluded by mistake.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">03</div>
       <div class="prob-icon-wrap pi-indigo">📊</div>
-      <h3>Zero visibilità KPI</h3>
-      <p>Nessun dato, nessun tracciamento. Senza metriche il processo non si misura — e non migliora.</p>
+      <h3>Zero KPI visibility</h3>
+      <p>No data, no tracking. Without metrics the process cannot be measured — and cannot improve.</p>
     </div>
   </div>
 
   <div class="prob-stats-row">
     <div class="prob-stat" v-click>
       <div class="prob-stat-num" style="color: #fbbf24;">23h</div>
-      <div class="prob-stat-label" style="color: rgba(251,191,36,0.7);">settimana dedicata allo screening manuale</div>
+      <div class="prob-stat-label" style="color: rgba(251,191,36,0.7);">per week spent on manual screening</div>
       <div class="prob-stat-source">Instant Impact Recruiting Report</div>
     </div>
     <div class="prob-divider"></div>
     <div class="prob-stat" v-click>
       <div class="prob-stat-num" style="color: #f87171;">40%</div>
-      <div class="prob-stat-label" style="color: rgba(248,113,113,0.7);">di inefficienza percepita nel processo di hiring</div>
+      <div class="prob-stat-label" style="color: rgba(248,113,113,0.7);">perceived inefficiency in the hiring process</div>
       <div class="prob-stat-source">PwC Annual Global CEO Survey</div>
     </div>
     <div class="prob-divider"></div>
     <div class="prob-stat" v-click>
       <div class="prob-stat-num" style="color: #a78bfa;">0 KPI</div>
-      <div class="prob-stat-label" style="color: rgba(167,139,250,0.7);">visibilità sui dati per il 30% delle aziende</div>
+      <div class="prob-stat-label" style="color: rgba(167,139,250,0.7);">data visibility for 30% of companies</div>
       <div class="prob-stat-source">Modern Measures of Talent Acquisition</div>
     </div>
   </div>
@@ -1372,38 +1372,38 @@ Scopri la Pipeline →
 
 ---
 
-<!-- SLIDE 3: LA SOLUZIONE — PIPELINE -->
+<!-- SLIDE 3: THE SOLUTION — PIPELINE -->
 <div class="sol-bg"></div>
 <div class="relative z-10 px-14 py-6 h-full flex flex-col">
   <div class="prob-header mb-3">
-    <span class="prob-eyebrow">La soluzione</span>
-    <h2 class="prob-title">Pipeline <em>automatizzata</em> end-to-end</h2>
-    <p class="prob-subtitle">Da email a candidate scoring in pochi minuti, zero intervento manuale.</p>
+    <span class="prob-eyebrow">The solution</span>
+    <h2 class="prob-title"><em>Automated</em> end-to-end pipeline</h2>
+    <p class="prob-subtitle">From email to candidate scoring in minutes, zero manual intervention.</p>
   </div>
   <div class="prob-grid flex-1">
     <div class="prob-item" v-click>
       <div class="prob-item-num">01</div>
       <div class="prob-icon-wrap pi-amber">📧</div>
-      <h3>Ingestion Email</h3>
-      <p>Gmail trigger che scarica email con allegati non lette e le instrada nella pipeline.</p>
+      <h3>Email Ingestion</h3>
+      <p>Gmail trigger that downloads unread emails with attachments and routes them into the pipeline.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">02</div>
       <div class="prob-icon-wrap pi-rose">📂</div>
       <h3>Smart File Routing</h3>
-      <p>Salvataggio automatico dei file su Google Drive.</p>
+      <p>Automatic file saving to Google Drive.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">03</div>
       <div class="prob-icon-wrap pi-indigo">🤖</div>
       <h3>AI Extraction + Scoring</h3>
-      <p>GPT-5 estrae dati e valuta il CV su metriche personalizzate dall'azienda.</p>
+      <p>GPT-5 extracts data and evaluates the CV against company-defined custom metrics.</p>
     </div>
   </div>
   <div class="prob-stats-row">
     <div class="prob-stat" v-click="4">
       <div class="prob-stat-num" style="color:#818cf8;">28</div>
-      <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">nodi n8n</div>
+      <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">n8n nodes</div>
     </div>
     <div class="prob-divider" v-click="5"></div>
     <div class="prob-stat" v-click="5">
@@ -1441,8 +1441,8 @@ clicks: 3
 <div class="sol-bg"></div>
 <div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col">
   <div class="prob-header mb-2" style="padding-top:8px;">
-    <span class="prob-eyebrow">Output concreti</span>
-    <h2 class="prob-title"><em>Dashboard</em> & <em style="color:#34d399;">Report</em> strutturato</h2>
+    <span class="prob-eyebrow">Concrete outputs</span>
+    <h2 class="prob-title"><em>Dashboard</em> & Structured <em style="color:#34d399;">Report</em></h2>
   </div>
   <div class="relative flex-1">
     <div :style="{ opacity: ($clicks === 0 || $clicks === 2) ? 1 : 0, pointerEvents: ($clicks === 0 || $clicks === 2) ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
@@ -1450,31 +1450,31 @@ clicks: 3
         <div class="flex items-center gap-4 mb-5">
           <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
           <div>
-            <h3 style="color:#818cf8;">Dashboard interattiva</h3>
+            <h3 style="color:#818cf8;">Interactive Dashboard</h3>
             <p>Next.js + Supabase + Tailwind</p>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Grafici pipeline</strong> — distribuzione per stato</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — total candidates, new today, hire rate</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline charts</strong> — distribution by status</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Candidate table</strong> — search, filters, detail view</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Time filters</strong> — today, 7d, 30d, all</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — visual status management</span></div>
         </div>
       </div>
       <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(16,185,129,0.12), 0 0 0 1px rgba(16,185,129,0.2);">
         <div class="flex items-center gap-4 mb-5">
           <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
           <div>
-            <h3 style="color:#34d399;">Report Excel Strutturato</h3>
+            <h3 style="color:#34d399;">Structured Excel Report</h3>
             <p>Google Sheets automation</p>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidato</strong> — Mario Rossi</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Idoneo (58/70)</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Ruolo dedotto</strong> — Content Creator</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — Estratti auto</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidate</strong> — Mario Rossi</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Suitable (58/70)</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Inferred role</strong> — Content Creator</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Phone / LinkedIn</strong> — Auto extracted</span></div>
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
         </div>
       </div>
@@ -1484,16 +1484,16 @@ clicks: 3
         <div class="flex items-center gap-4 mb-5">
           <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
           <div>
-            <h3 style="color:#818cf8;">Dashboard interattiva</h3>
-            <p>Visualizzazione dati in tempo reale</p>
+            <h3 style="color:#818cf8;">Interactive Dashboard</h3>
+            <p>Real-time data visualization</p>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Grafici pipeline</strong> — distribuzione per stato</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — total candidates, new today, hire rate</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline charts</strong> — distribution by status</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Candidate table</strong> — search, filters, detail view</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Time filters</strong> — today, 7d, 30d, all</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — visual status management</span></div>
         </div>
       </div>
       <div style="flex:1.4;display:flex;align-items:center;justify-content:center;">
@@ -1505,15 +1505,15 @@ clicks: 3
         <div class="flex items-center gap-4 mb-5">
           <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
           <div>
-            <h3 style="color:#34d399;">Report Strutturato</h3>
-            <p>Database excel-like automatizzato</p>
+            <h3 style="color:#34d399;">Structured Report</h3>
+            <p>Automated excel-like database</p>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidato</strong> — Mario Rossi</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Idoneo (58/70)</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Ruolo dedotto</strong> — Content Creator</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidate</strong> — Mario Rossi</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Suitable (58/70)</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Inferred role</strong> — Content Creator</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Phone / LinkedIn</strong> — ✅ Auto extracted</span></div>
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
         </div>
       </div>
@@ -1526,49 +1526,49 @@ clicks: 3
 
 ---
 
-<!-- SLIDE 5: VALORE GENERATO -->
+<!-- SLIDE 5: GENERATED VALUE -->
 <div class="sol-bg" transition="slide-up"></div>
 
 <div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
   <div class="prob-header mb-4">
-    <span class="prob-eyebrow">Impatto</span>
-    <h2 class="prob-title">Il <em>valore</em> che creiamo</h2>
-    <p class="prob-subtitle">Efficienza operativa, standardizzazione e modularità senza compromessi.</p>
+    <span class="prob-eyebrow">Impact</span>
+    <h2 class="prob-title">The <em>value</em> we create</h2>
+    <p class="prob-subtitle">Operational efficiency, standardization, and modularity without compromise.</p>
   </div>
 
   <div class="grid grid-cols-2 gap-5 flex-1 items-start">
     <div class="value-card" v-click>
       <div class="value-number" style="color: #34d399;">10×</div>
-      <div class="value-label">Efficienza</div>
-      <div class="value-desc">Automazione completa del workflow dallo screening iniziale alla notifica finale.</div>
+      <div class="value-label">Efficiency</div>
+      <div class="value-desc">Full workflow automation from initial screening to final notification.</div>
     </div>
     <div class="value-card" v-click>
       <div class="value-number" style="color: #818cf8;">100%</div>
       <div class="value-label">Standard</div>
-      <div class="value-desc">Valutazione basata su parametri oggettivi e certificati per ogni lotto di dati.</div>
+      <div class="value-desc">Evaluation based on objective and certified parameters for every data batch.</div>
     </div>
     <div class="value-card" v-click>
       <div class="value-number" style="color: #fbbf24;">0€</div>
-      <div class="value-label">Manutenzione</div>
-      <div class="value-desc">Architettura cloud e no-code che azzera i costi fissi di gestione server.</div>
+      <div class="value-label">Maintenance</div>
+      <div class="value-desc">Cloud and no-code architecture that eliminates fixed server management costs.</div>
     </div>
     <div class="value-card" v-click>
       <div class="value-number" style="color: #f87171;">100%</div>
-      <div class="value-label">Modulare</div>
-      <div class="value-desc">Workflow agnostico: scegli lo stack tecnologico (ATS, CRM, HRIS) più adatto.</div>
+      <div class="value-label">Modular</div>
+      <div class="value-desc">Agnostic workflow: choose the technology stack (ATS, CRM, HRIS) that fits best.</div>
     </div>
   </div>
 </div>
 
 ---
 
-<!-- SLIDE 6: BUSINESS MODEL & STRATEGIA -->
+<!-- SLIDE 6: BUSINESS MODEL & STRATEGY -->
 <div class="sol-bg" transition="slide-up"></div>
 <div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
   <div class="prob-header mb-12">
-    <span class="prob-eyebrow">Strategia</span>
-    <h2 class="prob-title">Modello di <em>Business</em></h2>
-    <p class="prob-subtitle">Come scaliamo il valore nel mercato HR Tech.</p>
+    <span class="prob-eyebrow">Strategy</span>
+    <h2 class="prob-title"><em>Business</em> Model</h2>
+    <p class="prob-subtitle">How we scale value in the HR Tech market.</p>
   </div>
   <div class="flex-1 flex items-center justify-center">
     <div class="output-card-dark w-full max-w-4xl p-10" style="box-shadow: 0 8px 32px rgba(79,70,229,0.15), 0 0 0 1px rgba(79,70,229,0.25);">
@@ -1576,22 +1576,22 @@ clicks: 3
         <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
           <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all duration-300" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">💰</div>
           <div>
-            <h3 style="color:#818cf8; font-size: 1.1rem; margin-bottom: 4px;">Abbonamento SaaS</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Pricing mensile flessibile basato sui volumi gestiti.</p>
+            <h3 style="color:#818cf8; font-size: 1.1rem; margin-bottom: 4px;">SaaS Subscription</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Flexible monthly pricing based on managed volumes.</p>
           </div>
         </div>
         <div v-click class="flex flex-col items-center text-center gap-4 border-l border-r border-white/10 px-6 group cursor-default">
           <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.4)] transition-all duration-300" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🎯</div>
           <div>
-            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Universale</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Startup, PMI o grande azienda: funziona per tutti.</p>
+            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Universal</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Startup, SMB or enterprise: it works for everyone.</p>
           </div>
         </div>
         <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
           <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300" style="background:rgba(251,191,36,0.2);border:1px solid rgba(251,191,36,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🚀</div>
           <div>
-            <h3 style="color:#fbbf24; font-size: 1.1rem; margin-bottom: 4px;">Automazione Scalabile</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Cresce con te: da 10 a 10.000 candidature senza cambiare nulla.</p>
+            <h3 style="color:#fbbf24; font-size: 1.1rem; margin-bottom: 4px;">Scalable Automation</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Grows with you: from 10 to 10,000 applications with no changes.</p>
           </div>
         </div>
       </div>
@@ -1601,14 +1601,14 @@ clicks: 3
 
 ---
 
-<!-- SLIDE 7: IL TEAM & RUOLI -->
+<!-- SLIDE 7: THE TEAM & ROLES -->
 <div class="sol-bg" transition="slide-up"></div>
 
 <div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
   <div class="prob-header mb-4">
-    <span class="prob-eyebrow">Il Team</span>
-    <h2 class="prob-title">Chi <em>siamo</em></h2>
-    <p class="prob-subtitle">Competenze complementari per una soluzione innovativa.</p>
+    <span class="prob-eyebrow">The Team</span>
+    <h2 class="prob-title">Who <em>we are</em></h2>
+    <p class="prob-subtitle">Complementary skills for an innovative solution.</p>
   </div>
 
   <div class="team-grid">
@@ -1617,7 +1617,7 @@ clicks: 3
         <img src="./img/mc.png" alt="Marco Cremaschi" />
       </div>
       <h3 class="team-name">Marco Cremaschi</h3>
-      <p class="team-role">Professore Unimib<br/>&<br/>Ricercatore</p>
+      <p class="team-role">Unimib Professor<br/>&<br/>Researcher</p>
     </div>
     <div class="team-card" v-click>
       <div class="team-img-wrap">
@@ -1645,20 +1645,20 @@ clicks: 3
 
 ---
 
-<!-- SLIDE 8: GRAZIE -->
+<!-- SLIDE 8: THANK YOU -->
 <div class="thankyou-bg">
   <div class="thankyou-blob"></div>
 </div>
 
 <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-10">
   <div v-click class="mb-2">
-    <h1 class="thankyou-title">Grazie<span>.</span></h1>
-    <p class="thankyou-subtitle">Domande?</p>
+    <h1 class="thankyou-title">Thank you<span>.</span></h1>
+    <p class="thankyou-subtitle">Questions?</p>
   </div>
 
   <div v-click class="flex flex-wrap justify-center gap-4 mt-16">
     <span class="contact-pill shadow-xl">📍 Bicocca</span>
-    <span class="contact-pill shadow-xl">📅 27 Marzo 2026</span>
+    <span class="contact-pill shadow-xl">📅 March 27, 2026</span>
     <span class="contact-pill shadow-xl">🏆 @Hack4Innovation</span>
   </div>
 </div>
