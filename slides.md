@@ -639,7 +639,7 @@ title: Hack4Innovation Bicocca — Whattadata
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 8px;
-  color: #818cf8;
+  animation: prob-num-glow 3s ease-in-out infinite;
 }
 
 .value-label {
@@ -792,6 +792,47 @@ title: Hack4Innovation Bicocca — Whattadata
 @keyframes prob-num-glow {
   0%, 100% { text-shadow: 0 0 20px currentColor; }
   50%       { text-shadow: 0 0 40px currentColor, 0 0 80px currentColor; }
+}
+
+/* ─── EXPANDED CARD GRID ─── */
+.expanded-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s ease;
+}
+.expanded-item:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+.expanded-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+.expanded-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+.expanded-desc {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+  margin: 0;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
 }
 
 .prob-header {
@@ -997,15 +1038,15 @@ title: Hack4Innovation Bicocca — Whattadata
   margin-top: 8px;
 }
 
-/* ─── OUTPUT CARD DARK ─── */
+/* ─── OUTPUT CARD DARK — PREMIUM ─── */
 .output-card-dark {
-  background: rgba(255,255,255,0.05);
+  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
+  border-radius: 18px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(.22,1,.36,1);
   position: relative;
   overflow: hidden;
 }
@@ -1014,28 +1055,57 @@ title: Hack4Innovation Bicocca — Whattadata
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
 }
 .output-card-dark:hover {
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.08);
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
 }
 .output-card-dark h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 6px 0;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 .output-card-dark p {
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   line-height: 1.55;
+  margin-top: 4px;
 }
-.output-card-dark ul li {
-  color: rgba(255,255,255,0.50);
+
+.output-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
 }
-.output-card-dark ul li strong {
+.output-item-row:hover {
+  background: rgba(255,255,255,0.07);
+  transform: translateX(4px);
+}
+.output-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.output-item-label {
+  color: rgba(255,255,255,0.55);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.output-item-label strong {
   color: #fff;
+  font-weight: 700;
 }
 
 /* ─── OTHER ─── */
@@ -1200,78 +1270,86 @@ clicks: 3
 
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
-<div class="relative z-10 px-14 py-6 h-full flex flex-col">
+<div class="relative z-10 px-14 pt-0 pb-4 h-full flex flex-col">
   <div class="prob-header mb-8">
     <span class="prob-eyebrow">Output concreti</span>
     <h2 class="prob-title"><em>Dashboard</em> & <em style="color:#34d399;">Report</em> strutturato</h2>
   </div>
   <div class="relative flex-1">
-    <div :style="{ opacity: ($clicks === 0 || $clicks === 2) ? 1 : 0, pointerEvents: ($clicks === 0 || $clicks === 2) ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
-      <div class="output-card-dark" style="box-shadow:0 0 0 1px rgba(79,70,229,0.25),0 8px 32px rgba(79,70,229,0.1);">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="output-icon" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.3);">📊</div>
-          <h3 style="color:#818cf8;">Dashboard interattiva</h3>
+    <div :style="{ opacity: ($clicks === 0 || $clicks === 2) ? 1 : 0, pointerEvents: ($clicks === 0 || $clicks === 2) ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(79,70,229,0.12), 0 0 0 1px rgba(79,70,229,0.2);">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
+          <div>
+            <h3 style="color:#818cf8;">Dashboard interattiva</h3>
+            <p>Next.js + Supabase + Tailwind</p>
+          </div>
         </div>
-        <p>Next.js + Supabase, con:</p>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Grafici pipeline</strong> — distribuzione per stato</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Grafici pipeline</strong> — distribuzione per stato</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
         </div>
       </div>
-      <div class="output-card-dark" style="box-shadow:0 0 0 1px rgba(16,185,129,0.25),0 8px 32px rgba(16,185,129,0.1);">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="output-icon" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3);">📋</div>
-          <h3 style="color:#34d399;">Google Sheets strutturato</h3>
+      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(16,185,129,0.12), 0 0 0 1px rgba(16,185,129,0.2);">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
+          <div>
+            <h3 style="color:#34d399;">Report Excel Strutturato</h3>
+            <p>Google Sheets automation</p>
+          </div>
         </div>
-        <p>Ogni candidato registrato automaticamente:</p>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Candidato</strong> — Mario Rossi</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Score</strong> — Idoneo (58/70)</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Ruolo dedotto</strong> — Content Creator</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidato</strong> — Mario Rossi</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Idoneo (58/70)</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Ruolo dedotto</strong> — Content Creator</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
         </div>
       </div>
     </div>
-    <div :style="{ opacity: $clicks === 1 ? 1 : 0, pointerEvents: $clicks === 1 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:20px;">
-      <div class="output-card-dark" style="box-shadow:0 0 0 1px rgba(79,70,229,0.25),0 8px 32px rgba(79,70,229,0.1);flex:1;align-self:start;">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="output-icon" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.3);">📊</div>
-          <h3 style="color:#818cf8;">Dashboard interattiva</h3>
+    <div :style="{ opacity: $clicks === 1 ? 1 : 0, pointerEvents: $clicks === 1 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:24px;">
+      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(79,70,229,0.12), 0 0 0 1px rgba(79,70,229,0.2);flex:1;align-self:start;">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
+          <div>
+            <h3 style="color:#818cf8;">Dashboard interattiva</h3>
+            <p>Visualizzazione dati in tempo reale</p>
+          </div>
         </div>
-        <p>Next.js + Supabase, con:</p>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Grafici pipeline</strong> — distribuzione per stato</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#818cf8;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — totale candidati, nuovi oggi, tasso assunzione</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Grafici pipeline</strong> — distribuzione per stato</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Tabella candidati</strong> — ricerca, filtri, dettaglio</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Filtri temporali</strong> — oggi, 7gg, 30gg, tutti</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — gestione visuale degli stati</span></div>
         </div>
       </div>
       <div style="flex:1.4;display:flex;align-items:center;justify-content:center;">
-        <img src="./img/dashboard.png" style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+        <img src="./img/dashboard.png" style="width:100%;height:100%;object-fit:contain;border-radius:16px;box-shadow: 0 12px 48px rgba(0,0,0,0.4);" />
       </div>
     </div>
-    <div :style="{ opacity: $clicks === 3 ? 1 : 0, pointerEvents: $clicks === 3 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:20px;">
-      <div class="output-card-dark" style="box-shadow:0 0 0 1px rgba(16,185,129,0.25),0 8px 32px rgba(16,185,129,0.1);flex:1;align-self:start;">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="output-icon" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3);">📋</div>
-          <h3 style="color:#34d399;">Google Sheets strutturato</h3>
+    <div :style="{ opacity: $clicks === 3 ? 1 : 0, pointerEvents: $clicks === 3 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:24px;">
+      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(16,185,129,0.12), 0 0 0 1px rgba(16,185,129,0.2);flex:1;align-self:start;">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
+          <div>
+            <h3 style="color:#34d399;">Report Strutturato</h3>
+            <p>Database excel-like automatizzato</p>
+          </div>
         </div>
-        <p>Ogni candidato registrato automaticamente:</p>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Candidato</strong> — Mario Rossi</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Score</strong> — Idoneo (58/70)</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Ruolo dedotto</strong> — Content Creator</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:0.73rem;overflow:hidden;"><span style="width:5px;height:5px;border-radius:50%;background:#34d399;flex-shrink:0;"></span><span style="color:rgba(255,255,255,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;"><strong style="color:#fff;">CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidato</strong> — Mario Rossi</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Idoneo (58/70)</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Ruolo dedotto</strong> — Content Creator</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
         </div>
       </div>
       <div style="flex:1.4;display:flex;align-items:center;justify-content:center;">
-        <img src="./img/sheets2.png" style="width:100%;height:100%;object-fit:contain;border-radius:12px;" />
+        <img src="./img/sheets2.png" style="width:100%;height:100%;object-fit:contain;border-radius:16px;box-shadow: 0 12px 48px rgba(0,0,0,0.4);" />
       </div>
     </div>
   </div>
@@ -1280,12 +1358,13 @@ clicks: 3
 ---
 
 <!-- SLIDE 5: VALORE GENERATO -->
-<div class="dark-slide" transition="slide-up"></div>
+<div class="sol-bg" transition="slide-up"></div>
 
-<div class="relative z-10 px-14 py-8 h-full flex flex-col">
-  <div class="mb-4">
-    <span class="slide-label" style="color: #818cf8;">Impatto</span>
-    <h2 class="slide-title-white">Il valore che creiamo</h2>
+<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
+  <div class="prob-header mb-4">
+    <span class="prob-eyebrow">Impatto</span>
+    <h2 class="prob-title">Il <em>valore</em> che creiamo</h2>
+    <p class="prob-subtitle">Efficienza operativa, standardizzazione e modularità senza compromessi.</p>
   </div>
 
   <div class="grid grid-cols-2 gap-5 flex-1 items-start">
@@ -1309,49 +1388,86 @@ clicks: 3
       <div class="value-label">Modulare</div>
       <div class="value-desc">Workflow agnostico: scegli lo stack tecnologico (ATS, CRM, HRIS) più adatto.</div>
     </div>
+
   </div>
 
 </div>
 
 ---
 
-<!-- SLIDE 6: SVILUPPI FUTURI -->
-<div class="dark-slide" transition="slide-up"></div>
-
-<div class="relative z-10 px-14 py-8 h-full flex flex-col">
-  <div class="mb-4">
-    <span class="slide-label" style="color: #818cf8;">Prossimi passi</span>
-    <h2 class="slide-title-white">Sviluppi futuri</h2>
+<!-- SLIDE 6: BUSINESS MODEL & POSIZIONAMENTO -->
+<div class="sol-bg" transition="slide-up"></div>
+<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
+  <div class="prob-header mb-8">
+    <span class="prob-eyebrow">Strategia</span>
+    <h2 class="prob-title">Business <em style="color:#818cf8; text-shadow: 0 0 20px rgba(129,140,248,0.6);">Model</em> & <em style="color:#818cf8; text-shadow: 0 0 20px rgba(129,140,248,0.6);">Posizionamento</em></h2>
+    <p class="prob-subtitle">Come scaliamo il valore nel mercato HR Tech.</p>
   </div>
-
-  <div class="grid grid-cols-2 gap-4 flex-1">
-    <div class="future-card" v-click>
-      <div class="flex items-center gap-3 mb-2">
-        <div class="future-icon" style="background: rgba(129,140,248,0.15);">📈</div>
-        <h3>Analisi Predittiva</h3>
+  <div v-click class="hidden"></div>
+  <div v-click class="hidden"></div>
+  <div v-click class="hidden"></div>
+  <div class="flex gap-10 flex-1 items-start transition-all duration-500">
+    <div class="output-card-dark transition-all duration-700 ease-in-out" :style="{ flex: $clicks === 1 ? '1 0 100%' : ($clicks === 3 ? '0 0 0%' : '1 0 50%'), opacity: $clicks === 3 ? 0 : 1, pointerEvents: $clicks === 3 ? 'none' : 'auto', transform: $clicks === 3 ? 'translateX(-40px)' : 'none', padding: $clicks === 3 ? '0' : '24px', borderWidth: $clicks === 3 ? '0' : '1px' }" style="box-shadow: 0 8px 32px rgba(79,70,229,0.15), 0 0 0 1px rgba(79,70,229,0.25);">
+      <div class="flex items-center gap-5 mb-6 whitespace-nowrap">
+        <div class="output-icon" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);width:52px;height:52px;border-radius:14px;font-size:1.5rem;">💰</div>
+        <div>
+          <h3 style="color:#818cf8; font-size: 1.2rem;">Business Model</h3>
+          <p style="opacity: 0.6;">SaaS & Performance based</p>
+        </div>
       </div>
-      <p>Algoritmi AI per identificare i "top performers" basandosi sui successi storici del team e della cultura aziendale.</p>
+      <div v-if="$clicks !== 1" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Abbonamento SaaS</strong> — Tiered pricing mensile per volumi</span></div>
+        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pay-per-Credit</strong> — Flessibilità per picchi stagionali</span></div>
+        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Enterprise API</strong> — One-time fee per setup custom</span></div>
+      </div>
+      <div v-else class="grid grid-cols-3 gap-8 animate-fade-in">
+        <div class="expanded-item">
+          <div class="expanded-icon">📈</div>
+          <h4 class="expanded-title">SaaS Tiered</h4>
+          <p class="expanded-desc">Pricing mensile scalabile basato sui volumi gestiti.</p>
+        </div>
+        <div class="expanded-item">
+          <div class="expanded-icon">💳</div>
+          <h4 class="expanded-title">Pay-per-Credit</h4>
+          <p class="expanded-desc">Massima flessibilità per gestire picchi senza costi fissi.</p>
+        </div>
+        <div class="expanded-item">
+          <div class="expanded-icon">🔌</div>
+          <h4 class="expanded-title">Enterprise API</h4>
+          <p class="expanded-desc">Integrazione profonda e setup custom per workflow complessi.</p>
+        </div>
+      </div>
     </div>
-    <div class="future-card" v-click>
-      <div class="flex items-center gap-3 mb-2">
-        <div class="future-icon" style="background: rgba(52,211,153,0.15);">📅</div>
-        <h3>Auto-scheduling</h3>
+    <div class="output-card-dark transition-all duration-700 ease-in-out" :style="{ flex: $clicks === 3 ? '1 0 100%' : ($clicks === 1 ? '0 0 0%' : '1 0 50%'), opacity: $clicks === 1 ? 0 : 1, pointerEvents: $clicks === 1 ? 'none' : 'auto', transform: $clicks === 1 ? 'translateX(40px)' : 'none', padding: $clicks === 1 ? '0' : '24px', borderWidth: $clicks === 1 ? '0' : '1px' }" style="box-shadow: 0 8px 32px rgba(16,185,129,0.15), 0 0 0 1px rgba(16,185,129,0.25);">
+      <div class="flex items-center gap-5 mb-6 whitespace-nowrap">
+        <div class="output-icon" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:52px;height:52px;border-radius:14px;font-size:1.5rem;">🎯</div>
+        <div>
+          <h3 style="color:#34d399; font-size: 1.2rem;">Posizionamento</h3>
+          <p style="opacity: 0.6;">Strategicità & Integrazione</p>
+        </div>
       </div>
-      <p>Integrazione Calendly per invitare automaticamente i candidati top-score al colloquio tecnico successivo.</p>
-    </div>
-    <div class="future-card" v-click>
-      <div class="flex items-center gap-3 mb-2">
-        <div class="future-icon" style="background: rgba(251,191,36,0.15);">🌐</div>
-        <h3>Multi-Source Intelligence</h3>
+      <div v-if="$clicks !== 3" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Target</strong> — HR Dept mid-large enterprise (Tech/Finance)</span></div>
+        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Differenziatore</strong> — No-code & AI vs Legacy Systems</span></div>
+        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Valore</strong> — Velocità 10x e scoring standardizzato</span></div>
       </div>
-      <p>Arricchimento profili incrociando dati GitHub, LinkedIn e Portfolio per una visione a 360° del candidato.</p>
-    </div>
-    <div class="future-card" v-click>
-      <div class="flex items-center gap-3 mb-2">
-        <div class="future-icon" style="background: rgba(56,189,248,0.15);">🧪</div>
-        <h3>Smart Interview Co-pilot</h3>
+      <div v-else class="grid grid-cols-3 gap-8 animate-fade-in">
+        <div class="expanded-item">
+          <div class="expanded-icon">🏢</div>
+          <h4 class="expanded-title">Mid-Large Ent</h4>
+          <p class="expanded-desc">Soluzione per dipartimenti HR in settori Tech e Finance.</p>
+        </div>
+        <div class="expanded-item">
+          <div class="expanded-icon">🚀</div>
+          <h4 class="expanded-title">No-code & AI</h4>
+          <p class="expanded-desc">La velocità dell'AI unita alla semplicità del no-code.</p>
+        </div>
+        <div class="expanded-item">
+          <div class="expanded-icon">⚡</div>
+          <h4 class="expanded-title">Valore 10x</h4>
+          <p class="expanded-desc">Screening più veloce e scoring oggettivo su ogni candidato.</p>
+        </div>
       </div>
-      <p>Generazione automatica di domande tecniche mirate basate sui "gap" o punti di forza rilevati nel CV.</p>
     </div>
   </div>
 </div>
