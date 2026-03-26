@@ -1444,7 +1444,7 @@ clicks: 3
     <span class="prob-eyebrow">Output concreti</span>
     <h2 class="prob-title"><em>Dashboard</em> & <em style="color:#34d399;">Report</em> strutturato</h2>
   </div>
-  <div class="relative flex-1">
+  <div class="relative flex-1" style="margin-top:18px;">
     <div :style="{ opacity: ($clicks === 0 || $clicks === 2) ? 1 : 0, pointerEvents: ($clicks === 0 || $clicks === 2) ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
       <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(79,70,229,0.12), 0 0 0 1px rgba(79,70,229,0.2);">
         <div class="flex items-center gap-4 mb-5">
