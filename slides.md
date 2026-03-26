@@ -85,28 +85,55 @@ title: Hack4Innovation Bicocca — Whattadata
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: var(--sidebar);
+  background: #080d1a;
   overflow: hidden;
 }
 
 .hero-bg::before {
   content: '';
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(79,70,229,0.18) 0%, transparent 70%);
-  top: -80px;
-  right: -80px;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='noiseFilter'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.hero-bg::after {
-  content: '';
+.hero-blob {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(16,185,129,0.10) 0%, transparent 70%);
-  bottom: -120px;
-  left: -40px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.18;
+  animation: float-hero 25s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+.hb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  top: -200px; right: -100px;
+}
+
+.hb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #10b981 0%, transparent 70%);
+  bottom: -150px; left: -100px;
+  animation-duration: 35s;
+  animation-delay: -5s;
+}
+
+.hb-3 {
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, #818cf8 0%, transparent 70%);
+  top: 40%; left: 50%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes float-hero {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(60px, 80px) scale(1.1); }
+  100% { transform: translate(-40px, -60px) scale(0.9); }
 }
 
 @keyframes fade-in {
@@ -695,53 +722,94 @@ title: Hack4Innovation Bicocca — Whattadata
 }
 
 /* ─── THANK YOU ─── */
+/* ─── THANK YOU ─── */
 .thankyou-bg {
   position: absolute;
   inset: 0;
-  background: var(--sidebar);
+  background: #080d1a;
   overflow: hidden;
 }
 
-.thankyou-bg::before {
+.thankyou-bg::before,
+.thankyou-bg::after,
+.thankyou-blob {
   content: '';
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  opacity: 0.15;
+  border-radius: 50%;
+  animation: float-blob 20s infinite alternate ease-in-out;
+}
+
+.thankyou-bg::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  top: -100px; left: -100px;
+  animation-duration: 25s;
+}
+
+.thankyou-bg::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #34d399 0%, transparent 70%);
+  bottom: -150px; right: -150px;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.thankyou-blob {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #818cf8 0%, transparent 70%);
+  top: 40%; left: 50%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+@keyframes float-blob {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(100px, 40px) scale(1.1); }
 }
 
 .thankyou-title {
-  font-size: 3.6rem;
+  font-size: 5.5rem;
   font-weight: 900;
-  letter-spacing: -0.03em;
-  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 30%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(129,140,248,0.3));
 }
 
-.thankyou-title span {
-  color: #818cf8;
+.thankyou-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-top: -10px;
 }
 
 .contact-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.65);
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(.22,1,.36,1);
 }
 
 .contact-pill:hover {
-  background: rgba(79,70,229,0.15);
-  border-color: rgba(79,70,229,0.3);
-  color: #818cf8;
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(129,140,248,0.4);
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 15px rgba(129,140,248,0.2);
 }
 
 /* ─── PROBLEM SLIDE REDESIGN ─── */
@@ -1201,7 +1269,11 @@ title: Hack4Innovation Bicocca — Whattadata
 </style>
 
 <!-- SLIDE 1: HERO -->
-<div class="hero-bg"></div>
+<div class="hero-bg">
+  <div class="hero-blob hb-1"></div>
+  <div class="hero-blob hb-2"></div>
+  <div class="hero-blob hb-3"></div>
+</div>
 
 <div class="relative z-10 flex flex-col items-center justify-center h-full gap-6">
   <div class="hero-subtitle">Hack4Innovation Bicocca · 27 Marzo 2026</div>
@@ -1327,8 +1399,8 @@ Scopri la Pipeline →
     </div>
     <div class="prob-divider" v-click="5"></div>
     <div class="prob-stat" v-click="5">
-      <img src="./img/slack.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Slack</div>
+      <img src="./img/supabase.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <div class="prob-stat-label">Supabase</div>
     </div>
     <div class="prob-divider" v-click="5"></div>
     <div class="prob-stat" v-click="5">
@@ -1345,7 +1417,7 @@ clicks: 3
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
 <div class="relative z-10 px-14 pt-0 pb-4 h-full flex flex-col">
-  <div class="prob-header mb-8">
+  <div class="prob-header mb-5">
     <span class="prob-eyebrow">Output concreti</span>
     <h2 class="prob-title"><em>Dashboard</em> & <em style="color:#34d399;">Report</em> strutturato</h2>
   </div>
@@ -1593,18 +1665,19 @@ clicks: 3
 ---
 
 <!-- SLIDE 8: GRAZIE -->
-<div class="thankyou-bg"></div>
+<div class="thankyou-bg">
+  <div class="thankyou-blob"></div>
+</div>
 
-<div class="relative z-10 flex flex-col items-center justify-center h-full gap-8">
-  <h1 class="thankyou-title">Grazie<span>.</span></h1>
+<div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-10">
+  <div v-click class="mb-2">
+    <h1 class="thankyou-title">Grazie<span>.</span></h1>
+    <p class="thankyou-subtitle">Domande?</p>
+  </div>
 
-  <p style="color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 400;">
-    Domande?
-  </p>
-
-  <div class="flex gap-3">
-    <span class="contact-pill">📍 Bicocca</span>
-    <span class="contact-pill">📅 27 Marzo 2026</span>
-    <span class="contact-pill">🏆 Hack4Innovation</span>
+  <div v-click class="flex flex-wrap justify-center gap-4 mt-16">
+    <span class="contact-pill shadow-xl">📍 Bicocca</span>
+    <span class="contact-pill shadow-xl">📅 27 Marzo 2026</span>
+    <span class="contact-pill shadow-xl">🏆 @Hack4Innovation</span>
   </div>
 </div>
