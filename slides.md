@@ -1675,17 +1675,17 @@ It’s a 'ready-to-go' system: you connect your email, and it starts working. No
   <div class="team-grid">
     <div class="team-card" v-click>
       <div class="team-img-wrap">
-        <img src="./img/mc.png" alt="Marco Cremaschi" />
-      </div>
-      <h3 class="team-name">Marco Cremaschi</h3>
-      <p class="team-role">Unimib Professor<br/>&<br/>Researcher</p>
-    </div>
-    <div class="team-card" v-click>
-      <div class="team-img-wrap">
         <img src="./img/af.png" alt="Andrea Feliziani" />
       </div>
       <h3 class="team-name">Andrea Feliziani</h3>
       <p class="team-role">UI/UX Designer<br/>&<br/>Front-end developer</p>
+    </div>
+    <div class="team-card" v-click>
+      <div class="team-img-wrap">
+        <img src="./img/mc.png" alt="Marco Cremaschi" />
+      </div>
+      <h3 class="team-name">Marco Cremaschi</h3>
+      <p class="team-role">Unimib Professor<br/>&<br/>Researcher</p>
     </div>
     <div class="team-card" v-click>
       <div class="team-img-wrap">
