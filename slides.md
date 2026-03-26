@@ -1108,6 +1108,80 @@ title: Hack4Innovation Bicocca — Whattadata
   font-weight: 700;
 }
 
+/* ─── TEAM SLIDE ─── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+.team-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(129, 140, 248, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(129, 140, 248, 0.1);
+}
+
+.team-img-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #818cf8, #34d399);
+  margin-bottom: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team-img-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0f172a;
+}
+
+.team-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.team-role {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 /* ─── OTHER ─── */
 .feature-tag {
   display: inline-flex;
@@ -1474,7 +1548,51 @@ clicks: 3
 
 ---
 
-<!-- SLIDE 7: GRAZIE -->
+<!-- SLIDE 7: IL TEAM & RUOLI -->
+<div class="sol-bg" transition="slide-up"></div>
+
+<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
+  <div class="prob-header mb-4">
+    <span class="prob-eyebrow">Il Team</span>
+    <h2 class="prob-title">Chi <em>siamo</em></h2>
+    <p class="prob-subtitle">Competenze complementari per una soluzione innovativa.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card" v-click>
+      <div class="team-img-wrap">
+        <img src="./img/mc.png" alt="Marco Cremaschi" />
+      </div>
+      <h3 class="team-name">Marco Cremaschi</h3>
+      <p class="team-role">Professore Unimib<br/>&<br/>Ricercatore</p>
+    </div>
+    <div class="team-card" v-click>
+      <div class="team-img-wrap">
+        <img src="./img/af.png" alt="Andrea Feliziani" />
+      </div>
+      <h3 class="team-name">Andrea Feliziani</h3>
+      <p class="team-role">UI/UX Designer<br/>&<br/>Front-end developer</p>
+    </div>
+    <div class="team-card" v-click>
+      <div class="team-img-wrap">
+        <img src="./img/fd.png" alt="Fabio D'Adda" />
+      </div>
+      <h3 class="team-name">Fabio D'Adda</h3>
+      <p class="team-role">Full-stack developer<br/>&<br/>AI Specialist</p>
+    </div>
+    <div class="team-card" v-click>
+      <div class="team-img-wrap">
+        <img src="./img/dc.png" alt="David Chieregato" />
+      </div>
+      <h3 class="team-name">David Chieregato</h3>
+      <p class="team-role">Back-end developer<br/>&<br/>AI Specialist</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 8: GRAZIE -->
 <div class="thankyou-bg"></div>
 
 <div class="relative z-10 flex flex-col items-center justify-center h-full gap-8">
