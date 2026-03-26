@@ -1434,8 +1434,8 @@ Scopri la Pipeline →
 </div>
 
 ---
-clicks: 3
----
+
+## clicks: 3
 
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
@@ -1555,7 +1555,7 @@ clicks: 3
     <div class="value-card" v-click>
       <div class="value-number" style="color: #f87171;">100%</div>
       <div class="value-label">Modulare</div>
-      <div class="value-desc">Workflow agnostico: scegli lo stack tecnologico (ATS, CRM, HRIS) più adatto.</div>
+      <div class="value-desc">Workflow modulare: scegli lo stack tecnologico più adatto alle tue esigenze.</div>
     </div>
   </div>
 </div>
