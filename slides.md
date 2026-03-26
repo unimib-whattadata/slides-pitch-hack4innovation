@@ -1328,19 +1328,19 @@ Scopri la Pipeline →
   </div>
 
   <div class="prob-grid flex-1">
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="1">
       <div class="prob-item-num">01</div>
       <div class="prob-icon-wrap pi-amber">⏱️</div>
       <h3>Gestione manuale e isolata</h3>
       <p>CV via email gestiti uno per uno, senza automazione. Il tempo cresce, la qualità no.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="2">
       <div class="prob-item-num">02</div>
       <div class="prob-icon-wrap pi-rose">⚖️</div>
       <h3>Valutazioni soggettive</h3>
       <p>Nessuno standard condiviso: bias e inconsistenza nelle decisioni, candidati validi esclusi per errore.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="3">
       <div class="prob-item-num">03</div>
       <div class="prob-icon-wrap pi-indigo">📊</div>
       <h3>Zero visibilità KPI</h3>
@@ -1349,19 +1349,19 @@ Scopri la Pipeline →
   </div>
 
   <div class="prob-stats-row">
-    <div class="prob-stat" v-click>
+    <div class="prob-stat" v-click="1">
       <div class="prob-stat-num" style="color: #fbbf24;">23h</div>
       <div class="prob-stat-label" style="color: rgba(251,191,36,0.7);">settimana dedicata allo screening manuale</div>
       <div class="prob-stat-source">Instant Impact Recruiting Report</div>
     </div>
-    <div class="prob-divider"></div>
-    <div class="prob-stat" v-click>
+    <div class="prob-divider" v-click="2"></div>
+    <div class="prob-stat" v-click="2">
       <div class="prob-stat-num" style="color: #f87171;">40%</div>
       <div class="prob-stat-label" style="color: rgba(248,113,113,0.7);">di inefficienza percepita nel processo di hiring</div>
       <div class="prob-stat-source">PwC Annual Global CEO Survey</div>
     </div>
-    <div class="prob-divider"></div>
-    <div class="prob-stat" v-click>
+    <div class="prob-divider" v-click="3"></div>
+    <div class="prob-stat" v-click="3">
       <div class="prob-stat-num" style="color: #a78bfa;">0 KPI</div>
       <div class="prob-stat-label" style="color: rgba(167,139,250,0.7);">visibilità sui dati per il 30% delle aziende</div>
       <div class="prob-stat-source">Modern Measures of Talent Acquisition</div>
