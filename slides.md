@@ -1332,19 +1332,19 @@ Discover the Pipeline →
   </div>
 
   <div class="prob-grid flex-1">
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="1">
       <div class="prob-item-num">01</div>
       <div class="prob-icon-wrap pi-amber">⏱️</div>
       <h3>Manual and isolated management</h3>
       <p>CVs via email handled one by one, with no automation. Time grows, quality doesn't.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="2">
       <div class="prob-item-num">02</div>
       <div class="prob-icon-wrap pi-rose">⚖️</div>
       <h3>Subjective evaluations</h3>
       <p>No shared standard: bias and inconsistency in decisions, valid candidates excluded by mistake.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click="3">
       <div class="prob-item-num">03</div>
       <div class="prob-icon-wrap pi-indigo">📊</div>
       <h3>Zero KPI visibility</h3>
@@ -1353,19 +1353,19 @@ Discover the Pipeline →
   </div>
 
   <div class="prob-stats-row">
-    <div class="prob-stat" v-click>
+    <div class="prob-stat" v-click="1">
       <div class="prob-stat-num" style="color: #fbbf24;">23h</div>
       <div class="prob-stat-label" style="color: rgba(251,191,36,0.7);">per week spent on manual screening</div>
       <div class="prob-stat-source">Instant Impact Recruiting Report</div>
     </div>
-    <div class="prob-divider"></div>
-    <div class="prob-stat" v-click>
+    <div class="prob-divider" v-click="2"></div>
+    <div class="prob-stat" v-click="2">
       <div class="prob-stat-num" style="color: #f87171;">40%</div>
       <div class="prob-stat-label" style="color: rgba(248,113,113,0.7);">perceived inefficiency in the hiring process</div>
       <div class="prob-stat-source">PwC Annual Global CEO Survey</div>
     </div>
-    <div class="prob-divider"></div>
-    <div class="prob-stat" v-click>
+    <div class="prob-divider" v-click="3"></div>
+    <div class="prob-stat" v-click="3">
       <div class="prob-stat-num" style="color: #a78bfa;">0 KPI</div>
       <div class="prob-stat-label" style="color: rgba(167,139,250,0.7);">data visibility for 30% of companies</div>
       <div class="prob-stat-source">Modern Measures of Talent Acquisition</div>
@@ -1378,7 +1378,11 @@ Discover the Pipeline →
 In fact Small and big companies have the same big problem: **hairing is slow.**
 
 Recruiters lose hours every week on repetitive and  sabjektive tasks.
-This can be a problem because it can lead to manual and isolated management,sabjektive evaluation, and ziro  KPI visibility. Just think that in a PwC report  the hairing prosess is considered inefficency in 40% of cases.
+This can be a problem because it can lead to manual and isolated management,
+sabjektive evaluation, 
+and ziro  KPI visibility.
+
+ Just think that in a PwC report  the hairing prosess is considered inefficency in 40% of cases.
 -->
 
 ---
@@ -1453,7 +1457,7 @@ This can be a problem because it can lead to manual and isolated management,sabj
 
 3. and then AI reads the CV, understands the skills, and gives a score based on what you are looking for.
 
-The pipeline consists of 28 interconnected nodes.
+The pipeline consists of 28 interconnected nodes. and the tools we used to develop it are: n eight n, open ai, google sheets, supabase and nextjs
 -->
 
 ---
