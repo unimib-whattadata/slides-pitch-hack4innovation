@@ -85,8 +85,16 @@ title: Hack4Innovation Bicocca — Whattadata
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: #080d1a;
+  background: linear-gradient(-45deg, #080d1a, #0f172a, #080d1a, #111827);
+  background-size: 400% 400%;
+  animation: gradient-flow 15s ease infinite;
   overflow: hidden;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero-bg::before {
@@ -102,38 +110,47 @@ title: Hack4Innovation Bicocca — Whattadata
 .hero-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.18;
-  animation: float-hero 25s infinite alternate ease-in-out;
+  filter: blur(80px);
   z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  will-change: transform;
 }
 
 .hb-1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
-  top: -200px; right: -100px;
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 75%);
+  top: -240px; right: -120px;
+  animation: orbit1 12s linear infinite;
 }
 
 .hb-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, #10b981 0%, transparent 70%);
-  bottom: -150px; left: -100px;
-  animation-duration: 35s;
-  animation-delay: -5s;
+  width: 550px; height: 550px;
+  background: radial-gradient(circle, #10b981 0%, transparent 75%);
+  bottom: -180px; left: -120px;
+  animation: orbit2 15s linear infinite;
 }
 
 .hb-3 {
-  width: 450px; height: 450px;
-  background: radial-gradient(circle, #818cf8 0%, transparent 70%);
-  top: 40%; left: 50%;
-  animation-duration: 22s;
-  animation-delay: -10s;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #818cf8 0%, transparent 75%);
+  top: 40%; left: 55%;
+  animation: orbit3 10s linear infinite;
 }
 
-@keyframes float-hero {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(60px, 80px) scale(1.1); }
-  100% { transform: translate(-40px, -60px) scale(0.9); }
+@keyframes orbit1 {
+  from { transform: rotate(0deg) translate(40px) rotate(0deg); }
+  to { transform: rotate(360deg) translate(40px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+  from { transform: rotate(0deg) translate(60px) rotate(0deg); }
+  to { transform: rotate(-360deg) translate(60px) rotate(360deg); }
+}
+
+@keyframes orbit3 {
+  from { transform: rotate(0deg) translate(30px) rotate(0deg); }
+  to { transform: rotate(360deg) translate(30px) rotate(-360deg); }
 }
 
 @keyframes fade-in {
@@ -151,9 +168,15 @@ title: Hack4Innovation Bicocca — Whattadata
 }
 
 .hero-title span {
-  color: var(--indigo);
-  background: none;
-  -webkit-text-fill-color: #4f46e5;
+  background: linear-gradient(120deg, #4f46e5, #818cf8, #4f46e5);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
 }
 
 .hero-subtitle {
