@@ -1385,13 +1385,13 @@ Scopri la Pipeline →
       <div class="prob-item-num">01</div>
       <div class="prob-icon-wrap pi-amber">📧</div>
       <h3>Ingestion Email</h3>
-      <p>Gmail trigger ogni 4h — scarica email con allegati non lette e le instrada nella pipeline.</p>
+      <p>Gmail trigger che scarica email con allegati non lette e le instrada nella pipeline.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">02</div>
       <div class="prob-icon-wrap pi-rose">📂</div>
       <h3>Smart File Routing</h3>
-      <p>Classificazione automatica → CV, Portfolio, Altro su Google Drive.</p>
+      <p>Salvataggio automatico dei file su Google Drive.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-num">03</div>
@@ -1434,8 +1434,8 @@ Scopri la Pipeline →
 </div>
 
 ---
-clicks: 3
----
+
+## clicks: 3
 
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
@@ -1474,7 +1474,7 @@ clicks: 3
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidato</strong> — Mario Rossi</span></div>
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Idoneo (58/70)</span></div>
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Ruolo dedotto</strong> — Content Creator</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — ✅ Estratti auto</span></div>
+          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Tel / LinkedIn</strong> — Estratti auto</span></div>
           <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
         </div>
       </div>
@@ -1557,84 +1557,44 @@ clicks: 3
       <div class="value-label">Modulare</div>
       <div class="value-desc">Workflow agnostico: scegli lo stack tecnologico (ATS, CRM, HRIS) più adatto.</div>
     </div>
-
+ g
   </div>
 
 </div>
 
 ---
 
-<!-- SLIDE 6: BUSINESS MODEL & POSIZIONAMENTO -->
+<!-- SLIDE 6: BUSINESS MODEL & STRATEGIA -->
 <div class="sol-bg" transition="slide-up"></div>
 <div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
-  <div class="prob-header mb-8">
+  <div class="prob-header mb-12">
     <span class="prob-eyebrow">Strategia</span>
-    <h2 class="prob-title">Business <em style="color:#818cf8; text-shadow: 0 0 20px rgba(129,140,248,0.6);">Model</em> & <em style="color:#818cf8; text-shadow: 0 0 20px rgba(129,140,248,0.6);">Posizionamento</em></h2>
+    <h2 class="prob-title">Modello di <em>Business</em></h2>
     <p class="prob-subtitle">Come scaliamo il valore nel mercato HR Tech.</p>
   </div>
-  <div v-click class="hidden"></div>
-  <div v-click class="hidden"></div>
-  <div v-click class="hidden"></div>
-  <div class="flex gap-10 flex-1 items-start transition-all duration-500">
-    <div class="output-card-dark transition-all duration-700 ease-in-out" :style="{ flex: $clicks === 1 ? '1 0 100%' : ($clicks === 3 ? '0 0 0%' : '1 0 50%'), opacity: $clicks === 3 ? 0 : 1, pointerEvents: $clicks === 3 ? 'none' : 'auto', transform: $clicks === 3 ? 'translateX(-40px)' : 'none', padding: $clicks === 3 ? '0' : '24px', borderWidth: $clicks === 3 ? '0' : '1px' }" style="box-shadow: 0 8px 32px rgba(79,70,229,0.15), 0 0 0 1px rgba(79,70,229,0.25);">
-      <div class="flex items-center gap-5 mb-6 whitespace-nowrap">
-        <div class="output-icon" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);width:52px;height:52px;border-radius:14px;font-size:1.5rem;">💰</div>
-        <div>
-          <h3 style="color:#818cf8; font-size: 1.2rem;">Business Model</h3>
-          <p style="opacity: 0.6;">SaaS & Performance based</p>
+  <div class="flex-1 flex items-center justify-center">
+    <div class="output-card-dark w-full max-w-4xl p-10" style="box-shadow: 0 8px 32px rgba(79,70,229,0.15), 0 0 0 1px rgba(79,70,229,0.25);">
+      <div class="grid grid-cols-3 gap-8">
+        <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
+          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all duration-300" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">💰</div>
+          <div>
+            <h3 style="color:#818cf8; font-size: 1.1rem; margin-bottom: 4px;">Abbonamento SaaS</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Pricing mensile flessibile basato sui volumi gestiti.</p>
+          </div>
         </div>
-      </div>
-      <div v-if="$clicks !== 1" style="display:flex;flex-direction:column;gap:12px;">
-        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Abbonamento SaaS</strong> — Tiered pricing mensile per volumi</span></div>
-        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pay-per-Credit</strong> — Flessibilità per picchi stagionali</span></div>
-        <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Enterprise API</strong> — One-time fee per setup custom</span></div>
-      </div>
-      <div v-else class="grid grid-cols-3 gap-4 animate-fade-in">
-        <div class="expanded-item">
-          <div class="expanded-icon">📈</div>
-          <h4 class="expanded-title">SaaS Tiered</h4>
-          <p class="expanded-desc">Pricing mensile scalabile basato sui volumi gestiti.</p>
+        <div v-click class="flex flex-col items-center text-center gap-4 border-l border-r border-white/10 px-6 group cursor-default">
+          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.4)] transition-all duration-300" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🎯</div>
+          <div>
+            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Target Enterprise</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">HR Dept, Agenzie di Staffing e Startup in hyper-growth.</p>
+          </div>
         </div>
-        <div class="expanded-item">
-          <div class="expanded-icon">💳</div>
-          <h4 class="expanded-title">Pay-per-Credit</h4>
-          <p class="expanded-desc">Massima flessibilità per gestire picchi senza costi fissi.</p>
-        </div>
-        <div class="expanded-item">
-          <div class="expanded-icon">🔌</div>
-          <h4 class="expanded-title">Enterprise API</h4>
-          <p class="expanded-desc">Integrazione profonda e setup custom per workflow complessi.</p>
-        </div>
-      </div>
-    </div>
-    <div class="output-card-dark transition-all duration-700 ease-in-out" :style="{ flex: $clicks === 3 ? '1 0 100%' : ($clicks === 1 ? '0 0 0%' : '1 0 50%'), opacity: $clicks === 1 ? 0 : 1, pointerEvents: $clicks === 1 ? 'none' : 'auto', transform: $clicks === 1 ? 'translateX(40px)' : 'none', padding: $clicks === 1 ? '0' : '24px', borderWidth: $clicks === 1 ? '0' : '1px' }" style="box-shadow: 0 8px 32px rgba(16,185,129,0.15), 0 0 0 1px rgba(16,185,129,0.25);">
-      <div class="flex items-center gap-5 mb-6 whitespace-nowrap">
-        <div class="output-icon" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:52px;height:52px;border-radius:14px;font-size:1.5rem;">🎯</div>
-        <div>
-          <h3 style="color:#34d399; font-size: 1.2rem;">Posizionamento</h3>
-          <p style="opacity: 0.6;">Strategicità & Integrazione</p>
-        </div>
-      </div>
-      <div v-if="$clicks !== 3" style="display:flex;flex-direction:column;gap:12px;">
-        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Target</strong> — HR Dept mid-large enterprise (Tech/Finance)</span></div>
-        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Differenziatore</strong> — No-code & AI vs Legacy Systems</span></div>
-        <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Valore</strong> — Velocità 10x e scoring standardizzato</span></div>
-      </div>
-      <div v-else class="grid grid-cols-3 gap-4 animate-fade-in">
-        <div class="expanded-item">
-          <div class="expanded-icon">🏢</div>
-          <h4 class="expanded-title">Mid-Large Ent</h4>
-          <p class="expanded-desc">Soluzione per dipartimenti HR in settori Tech e Finance.</p>
-        </div>
-        <div class="expanded-item">
-          <div class="expanded-icon">🚀</div>
-          <h4 class="expanded-title">No-code & AI</h4>
-          <p class="expanded-desc">La velocità dell'AI unita alla semplicità del no-code.</p>
-        </div>
-        <div class="expanded-item">
-          <div class="expanded-icon">⚡</div>
-          <h4 class="expanded-title">Valore 10x</h4>
-          <p class="expanded-desc">Screening più veloce e scoring oggettivo su ogni candidato.</p>
+        <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
+          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300" style="background:rgba(251,191,36,0.2);border:1px solid rgba(251,191,36,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🚀</div>
+          <div>
+            <h3 style="color:#fbbf24; font-size: 1.1rem; margin-bottom: 4px;">Automazione Scalabile</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Integrazione via API per workflow agnostici e modulari.</p>
+          </div>
         </div>
       </div>
     </div>
