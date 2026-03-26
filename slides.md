@@ -1314,6 +1314,10 @@ Discover the Pipeline →
 
 </div>
 
+<!--
+My name is Andrea, and today we will present our **AI Pipeline** to improve the hairing prosess.
+-->
+
 ---
 
 <!-- SLIDE 2: THE PROBLEM -->
@@ -1369,6 +1373,12 @@ Discover the Pipeline →
   </div>
 
 </div>
+
+<!--
+In fact Small and big companies have the same big problem: **hiring is slow.**
+
+Recruiters lose hours every week on repetitive and  sabjektive tasks.
+-->
 
 ---
 
