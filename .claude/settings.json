@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:business.linkedin.com)",
+      "WebFetch(domain:www.myshortlister.com)",
+      "WebSearch",
+      "WebFetch(domain:www.brianheger.com)"
+    ]
+  }
+}
