@@ -800,8 +800,8 @@ title: Hack4Innovation Bicocca — Whattadata
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 8px;
-  padding: 16px;
+  gap: 4px;
+  padding: 12px;
   border-radius: 16px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
@@ -812,17 +812,17 @@ title: Hack4Innovation Bicocca — Whattadata
   transform: translateY(-4px);
 }
 .expanded-icon {
-  font-size: 2rem;
-  margin-bottom: 4px;
+  font-size: 1.5rem;
+  margin-bottom: 2px;
 }
 .expanded-title {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 800;
   color: #fff;
   margin: 0;
 }
 .expanded-desc {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: rgba(255,255,255,0.5);
   line-height: 1.4;
   margin: 0;
@@ -1420,7 +1420,7 @@ clicks: 3
         <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pay-per-Credit</strong> — Flessibilità per picchi stagionali</span></div>
         <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Enterprise API</strong> — One-time fee per setup custom</span></div>
       </div>
-      <div v-else class="grid grid-cols-3 gap-8 animate-fade-in">
+      <div v-else class="grid grid-cols-3 gap-4 animate-fade-in">
         <div class="expanded-item">
           <div class="expanded-icon">📈</div>
           <h4 class="expanded-title">SaaS Tiered</h4>
@@ -1451,7 +1451,7 @@ clicks: 3
         <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Differenziatore</strong> — No-code & AI vs Legacy Systems</span></div>
         <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Valore</strong> — Velocità 10x e scoring standardizzato</span></div>
       </div>
-      <div v-else class="grid grid-cols-3 gap-8 animate-fade-in">
+      <div v-else class="grid grid-cols-3 gap-4 animate-fade-in">
         <div class="expanded-item">
           <div class="expanded-icon">🏢</div>
           <h4 class="expanded-title">Mid-Large Ent</h4>
