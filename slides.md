@@ -1319,9 +1319,9 @@ Scopri la Pipeline →
 <!-- SLIDE 2: IL PROBLEMA -->
 <div class="prob-bg"></div>
 
-<div class="relative z-10 px-14 py-6 h-full flex flex-col">
+<div class="relative z-10 px-14 pt-0 pb-6 h-full flex flex-col">
 
-  <div class="prob-header mb-3">
+  <div class="prob-header mb-1">
     <span class="prob-eyebrow">Il problema</span>
     <h2 class="prob-title">Lo screening CV è <em>rotto</em></h2>
     <p class="prob-subtitle">I recruiter perdono ore ogni settimana su task ripetitivi, soggettivi, non misurabili.</p>
@@ -1434,13 +1434,13 @@ Scopri la Pipeline →
 </div>
 
 ---
-
-## clicks: 3
+clicks: 3
+---
 
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
-<div class="relative z-10 px-14 pt-0 pb-4 h-full flex flex-col">
-  <div class="prob-header mb-5">
+<div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col">
+  <div class="prob-header mb-2" style="padding-top:8px;">
     <span class="prob-eyebrow">Output concreti</span>
     <h2 class="prob-title"><em>Dashboard</em> & <em style="color:#34d399;">Report</em> strutturato</h2>
   </div>
@@ -1557,9 +1557,7 @@ Scopri la Pipeline →
       <div class="value-label">Modulare</div>
       <div class="value-desc">Workflow agnostico: scegli lo stack tecnologico (ATS, CRM, HRIS) più adatto.</div>
     </div>
- g
   </div>
-
 </div>
 
 ---
@@ -1585,15 +1583,15 @@ Scopri la Pipeline →
         <div v-click class="flex flex-col items-center text-center gap-4 border-l border-r border-white/10 px-6 group cursor-default">
           <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.4)] transition-all duration-300" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🎯</div>
           <div>
-            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Target Enterprise</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">HR Dept, Agenzie di Staffing e Startup in hyper-growth.</p>
+            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Universale</h3>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Startup, PMI o grande azienda: funziona per tutti.</p>
           </div>
         </div>
         <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
           <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300" style="background:rgba(251,191,36,0.2);border:1px solid rgba(251,191,36,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🚀</div>
           <div>
             <h3 style="color:#fbbf24; font-size: 1.1rem; margin-bottom: 4px;">Automazione Scalabile</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Integrazione via API per workflow agnostici e modulari.</p>
+            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Cresce con te: da 10 a 10.000 candidature senza cambiare nulla.</p>
           </div>
         </div>
       </div>
