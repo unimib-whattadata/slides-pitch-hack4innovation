@@ -1238,17 +1238,17 @@ title: Hack4Innovation Bicocca — HireLight
 
 /* ─── TEAM SLIDE ─── */
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2px;
   width: 100%;
   max-width: 920px;
   margin: -10px auto 0;
-  align-content: start;
 }
 
 .team-item {
-  grid-column: span 3;
+  width: 24%;
   min-height: 0;
   background:
     linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.56) 100%);
@@ -1270,7 +1270,7 @@ title: Hack4Innovation Bicocca — HireLight
 }
 
 .team-item--wide {
-  grid-column: span 3;
+  width: 24%;
 }
 
 .team-item::before {
@@ -1783,8 +1783,8 @@ And the impact is real: according to LinkedIn, AI can reduce manual screening ef
 </div>
 
 <!--
-"When we look at the market, it's split between legacy HRIS and ultra-expensive 'Big Tech' AI like Eightfold. Our unique differentiator? HireLight brings **Enterprise Compliance to the Mid-Market.** 
-While competitors charge $150k-$200k/year for AI Act readiness, we democratize it. 
+"When we look at the market, it's split between legacy HRIS and ultra-expensive 'Big Tech' AI like Eightfold. Our unique differentiator? HireLight brings **Enterprise Compliance to the Mid-Market.**
+While competitors charge $150k-$200k/year for AI Act readiness, we democratize it.
 
 Our 'Tangible Edge' is three-fold:
 1. **The 'Jury' System**: We use a consensus mechanism across models to guarantee scoring accuracy where others hallucinate.
@@ -1847,7 +1847,7 @@ Our 'Tangible Edge' is three-fold:
 </div>
 
 <!--
-"Our business model isn't just about revenue; it's about **sustainability and democratizing tech.** 
+"Our business model isn't just about revenue; it's about **sustainability and democratizing tech.**
 We identified that current AI solutions are 'Enterprise-only,' leaving 75% of the market in a manual bottleneck.
 
 Our distinctive positioning is the 'Compliance Democratizer.' We use a modular architecture (n8n + scalable LLM APIs) which keeps our operational costs extremely low, allowing us to offer SME-friendly pricing while maintaining healthy margins.
@@ -1920,10 +1920,10 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
     </div>
     <div class="team-item team-item--wide">
       <div class="team-img-wrap">
-        <img src="./img/lj.png" alt="Labhanshiv Jayan" />
+        <img src="./img/lj.png" alt="Labhanshiv Jayant" />
       </div>
       <div class="team-text">
-        <h3 class="team-name">Labhanshiv Jayan</h3>
+        <h3 class="team-name">Labhanshiv Jayant</h3>
         <p class="team-role">Researcher</p>
       </div>
     </div>
