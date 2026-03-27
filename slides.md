@@ -1363,6 +1363,113 @@ title: Hack4Innovation Bicocca — HireLight
 .slidev-page-number {
   color: var(--slate-300) !important;
 }
+
+/* ─── COMPETITOR TABLE ─── */
+.comp-table-wrap {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.comp-table th {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.comp-table td {
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.comp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comp-table tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.comp-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.55rem;
+  font-weight: 600;
+  background: rgba(129,140,248,0.15);
+  color: #818cf8;
+}
+
+.price-callout {
+  background: linear-gradient(90deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.02) 100%);
+  border-left: 3px solid #ef4444;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 12px;
+}
+
+.price-callout strong {
+  color: #f87171;
+  font-size: 0.85rem;
+}
+
+/* ─── FEATURE GRID ─── */
+.feat-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.feat-header {
+  font-weight: 800;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.feat-label {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+}
+
+.feat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.feat-card h4 {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #818cf8;
+  margin-bottom: 2px;
+}
+
+.feat-card p {
+  font-size: 0.58rem;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.6);
+}
 </style>
 
 <!-- SLIDE 1: HERO -->
@@ -1588,58 +1695,89 @@ And the impact is real: according to LinkedIn, AI can reduce manual screening ef
 
 ---
 
-<!-- SLIDE 5: GENERATED VALUE -->
+<!-- SLIDE 6: MARKET LANDSCAPE -->
 <div class="sol-bg" transition="slide-up"></div>
-
-<div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col -mt-2">
+<div class="relative z-10 px-14 py-2 h-full flex flex-col">
   <div class="prob-header mb-1">
-    <span class="prob-eyebrow">Impact</span>
-    <h2 class="prob-title">The <em>value</em> we create</h2>
-    <p class="prob-subtitle">Operational efficiency, standardization, and modularity without compromise.</p>
+    <span class="prob-eyebrow">Market</span>
+    <h2 class="prob-title">Competitive <em>Landscape</em></h2>
+    <p class="prob-subtitle" style="font-size:0.65rem;">From legacy HRIS to LLM-native talent intelligence.</p>
   </div>
 
-  <div class="grid grid-cols-2 gap-5 flex-1 items-start">
-    <div class="value-card" v-click>
-      <div class="value-number" style="color: #34d399;">10×</div>
-      <div class="value-label">Efficiency</div>
-      <div class="value-desc">Full workflow automation from initial screening to final notification.</div>
+  <div class="comp-table-wrap" v-click>
+    <table class="comp-table" style="font-size: 0.6rem;">
+      <thead>
+        <tr>
+          <th style="padding: 6px 10px;">Platform</th>
+          <th style="padding: 6px 10px;">Category</th>
+          <th style="padding: 6px 10px;">Key Strength</th>
+          <th style="padding: 6px 10px;">Ideal Org. Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: rgba(129, 140, 248, 0.08); border-left: 2px solid #818cf8;">
+          <td style="padding: 4px 10px;"><strong style="color:#fff;">HireLight</strong></td>
+          <td style="padding: 4px 10px;"><span class="comp-tag" style="background:#818cf8; color:#fff; font-size:0.5rem;">Active Intelligence</span></td>
+          <td style="padding: 4px 10px;">Ethical Meritocracy & SME Compliance</td>
+          <td style="padding: 4px 10px;"><strong>10 - 5,000+</strong></td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px;"><strong>Eightfold AI</strong></td>
+          <td style="padding: 4px 10px;"><span class="comp-tag">Talent Intelligence</span></td>
+          <td style="padding: 4px 10px;">Predictive AI (Potential > Experience)</td>
+          <td style="padding: 4px 10px;">5,000+</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px;"><strong>HiredScore</strong></td>
+          <td style="padding: 4px 10px;"><span class="comp-tag">AI Screening</span></td>
+          <td style="padding: 4px 10px;">Seamless ATS Overlay & Auditable AI</td>
+          <td style="padding: 4px 10px;">500+</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px;"><strong>Juicebox AI</strong></td>
+          <td style="padding: 4px 10px;"><span class="comp-tag">AI Sourcing</span></td>
+          <td style="padding: 4px 10px;">"PeopleGPT" for complex prose queries</td>
+          <td style="padding: 4px 10px;">10 - 500+</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px;"><strong>HiBob / Personio</strong></td>
+          <td style="padding: 4px 10px;"><span class="comp-tag">Mid-Market HRIS</span></td>
+          <td style="padding: 4px 10px;">Integrated Analytics & GDPR focus</td>
+          <td style="padding: 4px 10px;">50 - 1,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex gap-2 mt-4" v-click>
+    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #818cf8;">
+      <h4 style="font-size: 0.6rem; margin: 0;">Jury Mechanism</h4>
+      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">Multi-model consensus for zero hallucination.</p>
     </div>
-    <div class="value-card" v-click>
-      <div class="value-number" style="color: #818cf8;">100%</div>
-      <div class="value-label">Standard</div>
-      <div class="value-desc">Evaluation based on objective and certified parameters for every data batch.</div>
+    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #34d399;">
+      <h4 style="font-size: 0.6rem; margin: 0;">Bias-Free Core</h4>
+      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">Data filtering for ethical meritocracy.</p>
     </div>
-    <div class="value-card" v-click>
-      <div class="value-number" style="color: #fbbf24;">0€</div>
-      <div class="value-label">Maintenance</div>
-      <div class="value-desc">Cloud and no-code architecture that eliminates fixed server management costs.</div>
-    </div>
-    <div class="value-card" v-click>
-      <div class="value-number" style="color: #f87171;">100%</div>
-      <div class="value-label">Modular</div>
-      <div class="value-desc">Agnostic workflow: choose the technology stack (ATS, CRM, HRIS) that fits best.</div>
+    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #fbbf24;">
+      <h4 style="font-size: 0.6rem; margin: 0;">SMB Compliance</h4>
+      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">AI Act readiness at accessible pricing.</p>
     </div>
   </div>
 </div>
 
 <!--
-In this slide, we show the value of our pipeline.”
+"When we look at the market, it's split between legacy HRIS and ultra-expensive 'Big Tech' AI like Eightfold. Our unique differentiator? HireLight brings **Enterprise Compliance to the Mid-Market.** 
+While competitors charge $150k-$200k/year for AI Act readiness, we democratize it. 
 
-
-“ In fact The whole hairing  prosess is automated, from screening to final notification.”
-
-“All candidates are evaluated using the same objective criteria.
-
-
-” Thanks to cloud and no-code tools, there are no server costs to manage.”
-
-
-and finally “Any tools can be used depending on the needs. The process is completely modular and can be adapted to your needs.
+Our 'Tangible Edge' is three-fold:
+1. **The 'Jury' System**: We use a consensus mechanism across models to guarantee scoring accuracy where others hallucinate.
+2. **Native Bias-Free approach**: We don't just 'train' for fairness; our architecture strips demographic risk *at the root*.
+3. **Active Layer**: We sit between sources and storage, turning passive CV piles into active talent intelligence instantly."
 -->
 
 ---
 
-<!-- SLIDE 6: BUSINESS MODEL & STRATEGY -->
+<!-- SLIDE 8: BUSINESS MODEL & STRATEGY -->
 <div class="sol-bg" transition="slide-up"></div>
 <div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
   <div class="prob-header mb-12">
@@ -1690,7 +1828,7 @@ It’s a 'ready-to-go' system: you connect your email, and it starts working. No
 
 ---
 
-<!-- SLIDE 7: THE TEAM & ROLES -->
+<!-- SLIDE 9: THE TEAM & ROLES -->
 <div class="sol-bg" transition="slide-up"></div>
 
 <div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col -mt-2">
@@ -1775,7 +1913,7 @@ we're done, thank you very much
 
 ---
 
-<!-- SLIDE 8: THANK YOU -->
+<!-- SLIDE 10: THANK YOU -->
 <div class="thankyou-bg">
   <div class="thankyou-blob"></div>
 </div>
