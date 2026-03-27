@@ -1155,6 +1155,7 @@ title: Hack4Innovation Bicocca — HireLight
   margin-top: 4px;
   font-style: italic;
   letter-spacing: 0.01em;
+  min-height: 1.2em;
 }
 
 .prob-divider {
@@ -1248,29 +1249,28 @@ title: Hack4Innovation Bicocca — HireLight
 
 .team-item {
   grid-column: span 3;
-  min-height: 110px;
+  min-height: 0;
   background:
     linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.56) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: 14px;
-  padding: 8px 8px 7px;
+  border-radius: 10px;
+  padding: 6px 6px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 4px;
   transition: all 0.4s cubic-bezier(.22,1,.36,1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.2);
 }
 
 .team-item--wide {
   grid-column: span 3;
-  min-height: 110px;
 }
 
 .team-item::before {
@@ -1299,13 +1299,13 @@ title: Hack4Innovation Bicocca — HireLight
 }
 
 .team-img-wrap {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   border-radius: 50%;
   padding: 1.5px;
   background: linear-gradient(135deg, #818cf8, #34d399);
-  box-shadow: 0 7px 14px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.2);
 }
 
 .team-img-wrap img {
@@ -1326,22 +1326,22 @@ title: Hack4Innovation Bicocca — HireLight
 }
 
 .team-name {
-  font-size: 0.54rem;
+  font-size: 0.44rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.01em;
-  line-height: 1.05;
-  min-height: 1.9em;
+  line-height: 1.2;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .team-role {
-  font-size: 0.38rem;
-  color: rgba(255, 255, 255, 0.66);
-  line-height: 1.18;
-  font-weight: 600;
+  font-size: 0.34rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.2;
+  font-weight: 500;
   letter-spacing: 0.02em;
   max-width: 16ch;
   margin: 0 auto;
@@ -1477,33 +1477,48 @@ and ziro  KPI visibility.
 
 <!-- SLIDE 3: THE SOLUTION — CONCEPT -->
 <div class="sol-bg"></div>
-<div class="relative z-10 px-14 py-2 h-full flex flex-col justify-between">
-  <div class="prob-header mb-0 text-center">
+<div class="relative z-10 px-14 pt-0 pb-6 h-full flex flex-col">
+
+  <div class="prob-header mb-1">
     <span class="prob-eyebrow">The solution</span>
     <h2 class="prob-title">The <em>HireLight</em> Intelligence Layer</h2>
-    <p class="prob-subtitle" style="margin-top:2px;">Transforming data into informed decisions, ethically and instantly.</p>
+    <p class="prob-subtitle">Transforming data into informed decisions, ethically and instantly.</p>
   </div>
-  <div class="prob-grid flex-1" style="gap:10px; margin-top:10px;">
-    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
+
+  <div class="prob-grid flex-1">
+    <div class="prob-item" v-click>
+      <div class="prob-item-corner-icon pi-amber" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 21L15.8033 15.8033M15.8033 15.8033C17.1605 14.4461 18 12.5711 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18C12.5711 18 14.4461 17.1605 15.8033 15.8033Z"/>
+        </svg>
+      </div>
       <div class="prob-item-num">01</div>
-      <div class="prob-icon-wrap pi-amber" style="width:36px; height:36px; font-size:1.1rem;">🧩</div>
       <h3>Multi-Feature Extraction</h3>
-      <p style="font-size:0.7rem; line-height:1.4;">Hard skills, soft skills, and experiences are extracted to provide HR teams with deep, structured insights for <strong>informed decisions</strong>.</p>
+      <p>Hard skills, soft skills, and experiences are extracted to provide HR teams with deep, structured insights for <strong>informed decisions</strong>.</p>
     </div>
-    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
+    <div class="prob-item" v-click>
+      <div class="prob-item-corner-icon pi-rose" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 12.7498L11.25 14.9998L15 9.74985M12 2.71411C9.8495 4.75073 6.94563 5.99986 3.75 5.99986C3.69922 5.99986 3.64852 5.99955 3.59789 5.99892C3.2099 7.17903 3 8.43995 3 9.74991C3 15.3414 6.82432 20.0397 12 21.3719C17.1757 20.0397 21 15.3414 21 9.74991C21 8.43995 20.7901 7.17903 20.4021 5.99892C20.3515 5.99955 20.3008 5.99986 20.25 5.99986C17.0544 5.99986 14.1505 4.75073 12 2.71411Z"/>
+        </svg>
+      </div>
       <div class="prob-item-num">02</div>
-      <div class="prob-icon-wrap pi-rose" style="width:36px; height:36px; font-size:1.1rem;">⚖️</div>
       <h3>AI Act Compliant Scoring</h3>
-      <p style="font-size:0.7rem; line-height:1.4;">Ethical meritocracy: the scoring model has access <strong>only to Experience and Education</strong> sections to ensure objective, bias-free evaluations.</p>
+      <p>Ethical meritocracy: the scoring model has access <strong>only to Experience and Education</strong> sections to ensure objective, bias-free evaluations.</p>
     </div>
-    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
+    <div class="prob-item" v-click>
+      <div class="prob-item-corner-icon pi-indigo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13.5 4.5 7.5 14.25h4.5l-1.5 5.25 6-9.75H12l1.5-5.25Z" />
+        </svg>
+      </div>
       <div class="prob-item-num">03</div>
-      <div class="prob-icon-wrap pi-indigo" style="width:36px; height:36px; font-size:1.1rem;">⚡</div>
       <h3>Active Intelligence</h3>
-      <p style="font-size:0.7rem; line-height:1.4;">Unlike <strong>Traditional ATS</strong> (passive storage), HireLight proactively identifies talent and calculates fit in real-time.</p>
+      <p>Unlike <strong>Traditional ATS</strong> (passive storage), HireLight proactively identifies talent and calculates fit in real-time.</p>
     </div>
   </div>
-  <div class="prob-stats-row" style="margin-top:2px; padding-top:4px;">
+
+  <div class="prob-stats-row">
     <div class="prob-stat" v-click="4">
       <div class="prob-stat-num" style="color:#818cf8;">-75%</div>
       <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">Manual Screening Effort</div>
@@ -1513,11 +1528,13 @@ and ziro  KPI visibility.
     <div class="prob-stat" v-click="4">
       <div class="prob-stat-num" style="color:#34d399;">100%</div>
       <div class="prob-stat-label" style="color:rgba(52,211,153,0.7);">AI Act Transparency</div>
+      <div class="prob-stat-source">&nbsp;</div>
     </div>
     <div class="prob-divider" v-click="4"></div>
     <div class="prob-stat" v-click="4">
       <div class="prob-stat-num" style="color:#fbbf24;">AI-Powered</div>
       <div class="prob-stat-label" style="color:rgba(251,191,36,0.7);">Vs Traditional ATS Silos</div>
+      <div class="prob-stat-source">&nbsp;</div>
     </div>
   </div>
 </div>
