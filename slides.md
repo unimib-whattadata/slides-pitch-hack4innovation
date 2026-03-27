@@ -1779,35 +1779,50 @@ Our 'Tangible Edge' is three-fold:
 
 <!-- SLIDE 8: BUSINESS MODEL & STRATEGY -->
 <div class="sol-bg" transition="slide-up"></div>
-<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
-  <div class="prob-header mb-12">
-    <span class="prob-eyebrow">Strategy</span>
+<div class="relative z-10 px-14 pt-1 pb-4 h-full flex flex-col">
+  <div class="prob-header mb-1">
+    <span class="prob-eyebrow">Sustainability & Growth</span>
     <h2 class="prob-title"><em>Business</em> Model</h2>
-    <p class="prob-subtitle">How we scale value in the HR Tech market.</p>
+    <p class="prob-subtitle" style="font-size:0.6rem;">Sustainable framework for applicability and scale.</p>
   </div>
-  <div class="flex-1 flex items-center justify-center">
-    <div class="output-card-dark w-full max-w-4xl p-10" style="box-shadow: 0 8px 32px rgba(79,70,229,0.15), 0 0 0 1px rgba(79,70,229,0.25);">
-      <div class="grid grid-cols-3 gap-8">
-        <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
-          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.4)] transition-all duration-300" style="background:rgba(79,70,229,0.2);border:1px solid rgba(79,70,229,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">💰</div>
-          <div>
-            <h3 style="color:#818cf8; font-size: 1.1rem; margin-bottom: 4px;">SaaS Subscription</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Flexible monthly pricing based on managed volumes.</p>
-          </div>
+
+  <div class="flex-1 flex flex-col items-center justify-center gap-2">
+    <!-- TARGET MARKET POSITIONING -->
+    <div class="grid grid-cols-2 gap-3 w-full max-w-4xl" v-click>
+       <div class="output-card-dark p-3 border-l-2 border-indigo-400">
+          <div class="text-[0.55rem] uppercase tracking-wider text-indigo-300 font-bold mb-0.5">Distinctive Positioning</div>
+          <h3 class="text-[0.9rem]">The Compliance Democratizer</h3>
+          <p class="text-[0.62rem] opacity-70">Closing the gap for the 75% of SMEs with Tier-1 standards without the 150.000$ barrier.</p>
+       </div>
+       <div class="output-card-dark p-3 border-l-2 border-emerald-400">
+          <div class="text-[0.55rem] uppercase tracking-wider text-emerald-300 font-bold mb-0.5">Scalability Moat</div>
+          <h3 class="text-[0.9rem]">Modular Sustainability</h3>
+          <p class="text-[0.62rem] opacity-70">Built on low-overhead n8n & API layers, ensuring rapid implementation and customization.</p>
+       </div>
+    </div>
+    <!-- PRICING TIERS -->
+    <div class="output-card-dark w-full max-w-4xl p-3" v-click>
+      <div class="text-center mb-2">
+        <span class="feat-tag" style="font-size:0.68rem; padding: 5px 16px; background: linear-gradient(90deg, #6366f1 0%, #10b981 100%); color: #fff; border: none; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);">Scalable SME Pricing</span>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-white/10">
+          <div class="text-[0.8rem] font-bold text-indigo-300">Starter</div>
+          <div class="text-[0.6rem] mt-0.5">Free to €99/mo</div>
+          <div class="h-px w-6 bg-white/20 my-1.5"></div>
+          <p class="text-[0.52rem] opacity-70">Up to 100 CVs/mo.<br/>Native bias filtering.</p>
         </div>
-        <div v-click class="flex flex-col items-center text-center gap-4 border-l border-r border-white/10 px-6 group cursor-default">
-          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.4)] transition-all duration-300" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🎯</div>
-          <div>
-            <h3 style="color:#34d399; font-size: 1.1rem; margin-bottom: 4px;">Universal</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Startup, SMB or enterprise: it works for everyone.</p>
-          </div>
+        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-indigo-500/30 ring-1 ring-indigo-500/20">
+          <div class="text-[0.9rem] font-bold text-white">Growth (Mid)</div>
+          <div class="text-[0.65rem] mt-0.5 text-indigo-200">€299/mo</div>
+          <div class="h-px w-6 bg-white/20 my-1.5"></div>
+          <p class="text-[0.52rem] opacity-70">Up to 1,000 CVs/mo.<br/>Consensus "Jury" Scoring.</p>
         </div>
-        <div v-click class="flex flex-col items-center text-center gap-4 group cursor-default">
-          <div class="output-icon group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300" style="background:rgba(251,191,36,0.2);border:1px solid rgba(251,191,36,0.4);width:60px;height:60px;border-radius:16px;font-size:1.8rem;">🚀</div>
-          <div>
-            <h3 style="color:#fbbf24; font-size: 1.1rem; margin-bottom: 4px;">Scalable Automation</h3>
-            <p style="opacity: 0.6; font-size: 0.82rem; line-height: 1.4;">Grows with you: from 10 to 10,000 applications with no changes.</p>
-          </div>
+        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-white/10">
+          <div class="text-[0.8rem] font-bold text-amber-300">Enterprise</div>
+          <div class="text-[0.6rem] mt-0.5">Custom / Volume</div>
+          <div class="h-px w-6 bg-white/20 my-1.5"></div>
+          <p class="text-[0.52rem] opacity-70">Unlimited volumes.<br/>Local LLM (On-Prem).</p>
         </div>
       </div>
     </div>
@@ -1815,15 +1830,17 @@ Our 'Tangible Edge' is three-fold:
 </div>
 
 <!--
-"Our business plan is simple.
-We offer a **monthly subscription**. Companies pay a small fee based on how many CVs they process.
+"Our business model isn't just about revenue; it's about **sustainability and democratizing tech.** 
+We identified that current AI solutions are 'Enterprise-only,' leaving 75% of the market in a manual bottleneck.
 
+Our distinctive positioning is the 'Compliance Democratizer.' We use a modular architecture (n8n + scalable LLM APIs) which keeps our operational costs extremely low, allowing us to offer SME-friendly pricing while maintaining healthy margins.
 
-It’s perfect for any size of company, from the largest to the smallest
+We propose a three-tier scalable model:
+1. **Starter**: Low-friction entry for startups to get AI Act compliant instantly.
+2. **Growth**: Tailored for mid-market firms needing the 'Jury' reliability we discussed.
+3. **Enterprise**: For organizations requiring local data sovereignty.
 
-And it grows with you, no matter how many applications you have, the resalt doesn’t change.
-
-It’s a 'ready-to-go' system: you connect your email, and it starts working. No complicated setup needed."
+This model demonstrates real applicability: it solves the 'cost of compliance' barrier and scales horizontally across any hiring volume."
 -->
 
 ---
