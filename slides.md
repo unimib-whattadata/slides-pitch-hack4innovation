@@ -1240,7 +1240,7 @@ title: Hack4Innovation Bicocca — HireLight
 .team-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 6px;
+  gap: 2px;
   width: 100%;
   max-width: 920px;
   margin: -10px auto 0;
@@ -1262,7 +1262,7 @@ title: Hack4Innovation Bicocca — HireLight
   align-items: center;
   text-align: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 2px;
   transition: all 0.4s cubic-bezier(.22,1,.36,1);
   position: relative;
   overflow: hidden;
@@ -1320,7 +1320,7 @@ title: Hack4Innovation Bicocca — HireLight
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 3px;
+  gap: 1px;
   flex: 1;
   width: 100%;
 }
@@ -1330,7 +1330,7 @@ title: Hack4Innovation Bicocca — HireLight
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1338,9 +1338,9 @@ title: Hack4Innovation Bicocca — HireLight
 }
 
 .team-role {
-  font-size: 0.34rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.55);
-  line-height: 1.2;
+  line-height: 1.1;
   font-weight: 500;
   letter-spacing: 0.02em;
   max-width: 16ch;
