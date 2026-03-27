@@ -187,15 +187,17 @@ title: Hack4Innovation Bicocca — HireLight
 }
 
 .hero-title span {
-  background: linear-gradient(120deg, #4f46e5, #818cf8, #4f46e5);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
+  color: #f7c948;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 8px rgba(247, 201, 72, 0.45);
+  animation: shimmer-rotto-ochre 4s ease-in-out infinite;
+  overflow: visible;
 }
 
-@keyframes shine {
-  to { background-position: 200% center; }
+@keyframes shimmer-rotto-ochre {
+  0%, 100% { text-shadow: 0 0 8px rgba(247, 201, 72, 0.45); }
+  50% { text-shadow: 0 0 20px rgba(247, 201, 72, 0.98), 0 0 40px rgba(247, 201, 72, 0.5); }
 }
 
 .hero-subtitle {
@@ -1080,6 +1082,42 @@ title: Hack4Innovation Bicocca — HireLight
   flex: 1;
 }
 
+.prob-item-corner-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 72px;
+  height: 72px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.prob-item-corner-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.prob-item-corner-icon.pi-amber {
+  color: #fbbf24;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.prob-item-corner-icon.pi-rose {
+  color: #f87171;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.prob-item-corner-icon.pi-indigo {
+  color: #a78bfa;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
 .prob-stats-row {
   display: flex;
   align-items: flex-start;
@@ -1113,7 +1151,7 @@ title: Hack4Innovation Bicocca — HireLight
 
 .prob-stat-source {
   font-size: 0.52rem;
-  color: rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.58);
   margin-top: 4px;
   font-style: italic;
   letter-spacing: 0.01em;
@@ -1365,20 +1403,38 @@ title: Hack4Innovation Bicocca — HireLight
 
   <div class="prob-grid flex-1">
     <div class="prob-item" v-click="1">
+      <div class="prob-item-corner-icon pi-amber" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 6v6l4 2" />
+          <path d="M21 12a9 9 0 1 1-9-9" />
+        </svg>
+      </div>
       <div class="prob-item-num">01</div>
-      <div class="prob-icon-wrap pi-amber">⏱️</div>
       <h3>Manual and isolated management</h3>
-      <p>CVs via email handled one by one, with no automation. Time grows, quality doesn't.</p>
+      <p>CVs from multiple sources are handled one by one, with no automation. Time grows, quality doesn't.</p>
     </div>
     <div class="prob-item" v-click="2">
+      <div class="prob-item-corner-icon pi-rose" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v18" />
+          <path d="M3 7h18" />
+          <path d="M4 7l3.5 5.5a2 2 0 0 0 1.69.93h5.62a2 2 0 0 0 1.69-.93L20 7" />
+        </svg>
+      </div>
       <div class="prob-item-num">02</div>
-      <div class="prob-icon-wrap pi-rose">⚖️</div>
       <h3>Subjective evaluations</h3>
       <p>No shared standard: bias and inconsistency in decisions, valid candidates excluded by mistake.</p>
     </div>
     <div class="prob-item" v-click="3">
+      <div class="prob-item-corner-icon pi-indigo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3v18h18" />
+          <path d="M7 14.5v-3" />
+          <path d="M12 14.5v-7" />
+          <path d="M17 14.5v-5" />
+        </svg>
+      </div>
       <div class="prob-item-num">03</div>
-      <div class="prob-icon-wrap pi-indigo">📊</div>
       <h3>Zero KPI visibility</h3>
       <p>No data, no tracking. Without metrics the process cannot be measured — and cannot improve.</p>
     </div>
