@@ -1475,179 +1475,115 @@ and ziro  KPI visibility.
 
 ---
 
-<!-- SLIDE 3: THE SOLUTION — PIPELINE -->
+<!-- SLIDE 3: THE SOLUTION — CONCEPT -->
 <div class="sol-bg"></div>
-<div class="relative z-10 px-14 py-6 h-full flex flex-col">
-  <div class="prob-header mb-3">
+<div class="relative z-10 px-14 py-2 h-full flex flex-col justify-between">
+  <div class="prob-header mb-0 text-center">
     <span class="prob-eyebrow">The solution</span>
-    <h2 class="prob-title"><em>Automated</em> end-to-end pipeline</h2>
-    <p class="prob-subtitle">From email to candidate scoring in minutes, zero manual intervention.</p>
+    <h2 class="prob-title">The <em>HireLight</em> Intelligence Layer</h2>
+    <p class="prob-subtitle" style="margin-top:2px;">Transforming data into informed decisions, ethically and instantly.</p>
   </div>
-  <div class="prob-grid flex-1">
-    <div class="prob-item" v-click>
+  <div class="prob-grid flex-1" style="gap:10px; margin-top:10px;">
+    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
       <div class="prob-item-num">01</div>
-      <div class="prob-icon-wrap pi-amber">📧</div>
-      <h3>Email Ingestion</h3>
-      <p>Gmail trigger that downloads unread emails with attachments and routes them into the pipeline.</p>
+      <div class="prob-icon-wrap pi-amber" style="width:36px; height:36px; font-size:1.1rem;">🧩</div>
+      <h3>Multi-Feature Extraction</h3>
+      <p style="font-size:0.7rem; line-height:1.4;">Hard skills, soft skills, and experiences are extracted to provide HR teams with deep, structured insights for <strong>informed decisions</strong>.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
       <div class="prob-item-num">02</div>
-      <div class="prob-icon-wrap pi-rose">📂</div>
-      <h3>Smart File Routing</h3>
-      <p>Automatic file saving to Google Drive.</p>
+      <div class="prob-icon-wrap pi-rose" style="width:36px; height:36px; font-size:1.1rem;">⚖️</div>
+      <h3>AI Act Compliant Scoring</h3>
+      <p style="font-size:0.7rem; line-height:1.4;">Ethical meritocracy: the scoring model has access <strong>only to Experience and Education</strong> sections to ensure objective, bias-free evaluations.</p>
     </div>
-    <div class="prob-item" v-click>
+    <div class="prob-item" v-click style="padding: 14px 16px; gap: 8px;">
       <div class="prob-item-num">03</div>
-      <div class="prob-icon-wrap pi-indigo">🤖</div>
-      <h3>AI Extraction + Scoring</h3>
-      <p>GPT-5 extracts data and evaluates the CV against company-defined custom metrics.</p>
+      <div class="prob-icon-wrap pi-indigo" style="width:36px; height:36px; font-size:1.1rem;">⚡</div>
+      <h3>Active Intelligence</h3>
+      <p style="font-size:0.7rem; line-height:1.4;">Unlike <strong>Traditional ATS</strong> (passive storage), HireLight proactively identifies talent and calculates fit in real-time.</p>
     </div>
   </div>
-  <div class="prob-stats-row">
+  <div class="prob-stats-row" style="margin-top:2px; padding-top:4px;">
     <div class="prob-stat" v-click="4">
-      <div class="prob-stat-num" style="color:#818cf8;">28</div>
-      <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">n8n nodes</div>
+      <div class="prob-stat-num" style="color:#818cf8;">-75%</div>
+      <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">Manual Screening Effort</div>
+      <div class="prob-stat-source">LinkedIn Future of Work Report (2023)</div>
     </div>
-    <div class="prob-divider" v-click="5"></div>
-    <div class="prob-stat" v-click="5">
-      <img src="./img/n8n.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">n8n</div>
+    <div class="prob-divider" v-click="4"></div>
+    <div class="prob-stat" v-click="4">
+      <div class="prob-stat-num" style="color:#34d399;">100%</div>
+      <div class="prob-stat-label" style="color:rgba(52,211,153,0.7);">AI Act Transparency</div>
     </div>
-    <div class="prob-divider" v-click="5"></div>
-    <div class="prob-stat" v-click="5">
-      <img src="./img/oai.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">OpenAI</div>
-    </div>
-    <div class="prob-divider" v-click="5"></div>
-    <div class="prob-stat" v-click="5">
-      <img src="./img/sheets.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Google Sheets</div>
-    </div>
-    <div class="prob-divider" v-click="5"></div>
-    <div class="prob-stat" v-click="5">
-      <img src="./img/supabase.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Supabase</div>
-    </div>
-    <div class="prob-divider" v-click="5"></div>
-    <div class="prob-stat" v-click="5">
-      <img src="./img/nextjs.png" style="height:30px;width:30px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Next.js</div>
+    <div class="prob-divider" v-click="4"></div>
+    <div class="prob-stat" v-click="4">
+      <div class="prob-stat-num" style="color:#fbbf24;">AI-Powered</div>
+      <div class="prob-stat-label" style="color:rgba(251,191,36,0.7);">Vs Traditional ATS Silos</div>
     </div>
   </div>
 </div>
 
 <!--
-"Our solution is an **automated pipeline**. It works like a 24/7 assistent.
-
- First, it automatically checks your email for new CVs.
-
-2. Then, it saves the files in a safe place, like Google Drive.
-
-3. and then AI reads the CV, understands the skills, and gives a score based on what you are looking for.
-
-The pipeline consists of 28 interconnected nodes. and the tools we used to develop it are: n eight n, open ai, google sheets, supabase and nextjs
+"Our solution is an **Intelligence Layer**.
+1. We go beyond simple keywords: we extract multiple features—from hard skills to growth potential—so you can make **informed decisions**.
+2. Ethics is at our core. We are **AI Act compliant**: our scoring model only looks at work experience and education to guarantee a bias-free, merit-based process.
+3. While traditional ATS are passive silos, HireLight is **active intelligence**.
+And the impact is real: according to LinkedIn, AI can reduce manual screening effort by 75%."
 -->
 
 ---
 
-## clicks: 3
-
-<!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
+<!-- SLIDE 4: TECHNICAL STACK -->
 <div class="sol-bg"></div>
-<div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col">
-  <div class="prob-header mb-2" style="padding-top:8px;">
-    <span class="prob-eyebrow">Concrete outputs</span>
-    <h2 class="prob-title"><em>Dashboard</em> & Structured <em style="color:#34d399;">Report</em></h2>
+<div class="relative z-10 px-14 py-2 h-full flex flex-col justify-between">
+  <div class="prob-header mb-1">
+    <span class="prob-eyebrow">Architecture</span>
+    <h2 class="prob-title">The <em>Engine</em> Under the Hood</h2>
+    <p class="prob-subtitle" style="margin-top:2px;">A robust, modular, and cloud-native pipeline built for scale.</p>
   </div>
-  <div class="relative flex-1" style="margin-top:18px;">
-    <div :style="{ opacity: ($clicks === 0 || $clicks === 2) ? 1 : 0, pointerEvents: ($clicks === 0 || $clicks === 2) ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
-      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(79,70,229,0.12), 0 0 0 1px rgba(79,70,229,0.2);">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
-          <div>
-            <h3 style="color:#818cf8;">Interactive Dashboard</h3>
-            <p>Next.js + Supabase + Tailwind</p>
-          </div>
+  
+  <div class="flex-1 flex items-center justify-center p-2">
+     <!-- Placeholder for a simple architecture diagram or icon set -->
+     <div class="grid grid-cols-3 gap-6 w-full max-w-5xl">
+        <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
+           <div class="prob-stat-num" style="color:#818cf8; font-size:1.8rem;">28+</div>
+           <div class="text-[0.85rem] font-bold">Interconnected Nodes</div>
+           <p class="text-[0.65rem] opacity-70 leading-relaxed">Parsing attachments, extracting multi-dimensional data, and orchestrating the candidate lifecycle.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — total candidates, new today, hire rate</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline charts</strong> — distribution by status</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Candidate table</strong> — search, filters, detail view</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Time filters</strong> — today, 7d, 30d, all</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — visual status management</span></div>
+        <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
+           <div class="prob-stat-num" style="color:#fbbf24; font-size:1.8rem;">Hybrid</div>
+           <div class="text-[0.85rem] font-bold">Data Ingestion</div>
+           <p class="text-[0.65rem] opacity-70 leading-relaxed">Not only emails: native API integration with <strong>LinkedIn, Indeed, and corporate HR portals</strong>.</p>
         </div>
-      </div>
-      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(16,185,129,0.12), 0 0 0 1px rgba(16,185,129,0.2);">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
-          <div>
-            <h3 style="color:#34d399;">Structured Excel Report</h3>
-            <p>Google Sheets automation</p>
-          </div>
+        <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
+           <div class="prob-stat-num" style="color:#34d399; font-size:1.8rem;">Jury</div>
+           <div class="text-[0.85rem] font-bold">Model Intelligence</div>
+           <p class="text-[0.65rem] opacity-70 leading-relaxed">Supports <strong>Local LLMs</strong>, OpenAI APIs, or a <strong>Majority-Voting Jury</strong> of multiple models for unmatched reliability.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidate</strong> — Mario Rossi</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Suitable (58/70)</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Inferred role</strong> — Content Creator</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Phone / LinkedIn</strong> — Auto extracted</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
-        </div>
-      </div>
+     </div>
+  </div>
+
+  <div class="prob-stats-row justify-center gap-12" style="margin-top:2px; padding-top:4px;">
+    <div class="prob-stat" v-click="3">
+      <img src="./img/n8n.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <div class="prob-stat-label">Automation</div>
     </div>
-    <div :style="{ opacity: $clicks === 1 ? 1 : 0, pointerEvents: $clicks === 1 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:24px;">
-      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(79,70,229,0.12), 0 0 0 1px rgba(79,70,229,0.2);flex:1;align-self:start;">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="output-icon" style="background:rgba(79,70,229,0.15);border:1px solid rgba(79,70,229,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📊</div>
-          <div>
-            <h3 style="color:#818cf8;">Interactive Dashboard</h3>
-            <p>Real-time data visualization</p>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>KPI cards</strong> — total candidates, new today, hire rate</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline charts</strong> — distribution by status</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Candidate table</strong> — search, filters, detail view</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Time filters</strong> — today, 7d, 30d, all</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#818cf8;"></span><span class="output-item-label"><strong>Pipeline Kanban</strong> — visual status management</span></div>
-        </div>
-      </div>
-      <div style="flex:1.4;display:flex;align-items:center;justify-content:center;">
-        <img src="./img/dashboard.png" style="width:100%;height:100%;object-fit:contain;border-radius:16px;box-shadow: 0 12px 48px rgba(0,0,0,0.4);" />
-      </div>
+    <div class="prob-stat" v-click="3">
+      <img src="./img/oai.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <div class="prob-stat-label">Intelligence</div>
     </div>
-    <div :style="{ opacity: $clicks === 3 ? 1 : 0, pointerEvents: $clicks === 3 ? 'auto' : 'none', transition: 'opacity 0.4s ease' }" style="position:absolute;inset:0;display:flex;gap:24px;">
-      <div class="output-card-dark" style="box-shadow: 0 8px 32px rgba(16,185,129,0.12), 0 0 0 1px rgba(16,185,129,0.2);flex:1;align-self:start;">
-        <div class="flex items-center gap-4 mb-5">
-          <div class="output-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);width:48px;height:48px;border-radius:14px;font-size:1.4rem;">📋</div>
-          <div>
-            <h3 style="color:#34d399;">Structured Report</h3>
-            <p>Automated excel-like database</p>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Candidate</strong> — Mario Rossi</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Score</strong> — Suitable (58/70)</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Inferred role</strong> — Content Creator</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>Email / Phone / LinkedIn</strong> — ✅ Auto extracted</span></div>
-          <div class="output-item-row"><span class="output-item-dot" style="background:#34d399;"></span><span class="output-item-label"><strong>CV / Portfolio</strong> — 🔗 Link Google Drive</span></div>
-        </div>
-      </div>
-      <div style="flex:1.4;display:flex;align-items:center;justify-content:center;">
-        <img src="./img/sheets2.png" style="width:100%;height:100%;object-fit:contain;border-radius:16px;box-shadow: 0 12px 48px rgba(0,0,0,0.4);" />
-      </div>
+    <div class="prob-stat" v-click="3">
+      <img src="./img/supabase.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <div class="prob-stat-label">Database</div>
+    </div>
+    <div class="prob-stat" v-click="3">
+      <img src="./img/nextjs.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <div class="prob-stat-label">Interface</div>
     </div>
   </div>
 </div>
 
 <!--
-The outputs of the pipeline are a dashboard developed with Next.js and Supabase, and a Google Sheets document where all the different fields will be stored.
-
-the  **Dashboard**. It’s a website where you can see all your candidates in one place. You can filter them, search for skills, see KPI and charts about the process.
-
-
-Regarding the Spreadsheet, all the information—such as name, email, phone number, and LinkedIn—is automatically recorded in a Google Sheet.
-
-Everything is organized and ready to use immediately.
+"For the technical jury: the engine is modular and channel-agnostic. While we process emails out-of-the-box, the architecture supports direct API integration with 3rd-party portals. Finally, our Intelligence layer is model-agnostic: we can deploy local LLMs for privacy, or use a 'Jury of Models' with majority voting to guarantee objective and reliable scoring."
 -->
 
 ---
