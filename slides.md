@@ -811,6 +811,68 @@ title: Hack4Innovation Bicocca — HireLight
   margin-top: -10px;
 }
 
+.thankyou-qr-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+}
+
+.thankyou-qr-image {
+  width: 208px;
+  height: 208px;
+  object-fit: contain;
+  border-radius: 24px;
+  background: #fff;
+  padding: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.thankyou-qr-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.thankyou-code-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.thankyou-code-value {
+  font-size: 4.4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.thankyou-logo-wrap {
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  z-index: 20;
+}
+
+.thankyou-logo-img {
+  width: 140px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .contact-pill {
   display: inline-flex;
   align-items: center;
@@ -1241,7 +1303,8 @@ title: Hack4Innovation Bicocca — HireLight
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2px;
+  align-items: stretch;
+  gap: 10px;
   width: 100%;
   max-width: 920px;
   margin: -10px auto 0;
@@ -1249,7 +1312,7 @@ title: Hack4Innovation Bicocca — HireLight
 
 .team-item {
   width: 24%;
-  min-height: 0;
+  min-height: 108px;
   background:
     linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.56) 100%);
   backdrop-filter: blur(12px);
@@ -1257,6 +1320,7 @@ title: Hack4Innovation Bicocca — HireLight
   border: 1px solid rgba(148, 163, 184, 0.14);
   border-radius: 10px;
   padding: 6px 6px 5px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1915,7 +1979,7 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
       </div>
       <div class="team-text">
         <h3 class="team-name">Azizbek Gulomov</h3>
-        <p class="team-role">Front-end Designer</p>
+        <p class="team-role">Back-end Designer</p>
       </div>
     </div>
     <div class="team-item team-item--wide">
@@ -1952,15 +2016,21 @@ we're done, thank you very much
   <div class="thankyou-blob"></div>
 </div>
 
+<div class="thankyou-logo-wrap">
+  <img class="thankyou-logo-img" src="./img/whattadata.png" alt="WhattaData logo" />
+</div>
+
 <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-10">
   <div v-click class="mb-2">
     <h1 class="thankyou-title">Thank you<span>.</span></h1>
-    <p class="thankyou-subtitle">Questions?</p>
   </div>
 
-  <div v-click class="flex flex-wrap justify-center gap-4 mt-16">
-    <span class="contact-pill shadow-xl">📍 Bicocca</span>
-    <span class="contact-pill shadow-xl">📅 March 27, 2026</span>
-    <span class="contact-pill shadow-xl">🏆 @Hack4Innovation</span>
+  <div v-click class="thankyou-qr-card">
+    <img class="thankyou-qr-image" src="./img/qr.png" alt="HireLight QR code" />
+    <div class="thankyou-qr-copy">
+      <span class="thankyou-code-label">Team Code</span>
+      <span class="thankyou-code-value">T1</span>
+    </div>
   </div>
+
 </div>
