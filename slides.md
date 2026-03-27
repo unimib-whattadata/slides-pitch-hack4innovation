@@ -10,7 +10,7 @@ info: |
 drawings:
   persist: false
 transition: slide-left
-title: Hack4Innovation Bicocca — Whattadata
+title: Hack4Innovation Bicocca — HireLight
 ---
 
 <style>
@@ -167,6 +167,25 @@ title: Hack4Innovation Bicocca — Whattadata
   animation: fade-in 0.8s ease-out;
 }
 
+.hero-title em {
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0));
+  border-radius: 2px;
+  transform-origin: left;
+  animation: prob-line-grow 0.8s cubic-bezier(.22,1,.36,1) 0.4s both;
+}
+
 .hero-title span {
   background: linear-gradient(120deg, #4f46e5, #818cf8, #4f46e5);
   background-size: 200% auto;
@@ -195,27 +214,6 @@ title: Hack4Innovation Bicocca — Whattadata
   text-align: center;
   line-height: 1.6;
   animation: fade-in 0.8s ease-out 0.35s both;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 24px;
-  border-radius: 12px;
-  background: var(--indigo);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.85rem;
-  animation: fade-in 0.8s ease-out 0.55s both;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.hero-badge:hover {
-  background: #4338ca;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(79,70,229,0.35);
 }
 
 /* ─── SHARED ─── */
@@ -1339,21 +1337,17 @@ title: Hack4Innovation Bicocca — Whattadata
 <div class="relative z-10 flex flex-col items-center justify-center h-full gap-6">
   <div class="hero-subtitle">Hack4Innovation Bicocca · March 27, 2026</div>
 
-  <h1 class="hero-title">AI Pipeline for<br/>the <span>Talent Acquisition</span></h1>
+  <h1 class="hero-title"><em>Hire<span>Light</span></em></h1>
 
   <p class="hero-desc">
-    From email to candidate scoring in minutes.<br/>
-    Zero manual intervention, structured data, data-driven decisions.
+    Spot top talent at first glance.<br/>
+    Faster screening, clearer decisions, zero manual drag.
   </p>
-
-<span class="hero-badge" @click="$slidev.nav.next">
-Discover the Pipeline →
-</span>
 
 </div>
 
 <!--
-"Good evening everyone , my name is Andrea and today we will present our **AI Pipeline** to improve the hairing prosess.
+"Good evening everyone, my name is Andrea and today we will present **HireLight**, our AI solution to make hiring faster and smarter.
 -->
 
 ---
