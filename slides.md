@@ -1202,50 +1202,74 @@ title: Hack4Innovation Bicocca — Whattadata
 /* ─── TEAM SLIDE ─── */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 10px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  max-width: 920px;
+  margin: -10px auto 0;
+  align-content: start;
 }
 
-.team-card {
-  background: rgba(255, 255, 255, 0.04);
+.team-item {
+  grid-column: span 3;
+  min-height: 110px;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.56) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 24px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 14px;
+  padding: 8px 8px 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: flex-start;
+  gap: 5px;
   transition: all 0.4s cubic-bezier(.22,1,.36,1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
 }
 
-.team-card::before {
+.team-item--wide {
+  grid-column: span 3;
+  min-height: 110px;
+}
+
+.team-item::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(129, 140, 248, 0.16), transparent 52%);
+  pointer-events: none;
 }
 
-.team-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+.team-item::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #818cf8 0%, #34d399 100%);
+  opacity: 0.85;
+}
+
+.team-item:hover {
   border-color: rgba(129, 140, 248, 0.4);
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(129, 140, 248, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 44px rgba(15, 23, 42, 0.3), 0 0 16px rgba(129, 140, 248, 0.1);
 }
 
 .team-img-wrap {
-  width: 90px;
-  height: 90px;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
   border-radius: 50%;
-  padding: 3px;
+  padding: 1.5px;
   background: linear-gradient(135deg, #818cf8, #34d399);
-  margin-bottom: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 7px 14px rgba(15, 23, 42, 0.2);
 }
 
 .team-img-wrap img {
@@ -1253,24 +1277,38 @@ title: Hack4Innovation Bicocca — Whattadata
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #0f172a;
+  border: 2px solid #0f172a;
+}
+
+.team-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3px;
+  flex: 1;
+  width: 100%;
 }
 
 .team-name {
-  font-size: 1rem;
+  font-size: 0.54rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 4px;
   letter-spacing: -0.01em;
+  line-height: 1.05;
+  min-height: 1.9em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .team-role {
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.4;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 0.38rem;
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  max-width: 16ch;
+  margin: 0 auto;
 }
 
 /* ─── OTHER ─── */
@@ -1379,7 +1417,7 @@ In fact Small and big companies have the same big problem: **hairing is slow.**
 
 Recruiters lose hours every week on repetitive and  sabjektive tasks.
 This can be a problem because it can lead to manual and isolated management,
-sabjektive evaluation, 
+sabjektive evaluation,
 and ziro  KPI visibility.
 
  Just think that in a PwC report  the hairing prosess is considered inefficency in 40% of cases.
@@ -1461,8 +1499,8 @@ The pipeline consists of 28 interconnected nodes. and the tools we used to devel
 -->
 
 ---
-clicks: 3
----
+
+## clicks: 3
 
 <!-- SLIDE 4: OUTPUT — DASHBOARD + EXCEL -->
 <div class="sol-bg"></div>
@@ -1567,8 +1605,8 @@ Everything is organized and ready to use immediately.
 <!-- SLIDE 5: GENERATED VALUE -->
 <div class="sol-bg" transition="slide-up"></div>
 
-<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
-  <div class="prob-header mb-4">
+<div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col -mt-2">
+  <div class="prob-header mb-1">
     <span class="prob-eyebrow">Impact</span>
     <h2 class="prob-title">The <em>value</em> we create</h2>
     <p class="prob-subtitle">Operational efficiency, standardization, and modularity without compromise.</p>
@@ -1599,10 +1637,10 @@ Everything is organized and ready to use immediately.
 </div>
 
 <!--
-In this slide, we show the value of our pipeline.” 
+In this slide, we show the value of our pipeline.”
 
 
-“ In fact The whole hairing  prosess is automated, from screening to final notification.” 
+“ In fact The whole hairing  prosess is automated, from screening to final notification.”
 
 “All candidates are evaluated using the same objective criteria.
 
@@ -1653,7 +1691,7 @@ and finally “Any tools can be used depending on the needs. The process is comp
 </div>
 
 <!--
-"Our business plan is simple. 
+"Our business plan is simple.
 We offer a **monthly subscription**. Companies pay a small fee based on how many CVs they process.
 
 
@@ -1669,47 +1707,82 @@ It’s a 'ready-to-go' system: you connect your email, and it starts working. No
 <!-- SLIDE 7: THE TEAM & ROLES -->
 <div class="sol-bg" transition="slide-up"></div>
 
-<div class="relative z-10 px-14 pt-2 pb-8 h-full flex flex-col">
-  <div class="prob-header mb-4">
+<div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col -mt-2">
+  <div class="prob-header mb-1">
     <span class="prob-eyebrow">The Team</span>
     <h2 class="prob-title">Who <em>we are</em></h2>
     <p class="prob-subtitle">Complementary skills for an innovative solution.</p>
   </div>
 
   <div class="team-grid">
-    <div class="team-card" v-click>
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/af.png" alt="Andrea Feliziani" />
       </div>
-      <h3 class="team-name">Andrea Feliziani</h3>
-      <p class="team-role">UI/UX Designer<br/>&<br/>Front-end developer</p>
+      <div class="team-text">
+        <h3 class="team-name">Andrea Feliziani</h3>
+        <p class="team-role">UI/UX Designer & Front-end Developer</p>
+      </div>
     </div>
-    <div class="team-card" v-click>
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/mc.png" alt="Marco Cremaschi" />
       </div>
-      <h3 class="team-name">Marco Cremaschi</h3>
-      <p class="team-role">Unimib Professor<br/>&<br/>Researcher</p>
-    </div>
-    <div class="team-card" v-click>
-      <div class="team-img-wrap">
-        <img src="./img/fd.png" alt="Fabio D'Adda" />
+      <div class="team-text">
+        <h3 class="team-name">Marco Cremaschi</h3>
+        <p class="team-role">Unimib Professor & Researcher</p>
       </div>
-      <h3 class="team-name">Fabio D'Adda</h3>
-      <p class="team-role">Full-stack developer<br/>&<br/>AI Specialist</p>
     </div>
-    <div class="team-card" v-click>
+    <div class="team-item">
+      <div class="team-img-wrap">
+        <img src="./img/dv.png" alt="Davide Vanoncini" />
+      </div>
+      <div class="team-text">
+        <h3 class="team-name">Davide Vanoncini</h3>
+        <p class="team-role">Full-stack Developer & AI Specialist</p>
+      </div>
+    </div>
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/dc.png" alt="David Chieregato" />
       </div>
-      <h3 class="team-name">David Chieregato</h3>
-      <p class="team-role">Back-end developer<br/>&<br/>AI Specialist</p>
+      <div class="team-text">
+        <h3 class="team-name">David Chieregato</h3>
+        <p class="team-role">Back-end Developer & AI Specialist</p>
+      </div>
+    </div>
+    <div class="team-item team-item--wide">
+      <div class="team-img-wrap">
+        <img src="./img/ag.png" alt="Azizbek Gulomov" />
+      </div>
+      <div class="team-text">
+        <h3 class="team-name">Azizbek Gulomov</h3>
+        <p class="team-role">Front-end Designer</p>
+      </div>
+    </div>
+    <div class="team-item team-item--wide">
+      <div class="team-img-wrap">
+        <img src="./img/lj.png" alt="Labhanshiv Jayan" />
+      </div>
+      <div class="team-text">
+        <h3 class="team-name">Labhanshiv Jayan</h3>
+        <p class="team-role">Researcher</p>
+      </div>
+    </div>
+    <div class="team-item team-item--wide">
+      <div class="team-img-wrap">
+        <img src="./img/sa.png" alt="Siraj Ahmed" />
+      </div>
+      <div class="team-text">
+        <h3 class="team-name">Siraj Ahmed</h3>
+        <p class="team-role">Front-end Designer</p>
+      </div>
     </div>
   </div>
 </div>
 
 <!--
-in conclusion our team is made up of me, Andrea, Marco Cremaschi, 
+in conclusion our team is made up of Andrea, Marco, Fabio, David, Azizbek, Labhanshiv, and Siraj.
 
 we're done, thank you very much
 -->
