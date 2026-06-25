@@ -13,1529 +13,6 @@ transition: slide-left
 title: Hack4Innovation Bicocca — HireLight
 ---
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-:root {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --sidebar: #0f172a;
-  --indigo: #4f46e5;
-  --indigo-light: #e0e7ff;
-  --slate-900: #0f172a;
-  --slate-700: #334155;
-  --slate-500: #64748b;
-  --slate-300: #cbd5e1;
-  --slate-100: #f1f5f9;
-  --emerald: #10b981;
-  --amber: #f59e0b;
-  --red: #ef4444;
-  --blue: #3b82f6;
-}
-
-.slidev-layout {
-  font-family: 'Inter', sans-serif !important;
-}
-
-/* ─── V-CLICK GLOBAL ANIMATION ─── */
-.slidev-vclick-target {
-  transition: opacity 0.5s cubic-bezier(.22,1,.36,1), transform 0.5s cubic-bezier(.22,1,.36,1) !important;
-}
-.slidev-vclick-hidden {
-  opacity: 0 !important;
-  transform: translateY(14px) !important;
-  pointer-events: none;
-}
-
-/* ─── PIPELINE PREVIEW ─── */
-.pipeline-preview {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
-.pipeline-preview-img {
-  max-width: 92%;
-  max-height: 88%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-}
-
-.pip-preview-enter-active {
-  transition: opacity 0.45s cubic-bezier(.22,1,.36,1), transform 0.45s cubic-bezier(.22,1,.36,1);
-}
-.pip-preview-leave-active {
-  transition: opacity 0.4s cubic-bezier(.22,1,.36,1), transform 0.4s cubic-bezier(.22,1,.36,1);
-}
-.pip-preview-enter-from {
-  opacity: 0;
-  transform: scale(0.92);
-}
-.pip-preview-leave-to {
-  opacity: 0;
-  transform: scale(1.04);
-}
-
-/* ─── HERO ─── */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(-45deg, #080d1a, #0f172a, #080d1a, #111827);
-  background-size: 400% 400%;
-  animation: gradient-flow 15s ease infinite;
-  overflow: hidden;
-}
-
-@keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='noiseFilter'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-  will-change: transform;
-}
-
-.hb-1 {
-  width: 650px; height: 650px;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 75%);
-  top: -240px; right: -120px;
-  animation: orbit1 12s linear infinite;
-}
-
-.hb-2 {
-  width: 550px; height: 550px;
-  background: radial-gradient(circle, #10b981 0%, transparent 75%);
-  bottom: -180px; left: -120px;
-  animation: orbit2 15s linear infinite;
-}
-
-.hb-3 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, #818cf8 0%, transparent 75%);
-  top: 40%; left: 55%;
-  animation: orbit3 10s linear infinite;
-}
-
-@keyframes orbit1 {
-  from { transform: rotate(0deg) translate(40px) rotate(0deg); }
-  to { transform: rotate(360deg) translate(40px) rotate(-360deg); }
-}
-
-@keyframes orbit2 {
-  from { transform: rotate(0deg) translate(60px) rotate(0deg); }
-  to { transform: rotate(-360deg) translate(60px) rotate(360deg); }
-}
-
-@keyframes orbit3 {
-  from { transform: rotate(0deg) translate(30px) rotate(0deg); }
-  to { transform: rotate(360deg) translate(30px) rotate(-360deg); }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-title {
-  font-size: 3.2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  color: #ffffff;
-  animation: fade-in 0.8s ease-out;
-}
-
-.hero-title em {
-  font-style: normal;
-  position: relative;
-  display: inline-block;
-}
-
-.hero-title em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0));
-  border-radius: 2px;
-  transform-origin: left;
-  animation: prob-line-grow 0.8s cubic-bezier(.22,1,.36,1) 0.4s both;
-}
-
-.hero-title span {
-  color: #f7c948;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 0 8px rgba(247, 201, 72, 0.45);
-  animation: shimmer-rotto-ochre 4s ease-in-out infinite;
-  overflow: visible;
-}
-
-@keyframes shimmer-rotto-ochre {
-  0%, 100% { text-shadow: 0 0 8px rgba(247, 201, 72, 0.45); }
-  50% { text-shadow: 0 0 20px rgba(247, 201, 72, 0.98), 0 0 40px rgba(247, 201, 72, 0.5); }
-}
-
-.hero-subtitle {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--slate-500);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  animation: fade-in 0.8s ease-out 0.2s both;
-}
-
-.hero-desc {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.55);
-  max-width: 520px;
-  text-align: center;
-  line-height: 1.6;
-  animation: fade-in 0.8s ease-out 0.35s both;
-}
-
-/* ─── SHARED ─── */
-.light-slide {
-  position: absolute;
-  inset: 0;
-  background: var(--bg);
-}
-
-.dark-slide {
-  position: absolute;
-  inset: 0;
-  background: var(--sidebar);
-}
-
-.slide-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--indigo);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.slide-label::before {
-  content: '';
-  width: 18px;
-  height: 2px;
-  background: var(--indigo);
-  border-radius: 2px;
-}
-
-.slide-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--slate-900);
-  margin-top: 4px;
-}
-
-.slide-title-white {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-top: 4px;
-}
-
-/* ─── PROBLEM CARDS (LIGHT) ─── */
-.problem-card {
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 14px 16px;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-  position: relative;
-}
-
-.problem-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  border-color: var(--indigo);
-}
-
-.problem-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.problem-card h3 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--slate-900);
-  margin: 0;
-}
-
-.problem-card p {
-  font-size: 0.72rem;
-  color: var(--slate-500);
-  line-height: 1.45;
-  margin-top: 4px;
-}
-
-/* ─── STAT BANNER ─── */
-.stat-banner {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.stat-item {
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 10px 16px;
-  text-align: center;
-  flex: 1;
-}
-
-.stat-item .num {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--slate-900);
-}
-
-.stat-item .lbl {
-  font-size: 0.62rem;
-  color: var(--slate-500);
-  margin-top: 1px;
-}
-
-/* ─── PIPELINE STEPS ─── */
-.pipeline-step {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.pipeline-step:hover {
-  border-color: var(--indigo);
-  transform: translateX(4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-}
-
-.step-number {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #fff;
-  flex-shrink: 0;
-  background: var(--indigo);
-}
-
-.step-content h4 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--slate-900);
-  margin: 0 0 2px 0;
-}
-
-.step-content p {
-  font-size: 0.72rem;
-  color: var(--slate-500);
-  margin: 0;
-  line-height: 1.35;
-}
-
-/* ─── TECH STACK ─── */
-.tech-stack-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 10px 20px;
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  width: fit-content;
-  margin: 10px 0 16px 0;
-}
-
-.tech-logo {
-  height: 44px;
-  width: 44px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.nodes-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 18px;
-  height: 64px;
-  box-sizing: border-box;
-  align-self: stretch;
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  line-height: 1;
-}
-
-.nodes-num {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--indigo);
-  letter-spacing: -0.03em;
-}
-
-.nodes-label {
-  font-size: 0.6rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--slate-500);
-  margin-top: 2px;
-}
-
-.tech-stack-card-dark {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-}
-
-.nodes-badge-dark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 18px;
-  align-self: stretch;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  line-height: 1;
-}
-
-.pipeline-step-dark {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.pipeline-step-dark:hover {
-  background: rgba(255,255,255,0.08);
-  transform: translateX(4px);
-}
-
-.pipeline-step-dark .step-content h4 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 2px 0;
-}
-
-.pipeline-step-dark .step-content p {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.50);
-  margin: 0;
-  line-height: 1.35;
-}
-
-.sol-img-wrap {
-  width: 44%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.03);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.07);
-  overflow: hidden;
-  padding: 12px;
-}
-
-.sol-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-/* ─── SOLUTION SLIDE ─── */
-.sol-bg {
-  position: absolute;
-  inset: 0;
-  background: #080d1a;
-  overflow: hidden;
-}
-.sol-bg::before {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 60%);
-  top: -120px;
-  right: -100px;
-  pointer-events: none;
-}
-.sol-bg::after {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 60%);
-  bottom: -80px;
-  left: -60px;
-  pointer-events: none;
-}
-.sol-stack-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sol-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  border-radius: 8px;
-  opacity: 0.9;
-  padding: 5px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  box-sizing: content-box;
-}
-.sol-nodes-chip {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  padding: 5px 10px;
-  background: rgba(79,70,229,0.15);
-  border: 1px solid rgba(79,70,229,0.3);
-  border-radius: 8px;
-  margin-left: 4px;
-  box-sizing: content-box;
-}
-.sol-nodes-num {
-  font-size: 0.9rem;
-  font-weight: 900;
-  color: #818cf8;
-  letter-spacing: -0.02em;
-}
-.sol-nodes-label {
-  font-size: 0.55rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.sol-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  flex: 1;
-  align-items: stretch;
-}
-.sol-card {
-  padding: 22px 20px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-  cursor: default;
-  position: relative;
-  overflow: hidden;
-}
-.sol-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-}
-.sol-card:nth-child(1) { box-shadow: 0 0 0 1px rgba(79,70,229,0.2), 0 8px 32px rgba(79,70,229,0.08); }
-.sol-card:nth-child(2) { box-shadow: 0 0 0 1px rgba(124,58,237,0.2), 0 8px 32px rgba(124,58,237,0.08); }
-.sol-card:nth-child(3) { box-shadow: 0 0 0 1px rgba(14,165,233,0.2), 0 8px 32px rgba(14,165,233,0.08); }
-.sol-card:nth-child(4) { box-shadow: 0 0 0 1px rgba(16,185,129,0.2), 0 8px 32px rgba(16,185,129,0.08); }
-.sol-card:nth-child(1):hover { background: rgba(79,70,229,0.08); box-shadow: 0 0 0 1px rgba(79,70,229,0.4), 0 16px 48px rgba(79,70,229,0.16); transform: translateY(-3px); }
-.sol-card:nth-child(2):hover { background: rgba(124,58,237,0.08); box-shadow: 0 0 0 1px rgba(124,58,237,0.4), 0 16px 48px rgba(124,58,237,0.16); transform: translateY(-3px); }
-.sol-card:nth-child(3):hover { background: rgba(14,165,233,0.08); box-shadow: 0 0 0 1px rgba(14,165,233,0.4), 0 16px 48px rgba(14,165,233,0.16); transform: translateY(-3px); }
-.sol-card:nth-child(4):hover { background: rgba(16,185,129,0.08); box-shadow: 0 0 0 1px rgba(16,185,129,0.4), 0 16px 48px rgba(16,185,129,0.16); transform: translateY(-3px); }
-.sol-card-num {
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.sol-card-title {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  line-height: 1.2;
-}
-.sol-card-desc {
-  font-size: 0.70rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.5;
-  margin: 0;
-  flex: 1;
-}
-/* ─── OUTPUT CARDS ─── */
-.output-card {
-  background: var(--card);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 20px;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.output-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-.output-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--slate-900);
-  margin: 0 0 6px 0;
-}
-
-.output-card p {
-  font-size: 0.75rem;
-  color: var(--slate-500);
-  line-height: 1.55;
-}
-
-.output-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-
-/* ─── VALUE CARDS ─── */
-.value-card {
-  text-align: center;
-  padding: 24px 16px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.value-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.10);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-}
-
-.value-number {
-  font-size: 2.6rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 8px;
-  animation: prob-num-glow 3s ease-in-out infinite;
-}
-
-.value-label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.value-desc {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.45;
-}
-
-/* ─── FUTURE CARDS ─── */
-.future-card {
-  padding: 18px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-}
-
-.future-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.09);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-}
-
-.future-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  flex-shrink: 0;
-}
-
-.future-card h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-.future-card p {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.5;
-}
-
-/* ─── THANK YOU ─── */
-/* ─── THANK YOU ─── */
-.thankyou-bg {
-  position: absolute;
-  inset: 0;
-  background: #080d1a;
-  overflow: hidden;
-}
-
-.thankyou-bg::before,
-.thankyou-bg::after,
-.thankyou-blob {
-  content: '';
-  position: absolute;
-  filter: blur(80px);
-  opacity: 0.15;
-  border-radius: 50%;
-  animation: float-blob 20s infinite alternate ease-in-out;
-}
-
-.thankyou-bg::before {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
-  top: -100px; left: -100px;
-  animation-duration: 25s;
-}
-
-.thankyou-bg::after {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, #34d399 0%, transparent 70%);
-  bottom: -150px; right: -150px;
-  animation-duration: 30s;
-  animation-delay: -5s;
-}
-
-.thankyou-blob {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, #818cf8 0%, transparent 70%);
-  top: 40%; left: 50%;
-  animation-duration: 22s;
-  animation-delay: -10s;
-}
-
-@keyframes float-blob {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(100px, 40px) scale(1.1); }
-}
-
-.thankyou-title {
-  font-size: 5.5rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  background: linear-gradient(135deg, #fff 30%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 30px rgba(129,140,248,0.3));
-}
-
-.thankyou-subtitle {
-  font-size: 1.2rem;
-  color: rgba(255,255,255,0.5);
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  margin-top: -10px;
-}
-
-.thankyou-qr-card {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-top: 28px;
-  padding: 20px 24px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
-}
-
-.thankyou-qr-image {
-  width: 208px;
-  height: 208px;
-  object-fit: contain;
-  border-radius: 24px;
-  background: #fff;
-  padding: 14px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-.thankyou-qr-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.thankyou-code-label {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-
-.thankyou-code-value {
-  font-size: 4.4rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #fff;
-  margin-top: 8px;
-}
-
-.thankyou-logo-wrap {
-  position: absolute;
-  top: 26px;
-  right: 32px;
-  z-index: 20;
-}
-
-.thankyou-logo-img {
-  width: 140px;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-.contact-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 22px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.7);
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.4s cubic-bezier(.22,1,.36,1);
-}
-
-.contact-pill:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(129,140,248,0.4);
-  color: #fff;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 15px rgba(129,140,248,0.2);
-}
-
-/* ─── PROBLEM SLIDE REDESIGN ─── */
-.prob-bg {
-  position: absolute;
-  inset: 0;
-  background: #080d1a;
-  overflow: hidden;
-}
-
-.prob-bg::before {
-  content: '';
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(239,68,68,0.07) 0%, transparent 60%);
-  top: -180px;
-  right: -120px;
-  pointer-events: none;
-}
-
-.prob-bg::after {
-  content: '';
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(79,70,229,0.07) 0%, transparent 60%);
-  bottom: -100px;
-  left: -80px;
-  pointer-events: none;
-}
-
-@keyframes shimmer-rotto {
-  0%, 100% { text-shadow: 0 0 8px rgba(79,70,229,0.4); }
-  50%       { text-shadow: 0 0 20px rgba(79,70,229,0.9), 0 0 40px rgba(79,70,229,0.4); }
-}
-
-@keyframes prob-fade-up {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes prob-line-grow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-@keyframes prob-num-glow {
-  0%, 100% { text-shadow: 0 0 20px currentColor; }
-  50%       { text-shadow: 0 0 40px currentColor, 0 0 80px currentColor; }
-}
-
-/* ─── EXPANDED CARD GRID ─── */
-.expanded-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 4px;
-  padding: 12px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.3s ease;
-}
-.expanded-item:hover {
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-4px);
-}
-.expanded-icon {
-  font-size: 1.5rem;
-  margin-bottom: 2px;
-}
-.expanded-title {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-}
-.expanded-desc {
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.4;
-  margin: 0;
-}
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out both;
-}
-
-.prob-header {
-  animation: prob-fade-up 0.7s cubic-bezier(.22,1,.36,1) both;
-}
-
-.prob-eyebrow {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #4f46e5;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.prob-eyebrow::before {
-  content: '';
-  width: 20px;
-  height: 2px;
-  background: #4f46e5;
-  border-radius: 2px;
-}
-
-.prob-title {
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.035em;
-  margin-top: 6px;
-  line-height: 1.05;
-}
-
-.prob-title em {
-  font-style: normal;
-  position: relative;
-  color: #4f46e5;
-  animation: shimmer-rotto 4s ease-in-out infinite;
-}
-
-.prob-title em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0));
-  border-radius: 2px;
-  transform-origin: left;
-  animation: prob-line-grow 0.8s cubic-bezier(.22,1,.36,1) 0.4s both;
-}
-
-.prob-subtitle {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.62);
-  margin-top: 8px;
-  font-weight: 400;
-}
-
-.prob-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  flex: 1;
-  align-items: stretch;
-}
-
-.prob-item {
-  padding: 22px 20px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.10);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
-  cursor: default;
-  position: relative;
-  overflow: hidden;
-}
-
-.prob-item::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-}
-
-.prob-item:nth-child(1) {
-  box-shadow: 0 0 0 1px rgba(251,191,36,0.18), 0 8px 32px rgba(251,191,36,0.08);
-}
-.prob-item:nth-child(2) {
-  box-shadow: 0 0 0 1px rgba(248,113,113,0.18), 0 8px 32px rgba(248,113,113,0.08);
-}
-.prob-item:nth-child(3) {
-  box-shadow: 0 0 0 1px rgba(129,140,248,0.18), 0 8px 32px rgba(129,140,248,0.08);
-}
-
-.prob-item:nth-child(1):hover {
-  background: rgba(251,191,36,0.07);
-  box-shadow: 0 0 0 1px rgba(251,191,36,0.40), 0 16px 48px rgba(251,191,36,0.18);
-  transform: translateY(-5px);
-}
-.prob-item:nth-child(2):hover {
-  background: rgba(248,113,113,0.07);
-  box-shadow: 0 0 0 1px rgba(248,113,113,0.40), 0 16px 48px rgba(248,113,113,0.18);
-  transform: translateY(-5px);
-}
-.prob-item:nth-child(3):hover {
-  background: rgba(129,140,248,0.07);
-  box-shadow: 0 0 0 1px rgba(129,140,248,0.40), 0 16px 48px rgba(129,140,248,0.18);
-  transform: translateY(-5px);
-}
-
-.prob-item-num {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.22);
-  text-transform: uppercase;
-}
-
-.prob-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  flex-shrink: 0;
-}
-
-.pi-amber  { background: rgba(251,191,36,0.15);  border: 1px solid rgba(251,191,36,0.30); box-shadow: 0 0 16px rgba(251,191,36,0.12); }
-.pi-rose   { background: rgba(248,113,113,0.15); border: 1px solid rgba(248,113,113,0.30); box-shadow: 0 0 16px rgba(248,113,113,0.12); }
-.pi-indigo { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.30); box-shadow: 0 0 16px rgba(167,139,250,0.12); }
-
-.prob-item h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  line-height: 1.3;
-}
-
-.prob-item p {
-  font-size: 0.73rem;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.65;
-  margin: 0;
-  flex: 1;
-}
-
-.prob-item-corner-icon {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 72px;
-  height: 72px;
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-.prob-item-corner-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.prob-item-corner-icon.pi-amber {
-  color: #fbbf24;
-  background: none;
-  border: 0;
-  box-shadow: none;
-}
-
-.prob-item-corner-icon.pi-rose {
-  color: #f87171;
-  background: none;
-  border: 0;
-  box-shadow: none;
-}
-
-.prob-item-corner-icon.pi-indigo {
-  color: #a78bfa;
-  background: none;
-  border: 0;
-  box-shadow: none;
-}
-
-.prob-stats-row {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  gap: 0;
-}
-
-.prob-stat {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
-}
-
-.prob-stat-num {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  animation: prob-num-glow 3s ease-in-out infinite;
-}
-
-.prob-stat-label {
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.50);
-  margin-top: 5px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-.prob-stat-source {
-  font-size: 0.52rem;
-  color: rgba(255,255,255,0.58);
-  margin-top: 4px;
-  font-style: italic;
-  letter-spacing: 0.01em;
-  min-height: 1.2em;
-}
-
-.prob-divider {
-  width: 1px;
-  height: 60px;
-  background: rgba(255,255,255,0.08);
-  flex-shrink: 0;
-  margin-top: 8px;
-}
-
-/* ─── OUTPUT CARD DARK — PREMIUM ─── */
-.output-card-dark {
-  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 24px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: all 0.4s cubic-bezier(.22,1,.36,1);
-  position: relative;
-  overflow: hidden;
-}
-.output-card-dark::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-}
-.output-card-dark:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
-}
-.output-card-dark h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-.output-card-dark p {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.55;
-  margin-top: 4px;
-}
-
-.output-item-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.04);
-  font-size: 0.75rem;
-  transition: all 0.2s ease;
-}
-.output-item-row:hover {
-  background: rgba(255,255,255,0.07);
-  transform: translateX(4px);
-}
-.output-item-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.output-item-label {
-  color: rgba(255,255,255,0.55);
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.output-item-label strong {
-  color: #fff;
-  font-weight: 700;
-}
-
-/* ─── TEAM SLIDE ─── */
-.team-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 10px;
-  width: 100%;
-  max-width: 920px;
-  margin: -10px auto 0;
-}
-
-.team-item {
-  width: 24%;
-  min-height: 108px;
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.56) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: 10px;
-  padding: 6px 6px 5px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: flex-start;
-  gap: 2px;
-  transition: all 0.4s cubic-bezier(.22,1,.36,1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.2);
-}
-
-.team-item--wide {
-  width: 24%;
-}
-
-.team-item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top, rgba(129, 140, 248, 0.16), transparent 52%);
-  pointer-events: none;
-}
-
-.team-item::after {
-  content: '';
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #818cf8 0%, #34d399 100%);
-  opacity: 0.85;
-}
-
-.team-item:hover {
-  border-color: rgba(129, 140, 248, 0.4);
-  transform: translateY(-5px);
-  box-shadow: 0 24px 44px rgba(15, 23, 42, 0.3), 0 0 16px rgba(129, 140, 248, 0.1);
-}
-
-.team-img-wrap {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  padding: 1.5px;
-  background: linear-gradient(135deg, #818cf8, #34d399);
-  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.2);
-}
-
-.team-img-wrap img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #0f172a;
-}
-
-.team-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1px;
-  flex: 1;
-  width: 100%;
-}
-
-.team-name {
-  font-size: 0.44rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.team-role {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.1;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  max-width: 16ch;
-  margin: 0 auto;
-}
-
-/* ─── OTHER ─── */
-.feature-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  background: var(--indigo-light);
-  color: var(--indigo);
-}
-
-.slidev-page-number {
-  color: var(--slate-300) !important;
-}
-
-/* ─── COMPETITOR TABLE ─── */
-.comp-table-wrap {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.comp-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.7);
-}
-
-.comp-table th {
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  font-weight: 700;
-  text-align: left;
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.comp-table td {
-  padding: 8px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.comp-table tr:last-child td {
-  border-bottom: none;
-}
-
-.comp-table tr:hover {
-  background: rgba(255,255,255,0.02);
-}
-
-.comp-tag {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.55rem;
-  font-weight: 600;
-  background: rgba(129,140,248,0.15);
-  color: #818cf8;
-}
-
-.price-callout {
-  background: linear-gradient(90deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.02) 100%);
-  border-left: 3px solid #ef4444;
-  padding: 10px 16px;
-  border-radius: 0 8px 8px 0;
-  margin-top: 12px;
-}
-
-.price-callout strong {
-  color: #f87171;
-  font-size: 0.85rem;
-}
-
-/* ─── FEATURE GRID ─── */
-.feat-row {
-  display: grid;
-  grid-template-columns: 140px 1fr 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.feat-header {
-  font-weight: 800;
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.4);
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.feat-label {
-  font-weight: 700;
-  color: #fff;
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
-}
-
-.feat-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 8px;
-  padding: 8px 10px;
-}
-
-.feat-card h4 {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #818cf8;
-  margin-bottom: 2px;
-}
-
-.feat-card p {
-  font-size: 0.58rem;
-  line-height: 1.3;
-  color: rgba(255,255,255,0.6);
-}
-</style>
-
 <!-- SLIDE 1: HERO -->
 <div class="hero-bg">
   <div class="hero-blob hb-1"></div>
@@ -1544,19 +21,27 @@ title: Hack4Innovation Bicocca — HireLight
 </div>
 
 <div class="relative z-10 flex flex-col items-center justify-center h-full gap-6">
-  <div class="hero-subtitle">Hack4Innovation Bicocca · March 27, 2026</div>
+  <div class="hero-meta">
+    <div class="hero-updated">Updated · June 25, 2026</div>
+  </div>
 
   <h1 class="hero-title"><em>Hire<span>Light</span></em></h1>
 
   <p class="hero-desc">
-    Spot top talent at first glance.<br/>
-    Faster screening, clearer decisions, zero manual drag.
+    Identify top candidates at a glance.<br/>
+    Faster screening, fairer decisions, less manual work.
   </p>
+
+  <div class="hero-contact">
+    <span>Contact</span>
+    <span class="hero-contact-dot">·</span>
+    <strong>info@whattadata.it</strong>
+  </div>
 
 </div>
 
 <!--
-"Good evening everyone, my name is Andrea and today we will present **HireLight**, our AI solution to make hiring faster and smarter.
+"Good evening everyone. I'm Andrea, and today we're presenting **HireLight**: an AI intelligence layer that helps hiring teams screen CVs faster, more consistently, and with clearer evidence."
 -->
 
 ---
@@ -1569,7 +54,7 @@ title: Hack4Innovation Bicocca — HireLight
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">The problem</span>
     <h2 class="prob-title">CV screening is <em>broken</em></h2>
-    <p class="prob-subtitle">Recruiters lose hours every week on repetitive, subjective, unmeasurable tasks.</p>
+    <p class="prob-subtitle">Recruiters spend hours on repetitive screening while quality, consistency, and visibility stay hard to control.</p>
   </div>
 
   <div class="prob-grid flex-1">
@@ -1581,8 +66,8 @@ title: Hack4Innovation Bicocca — HireLight
         </svg>
       </div>
       <div class="prob-item-num">01</div>
-      <h3>Manual and isolated management</h3>
-      <p>CVs from multiple sources are handled one by one, with no automation. Time grows, quality doesn't.</p>
+      <h3>Scattered manual workflows</h3>
+      <p>Applications arrive from emails, portals, and forms, then get reviewed one by one. Volume rises faster than quality.</p>
     </div>
     <div class="prob-item" v-click="2">
       <div class="prob-item-corner-icon pi-rose" aria-hidden="true">
@@ -1593,8 +78,8 @@ title: Hack4Innovation Bicocca — HireLight
         </svg>
       </div>
       <div class="prob-item-num">02</div>
-      <h3>Subjective evaluations</h3>
-      <p>No shared standard: bias and inconsistency in decisions, valid candidates excluded by mistake.</p>
+      <h3>Subjective shortlisting</h3>
+      <p>No shared rubric means bias, inconsistent decisions, and strong candidates can be missed too early.</p>
     </div>
     <div class="prob-item" v-click="3">
       <div class="prob-item-corner-icon pi-indigo" aria-hidden="true">
@@ -1606,27 +91,27 @@ title: Hack4Innovation Bicocca — HireLight
         </svg>
       </div>
       <div class="prob-item-num">03</div>
-      <h3>Zero KPI visibility</h3>
-      <p>No data, no tracking. Without metrics the process cannot be measured — and cannot improve.</p>
+      <h3>No performance visibility</h3>
+      <p>Without structured data, teams cannot measure cycle time, funnel quality, or where decisions improve.</p>
     </div>
   </div>
 
   <div class="prob-stats-row">
-    <div class="prob-stat" v-click="1">
-      <div class="prob-stat-num" style="color: #fbbf24;">23h</div>
-      <div class="prob-stat-label" style="color: rgba(251,191,36,0.7);">per week spent on manual screening</div>
+    <div class="prob-stat prob-stat--amber" v-click="1">
+      <div class="prob-stat-num">23h</div>
+      <div class="prob-stat-label">spent each week on manual screening</div>
       <div class="prob-stat-source">Instant Impact Recruiting Report</div>
     </div>
     <div class="prob-divider" v-click="2"></div>
-    <div class="prob-stat" v-click="2">
-      <div class="prob-stat-num" style="color: #f87171;">40%</div>
-      <div class="prob-stat-label" style="color: rgba(248,113,113,0.7);">perceived inefficiency in the hiring process</div>
+    <div class="prob-stat prob-stat--rose" v-click="2">
+      <div class="prob-stat-num">40%</div>
+      <div class="prob-stat-label">hiring-process inefficiency cited</div>
       <div class="prob-stat-source">PwC Annual Global CEO Survey</div>
     </div>
     <div class="prob-divider" v-click="3"></div>
-    <div class="prob-stat" v-click="3">
-      <div class="prob-stat-num" style="color: #a78bfa;">0 KPI</div>
-      <div class="prob-stat-label" style="color: rgba(167,139,250,0.7);">data visibility for 30% of companies</div>
+    <div class="prob-stat prob-stat--violet" v-click="3">
+      <div class="prob-stat-num">0 KPI</div>
+      <div class="prob-stat-label">visibility for teams without structured data</div>
       <div class="prob-stat-source">Modern Measures of Talent Acquisition</div>
     </div>
   </div>
@@ -1634,14 +119,12 @@ title: Hack4Innovation Bicocca — HireLight
 </div>
 
 <!--
-In fact Small and big companies have the same big problem: **hairing is slow.**
+Companies of every size face the same bottleneck: hiring is slow, fragmented, and difficult to measure.
 
-Recruiters lose hours every week on repetitive and  sabjektive tasks.
-This can be a problem because it can lead to manual and isolated management,
-sabjektive evaluation,
-and ziro  KPI visibility.
+Recruiters spend hours on repetitive screening, often without a shared rubric or reliable process data.
+That creates three concrete problems: scattered manual workflows, subjective shortlisting, and no clear KPI visibility.
 
- Just think that in a PwC report  the hairing prosess is considered inefficency in 40% of cases.
+The data confirms the pain: recruiters can spend 23 hours a week on manual screening, and PwC reports major perceived inefficiency across hiring processes.
 -->
 
 ---
@@ -1653,7 +136,7 @@ and ziro  KPI visibility.
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">The solution</span>
     <h2 class="prob-title">The <em>HireLight</em> Intelligence Layer</h2>
-    <p class="prob-subtitle">Transforming data into informed decisions, ethically and instantly.</p>
+    <p class="prob-subtitle">Turning fragmented CVs into structured, explainable candidate signals in minutes.</p>
   </div>
 
   <div class="prob-grid flex-1">
@@ -1664,8 +147,8 @@ and ziro  KPI visibility.
         </svg>
       </div>
       <div class="prob-item-num">01</div>
-      <h3>Multi-Feature Extraction</h3>
-      <p>Hard skills, soft skills, and experiences are extracted to provide HR teams with deep, structured insights for <strong>informed decisions</strong>.</p>
+      <h3>Structured Signal Extraction</h3>
+      <p>Skills, experience, education, and context are transformed into comparable signals HR teams can act on.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-corner-icon pi-rose" aria-hidden="true">
@@ -1674,8 +157,8 @@ and ziro  KPI visibility.
         </svg>
       </div>
       <div class="prob-item-num">02</div>
-      <h3>AI Act Compliant Scoring</h3>
-      <p>Ethical meritocracy: the scoring model has access <strong>only to Experience and Education</strong> sections to ensure objective, bias-free evaluations.</p>
+      <h3>Bias-Aware Scoring</h3>
+      <p>The scoring layer focuses on <strong>experience and education</strong>, reducing demographic noise and supporting AI Act-ready transparency.</p>
     </div>
     <div class="prob-item" v-click>
       <div class="prob-item-corner-icon pi-indigo" aria-hidden="true">
@@ -1684,27 +167,27 @@ and ziro  KPI visibility.
         </svg>
       </div>
       <div class="prob-item-num">03</div>
-      <h3>Active Intelligence</h3>
-      <p>Unlike <strong>Traditional ATS</strong> (passive storage), HireLight proactively identifies talent and calculates fit in real-time.</p>
+      <h3>Proactive Talent Matching</h3>
+      <p>Unlike a passive ATS, HireLight surfaces fit, risk, and next actions as soon as a CV enters the pipeline.</p>
     </div>
   </div>
 
   <div class="prob-stats-row">
-    <div class="prob-stat" v-click="4">
-      <div class="prob-stat-num" style="color:#818cf8;">-75%</div>
-      <div class="prob-stat-label" style="color:rgba(129,140,248,0.7);">Manual Screening Effort</div>
+    <div class="prob-stat prob-stat--indigo" v-click="4">
+      <div class="prob-stat-num">-75%</div>
+      <div class="prob-stat-label">potential manual screening reduction</div>
       <div class="prob-stat-source">LinkedIn Future of Work Report (2023)</div>
     </div>
     <div class="prob-divider" v-click="4"></div>
-    <div class="prob-stat" v-click="4">
-      <div class="prob-stat-num" style="color:#34d399;">100%</div>
-      <div class="prob-stat-label" style="color:rgba(52,211,153,0.7);">AI Act Transparency</div>
+    <div class="prob-stat prob-stat--emerald" v-click="4">
+      <div class="prob-stat-num">100%</div>
+      <div class="prob-stat-label">explainable by design</div>
       <div class="prob-stat-source">&nbsp;</div>
     </div>
     <div class="prob-divider" v-click="4"></div>
-    <div class="prob-stat" v-click="4">
-      <div class="prob-stat-num" style="color:#fbbf24;">AI-Powered</div>
-      <div class="prob-stat-label" style="color:rgba(251,191,36,0.7);">Vs Traditional ATS Silos</div>
+    <div class="prob-stat prob-stat--amber" v-click="4">
+      <div class="prob-stat-num">Active</div>
+      <div class="prob-stat-label">intelligence layer vs. ATS storage</div>
       <div class="prob-stat-source">&nbsp;</div>
     </div>
   </div>
@@ -1712,10 +195,10 @@ and ziro  KPI visibility.
 
 <!--
 "Our solution is an **Intelligence Layer**.
-1. We go beyond simple keywords: we extract multiple features—from hard skills to growth potential—so you can make **informed decisions**.
-2. Ethics is at our core. We are **AI Act compliant**: our scoring model only looks at work experience and education to guarantee a bias-free, merit-based process.
-3. While traditional ATS are passive silos, HireLight is **active intelligence**.
-And the impact is real: according to LinkedIn, AI can reduce manual screening effort by 75%."
+1. We go beyond keywords by turning every CV into structured signals: skills, experience, education, and context.
+2. The scoring layer is bias-aware: it focuses on experience and education, reducing demographic noise and supporting explainability.
+3. While traditional ATS platforms store candidates, HireLight actively recommends next steps.
+The potential impact is clear: AI-assisted screening can reduce manual effort dramatically while giving HR teams a stronger evidence base."
 -->
 
 ---
@@ -1726,184 +209,187 @@ And the impact is real: according to LinkedIn, AI can reduce manual screening ef
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">Architecture</span>
     <h2 class="prob-title">The <em>Engine</em> Under the Hood</h2>
-    <p class="prob-subtitle" style="margin-top:2px;">A robust, modular, and cloud-native pipeline built for scale.</p>
+    <p class="prob-subtitle subtitle--tight">A modular, cloud-native pipeline designed for scale, privacy, and adaptation.</p>
   </div>
   
   <div class="flex-1 flex items-center justify-center p-2">
      <!-- Placeholder for a simple architecture diagram or icon set -->
      <div class="grid grid-cols-3 gap-6 w-full max-w-5xl">
         <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
-           <div class="prob-stat-num" style="color:#818cf8; font-size:1.8rem;">28+</div>
-           <div class="text-[0.85rem] font-bold">Interconnected Nodes</div>
-           <p class="text-[0.65rem] opacity-70 leading-relaxed">Parsing attachments, extracting multi-dimensional data, and orchestrating the candidate lifecycle.</p>
+           <div class="prob-stat-num metric--lg metric--indigo">28+</div>
+           <div class="arch-card-title">Orchestration Steps</div>
+           <p class="arch-card-desc">Parse attachments, normalize CV data, score candidates, and trigger the next action automatically.</p>
         </div>
         <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
-           <div class="prob-stat-num" style="color:#fbbf24; font-size:1.8rem;">Hybrid</div>
-           <div class="text-[0.85rem] font-bold">Data Ingestion</div>
-           <p class="text-[0.65rem] opacity-70 leading-relaxed">Not only emails: native API integration with <strong>LinkedIn, Indeed, and corporate HR portals</strong>.</p>
+           <div class="prob-stat-num metric--lg metric--amber">Hybrid</div>
+           <div class="arch-card-title">Multi-Channel Intake</div>
+           <p class="arch-card-desc">Start with email, then extend to <strong>LinkedIn, Indeed, career pages, and HR portals</strong> through APIs.</p>
         </div>
         <div class="output-card-dark p-4 flex flex-col items-center gap-3 text-center" v-click>
-           <div class="prob-stat-num" style="color:#34d399; font-size:1.8rem;">Jury</div>
-           <div class="text-[0.85rem] font-bold">Model Intelligence</div>
-           <p class="text-[0.65rem] opacity-70 leading-relaxed">Supports <strong>Local LLMs</strong>, OpenAI APIs, or a <strong>Majority-Voting Jury</strong> of multiple models for unmatched reliability.</p>
+           <div class="prob-stat-num metric--lg metric--emerald">Jury</div>
+           <div class="arch-card-title">Model-Agnostic Intelligence</div>
+           <p class="arch-card-desc">Use <strong>local LLMs</strong>, OpenAI APIs, or a <strong>model jury</strong> to balance privacy, cost, and reliability.</p>
         </div>
      </div>
   </div>
 
-  <div class="prob-stats-row justify-center gap-12" style="margin-top:2px; padding-top:4px;">
+  <div class="prob-stats-row tech-row justify-center gap-12">
     <div class="prob-stat" v-click="3">
-      <img src="./img/n8n.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
+      <img class="tech-icon" src="./img/n8n.png" alt="n8n" />
       <div class="prob-stat-label">Automation</div>
     </div>
     <div class="prob-stat" v-click="3">
-      <img src="./img/oai.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Intelligence</div>
+      <img class="tech-icon" src="./img/oai.png" alt="OpenAI" />
+      <div class="prob-stat-label">AI Scoring</div>
     </div>
     <div class="prob-stat" v-click="3">
-      <img src="./img/supabase.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Database</div>
+      <img class="tech-icon" src="./img/supabase.png" alt="Supabase" />
+      <div class="prob-stat-label">Candidate Data</div>
     </div>
     <div class="prob-stat" v-click="3">
-      <img src="./img/nextjs.png" style="height:35px;width:35px;object-fit:contain;margin:0 auto 6px;display:block;" />
-      <div class="prob-stat-label">Interface</div>
+      <img class="tech-icon" src="./img/nextjs.png" alt="Next.js" />
+      <div class="prob-stat-label">Hiring UI</div>
     </div>
   </div>
 </div>
 
 <!--
-"For the technical jury: the engine is modular and channel-agnostic. While we process emails out-of-the-box, the architecture supports direct API integration with 3rd-party portals. Finally, our Intelligence layer is model-agnostic: we can deploy local LLMs for privacy, or use a 'Jury of Models' with majority voting to guarantee objective and reliable scoring."
+"For the technical jury: HireLight is modular and channel-agnostic.
+It starts with email ingestion, but the same architecture can connect to LinkedIn, Indeed, career pages, or internal HR portals.
+The intelligence layer is model-agnostic: we can use OpenAI APIs, local LLMs for privacy-sensitive contexts, or a model jury when reliability matters most."
 -->
 
 ---
 
-<!-- SLIDE 6: MARKET LANDSCAPE -->
+<!-- SLIDE 5: MARKET LANDSCAPE -->
 <div class="sol-bg" transition="slide-up"></div>
 <div class="relative z-10 px-14 py-2 h-full flex flex-col">
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">Market</span>
     <h2 class="prob-title">Competitive <em>Landscape</em></h2>
-    <p class="prob-subtitle" style="font-size:0.65rem;">From legacy HRIS to LLM-native talent intelligence.</p>
+    <p class="prob-subtitle subtitle--sm">Where HireLight fits between legacy HR systems and enterprise talent-intelligence suites.</p>
   </div>
 
   <div class="comp-table-wrap" v-click>
-    <table class="comp-table" style="font-size: 0.6rem;">
+    <table class="comp-table comp-table--compact">
       <thead>
         <tr>
-          <th style="padding: 6px 10px;">Platform</th>
-          <th style="padding: 6px 10px;">Category</th>
-          <th style="padding: 6px 10px;">Key Strength</th>
-          <th style="padding: 6px 10px;">Ideal Org. Size</th>
+          <th>Platform</th>
+          <th>Category</th>
+          <th>Key Strength</th>
+          <th>Ideal Org. Size</th>
         </tr>
       </thead>
       <tbody>
-        <tr style="background: rgba(129, 140, 248, 0.08); border-left: 2px solid #818cf8;">
-          <td style="padding: 4px 10px;"><strong style="color:#fff;">HireLight</strong></td>
-          <td style="padding: 4px 10px;"><span class="comp-tag" style="background:#818cf8; color:#fff; font-size:0.5rem;">Active Intelligence</span></td>
-          <td style="padding: 4px 10px;">Ethical Meritocracy & SME Compliance</td>
-          <td style="padding: 4px 10px;"><strong>10 - 5,000+</strong></td>
+        <tr class="comp-row--highlight">
+          <td><strong class="text-strong">HireLight</strong></td>
+          <td><span class="comp-tag comp-tag--active">Active Intelligence</span></td>
+          <td>Explainable scoring & SME compliance</td>
+          <td><strong>10 - 5,000+</strong></td>
         </tr>
         <tr>
-          <td style="padding: 4px 10px;"><strong>Eightfold AI</strong></td>
-          <td style="padding: 4px 10px;"><span class="comp-tag">Talent Intelligence</span></td>
-          <td style="padding: 4px 10px;">Predictive AI (Potential > Experience)</td>
-          <td style="padding: 4px 10px;">5,000+</td>
+          <td><strong>Eightfold AI</strong></td>
+          <td><span class="comp-tag">Talent Intelligence</span></td>
+          <td>Predictive AI for workforce planning</td>
+          <td>5,000+</td>
         </tr>
         <tr>
-          <td style="padding: 4px 10px;"><strong>HiredScore</strong></td>
-          <td style="padding: 4px 10px;"><span class="comp-tag">AI Screening</span></td>
-          <td style="padding: 4px 10px;">Seamless ATS Overlay & Auditable AI</td>
-          <td style="padding: 4px 10px;">500+</td>
+          <td><strong>HiredScore</strong></td>
+          <td><span class="comp-tag">AI Screening</span></td>
+          <td>ATS overlay and auditable AI</td>
+          <td>500+</td>
         </tr>
         <tr>
-          <td style="padding: 4px 10px;"><strong>Juicebox AI</strong></td>
-          <td style="padding: 4px 10px;"><span class="comp-tag">AI Sourcing</span></td>
-          <td style="padding: 4px 10px;">"PeopleGPT" for complex prose queries</td>
-          <td style="padding: 4px 10px;">10 - 500+</td>
+          <td><strong>Juicebox AI</strong></td>
+          <td><span class="comp-tag">AI Sourcing</span></td>
+          <td>Natural-language talent sourcing</td>
+          <td>10 - 500+</td>
         </tr>
         <tr>
-          <td style="padding: 4px 10px;"><strong>HiBob / Personio</strong></td>
-          <td style="padding: 4px 10px;"><span class="comp-tag">Mid-Market HRIS</span></td>
-          <td style="padding: 4px 10px;">Integrated Analytics & GDPR focus</td>
-          <td style="padding: 4px 10px;">50 - 1,000</td>
+          <td><strong>HiBob / Personio</strong></td>
+          <td><span class="comp-tag">Mid-Market HRIS</span></td>
+          <td>Integrated HR analytics and GDPR focus</td>
+          <td>50 - 1,000</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="flex gap-2 mt-4" v-click>
-    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #818cf8;">
-      <h4 style="font-size: 0.6rem; margin: 0;">Jury Mechanism</h4>
-      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">Multi-model consensus for zero hallucination.</p>
+    <div class="flex-1 feat-card feat-card--compact feat-card--indigo">
+      <h4>Model Jury</h4>
+      <p>Consensus scoring reduces hallucinations and single-model bias.</p>
     </div>
-    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #34d399;">
-      <h4 style="font-size: 0.6rem; margin: 0;">Bias-Free Core</h4>
-      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">Data filtering for ethical meritocracy.</p>
+    <div class="flex-1 feat-card feat-card--compact feat-card--emerald">
+      <h4>Bias-Aware Core</h4>
+      <p>Risky demographic signals are filtered before scoring.</p>
     </div>
-    <div class="flex-1 feat-card" style="padding: 6px 10px; border-left: 2px solid #fbbf24;">
-      <h4 style="font-size: 0.6rem; margin: 0;">SMB Compliance</h4>
-      <p style="font-size: 0.52rem; line-height: 1.2; margin-top: 2px;">AI Act readiness at accessible pricing.</p>
+    <div class="flex-1 feat-card feat-card--compact feat-card--amber">
+      <h4>SME-Ready Compliance</h4>
+      <p>AI Act transparency without enterprise-only pricing.</p>
     </div>
   </div>
 </div>
 
 <!--
-"When we look at the market, it's split between legacy HRIS and ultra-expensive 'Big Tech' AI like Eightfold. Our unique differentiator? HireLight brings **Enterprise Compliance to the Mid-Market.**
-While competitors charge $150k-$200k/year for AI Act readiness, we democratize it.
+"The market is split between legacy HR systems and enterprise-grade talent intelligence platforms.
+HireLight's position is different: we bring explainable, AI-assisted screening to the mid-market.
+Instead of making compliance an enterprise-only feature, we make it accessible to SMEs.
 
-Our 'Tangible Edge' is three-fold:
-1. **The 'Jury' System**: We use a consensus mechanism across models to guarantee scoring accuracy where others hallucinate.
-2. **Native Bias-Free approach**: We don't just 'train' for fairness; our architecture strips demographic risk *at the root*.
-3. **Active Layer**: We sit between sources and storage, turning passive CV piles into active talent intelligence instantly."
+Our edge has three parts:
+1. A **model jury** for more reliable scoring.
+2. A **bias-aware core** that filters risky demographic signals before evaluation.
+3. An **active intelligence layer** that turns passive CV storage into decision-ready talent data."
 -->
 
 ---
 
-<!-- SLIDE 8: BUSINESS MODEL & STRATEGY -->
+<!-- SLIDE 6: BUSINESS MODEL & STRATEGY -->
 <div class="sol-bg" transition="slide-up"></div>
 <div class="relative z-10 px-14 pt-1 pb-4 h-full flex flex-col">
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">Sustainability & Growth</span>
     <h2 class="prob-title"><em>Business</em> Model</h2>
-    <p class="prob-subtitle" style="font-size:0.6rem;">Sustainable framework for applicability and scale.</p>
+    <p class="prob-subtitle subtitle--xs">An accessible pricing model built for adoption, compliance, and scale.</p>
   </div>
 
   <div class="flex-1 flex flex-col items-center justify-center gap-2">
     <!-- TARGET MARKET POSITIONING -->
     <div class="grid grid-cols-2 gap-3 w-full max-w-4xl" v-click>
-       <div class="output-card-dark p-3 border-l-2 border-indigo-400">
-          <div class="text-[0.55rem] uppercase tracking-wider text-indigo-300 font-bold mb-0.5">Distinctive Positioning</div>
+       <div class="output-card-dark card-accent-indigo p-3">
+          <div class="business-kicker text-indigo-300">Distinctive Positioning</div>
           <h3 class="text-[0.9rem]">The Compliance Democratizer</h3>
-          <p class="text-[0.62rem] opacity-70">Closing the gap for the 75% of SMEs with Tier-1 standards without the 150.000$ barrier.</p>
+          <p class="text-[0.62rem] opacity-70">Enterprise-grade transparency for SMEs, without enterprise-grade cost or complexity.</p>
        </div>
-       <div class="output-card-dark p-3 border-l-2 border-emerald-400">
-          <div class="text-[0.55rem] uppercase tracking-wider text-emerald-300 font-bold mb-0.5">Scalability Moat</div>
-          <h3 class="text-[0.9rem]">Modular Sustainability</h3>
-          <p class="text-[0.62rem] opacity-70">Built on low-overhead n8n & API layers, ensuring rapid implementation and customization.</p>
+       <div class="output-card-dark card-accent-emerald p-3">
+          <div class="business-kicker text-emerald-300">Scalability Moat</div>
+          <h3 class="text-[0.9rem]">Lean, Modular Delivery</h3>
+          <p class="text-[0.62rem] opacity-70">Low-overhead automation and API layers keep deployment fast and customization practical.</p>
        </div>
     </div>
     <!-- PRICING TIERS -->
     <div class="output-card-dark w-full max-w-4xl p-3" v-click>
       <div class="text-center mb-2">
-        <span class="feat-tag" style="font-size:0.68rem; padding: 5px 16px; background: linear-gradient(90deg, #6366f1 0%, #10b981 100%); color: #fff; border: none; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);">Scalable SME Pricing</span>
+        <span class="pricing-badge">SME-ready pricing</span>
       </div>
       <div class="grid grid-cols-3 gap-3">
-        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-white/10">
-          <div class="text-[0.8rem] font-bold text-indigo-300">Starter</div>
-          <div class="text-[0.6rem] mt-0.5">Free to €99/mo</div>
-          <div class="h-px w-6 bg-white/20 my-1.5"></div>
-          <p class="text-[0.52rem] opacity-70">Up to 100 CVs/mo.<br/>Native bias filtering.</p>
+        <div class="tier-card">
+          <div class="tier-title">Starter</div>
+          <div class="tier-price">Free to €99/mo</div>
+          <div class="tier-divider"></div>
+          <p>Up to 100 CVs/mo.<br/>Explainable scoring.</p>
         </div>
-        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-indigo-500/30 ring-1 ring-indigo-500/20">
-          <div class="text-[0.9rem] font-bold text-white">Growth (Mid)</div>
-          <div class="text-[0.65rem] mt-0.5 text-indigo-200">€299/mo</div>
-          <div class="h-px w-6 bg-white/20 my-1.5"></div>
-          <p class="text-[0.52rem] opacity-70">Up to 1,000 CVs/mo.<br/>Consensus "Jury" Scoring.</p>
+        <div class="tier-card tier-card--highlight">
+          <div class="tier-title">Growth (Mid)</div>
+          <div class="tier-price tier-price--highlight">€299/mo</div>
+          <div class="tier-divider"></div>
+          <p>Up to 1,000 CVs/mo.<br/>Model-jury scoring.</p>
         </div>
-        <div class="flex flex-col items-center text-center p-2 rounded-xl bg-white/5 border border-white/10">
-          <div class="text-[0.8rem] font-bold text-amber-300">Enterprise</div>
-          <div class="text-[0.6rem] mt-0.5">Custom / Volume</div>
-          <div class="h-px w-6 bg-white/20 my-1.5"></div>
-          <p class="text-[0.52rem] opacity-70">Unlimited volumes.<br/>Local LLM (On-Prem).</p>
+        <div class="tier-card tier-card--amber">
+          <div class="tier-title">Enterprise</div>
+          <div class="tier-price">Custom volume</div>
+          <div class="tier-divider"></div>
+          <p>Unlimited volumes.<br/>Local LLM or on-prem.</p>
         </div>
       </div>
     </div>
@@ -1911,29 +397,30 @@ Our 'Tangible Edge' is three-fold:
 </div>
 
 <!--
-"Our business model isn't just about revenue; it's about **sustainability and democratizing tech.**
-We identified that current AI solutions are 'Enterprise-only,' leaving 75% of the market in a manual bottleneck.
+"Our business model is built around adoption.
+Many AI hiring platforms are priced and packaged for large enterprises, while SMEs still face the same manual bottleneck.
 
-Our distinctive positioning is the 'Compliance Democratizer.' We use a modular architecture (n8n + scalable LLM APIs) which keeps our operational costs extremely low, allowing us to offer SME-friendly pricing while maintaining healthy margins.
+HireLight is the compliance democratizer: it offers transparent, AI-assisted screening without enterprise-level cost or setup.
+Because the architecture is modular, using n8n and scalable API layers, we can deploy quickly and keep customization practical.
 
-We propose a three-tier scalable model:
-1. **Starter**: Low-friction entry for startups to get AI Act compliant instantly.
-2. **Growth**: Tailored for mid-market firms needing the 'Jury' reliability we discussed.
-3. **Enterprise**: For organizations requiring local data sovereignty.
+The pricing mirrors that path:
+1. **Starter** for early adoption and smaller volumes.
+2. **Growth** for teams that need model-jury reliability at scale.
+3. **Enterprise** for local LLMs, on-prem options, and higher-volume requirements.
 
-This model demonstrates real applicability: it solves the 'cost of compliance' barrier and scales horizontally across any hiring volume."
+This makes the solution commercially sustainable and accessible to the segment that needs it most."
 -->
 
 ---
 
-<!-- SLIDE 9: THE TEAM & ROLES -->
+<!-- SLIDE 7: THE TEAM & ROLES -->
 <div class="sol-bg" transition="slide-up"></div>
 
 <div class="relative z-10 px-14 pt-0 pb-2 h-full flex flex-col -mt-2">
   <div class="prob-header mb-1">
     <span class="prob-eyebrow">The Team</span>
     <h2 class="prob-title">Who <em>we are</em></h2>
-    <p class="prob-subtitle">Complementary skills for an innovative solution.</p>
+    <p class="prob-subtitle">A cross-functional team spanning product, AI, engineering, research, and design.</p>
   </div>
 
   <div class="team-grid">
@@ -1943,7 +430,7 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
       </div>
       <div class="team-text">
         <h3 class="team-name">Andrea Feliziani</h3>
-        <p class="team-role">UI/UX Designer & Front-end Developer</p>
+        <p class="team-role">UI/UX Designer & Frontend Developer</p>
       </div>
     </div>
     <div class="team-item">
@@ -1952,7 +439,7 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
       </div>
       <div class="team-text">
         <h3 class="team-name">Marco Cremaschi</h3>
-        <p class="team-role">Unimib Professor & Researcher</p>
+        <p class="team-role">Researcher</p>
       </div>
     </div>
     <div class="team-item">
@@ -1970,19 +457,22 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
       </div>
       <div class="team-text">
         <h3 class="team-name">David Chieregato</h3>
-        <p class="team-role">Back-end Developer & AI Specialist</p>
+        <p class="team-role">Backend Developer & AI Specialist</p>
       </div>
     </div>
-    <div class="team-item team-item--wide">
+    <div class="team-collaboration-label">
+      <span>In collaborazione con</span>
+    </div>
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/ag.png" alt="Azizbek Gulomov" />
       </div>
       <div class="team-text">
         <h3 class="team-name">Azizbek Gulomov</h3>
-        <p class="team-role">Back-end Designer</p>
+        <p class="team-role">Backend Designer</p>
       </div>
     </div>
-    <div class="team-item team-item--wide">
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/lj.png" alt="Labhanshiv Jayant" />
       </div>
@@ -1991,46 +481,44 @@ This model demonstrates real applicability: it solves the 'cost of compliance' b
         <p class="team-role">Researcher</p>
       </div>
     </div>
-    <div class="team-item team-item--wide">
+    <div class="team-item">
       <div class="team-img-wrap">
         <img src="./img/sa.png" alt="Siraj Ahmed" />
       </div>
       <div class="team-text">
         <h3 class="team-name">Siraj Ahmed</h3>
-        <p class="team-role">Front-end Designer</p>
+        <p class="team-role">Frontend Designer</p>
       </div>
     </div>
   </div>
 </div>
 
 <!--
-in conclusion our team is made up of Andrea, Marco, Fabio, David, Azizbek, Labhanshiv, and Siraj.
+To build HireLight, we combined product design, AI, backend engineering, frontend development, and research.
+That mix is important: the challenge is not only technical, but also ethical, operational, and user-facing.
 
-we're done, thank you very much
+Thank you.
 -->
 
 ---
 
-<!-- SLIDE 10: THANK YOU -->
+<!-- SLIDE 8: THANK YOU -->
 <div class="thankyou-bg">
   <div class="thankyou-blob"></div>
 </div>
 
-<div class="thankyou-logo-wrap">
-  <img class="thankyou-logo-img" src="./img/whattadata.png" alt="WhattaData logo" />
-</div>
+<div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-10 gap-8">
+  <div class="thankyou-logo-wrap">
+    <img class="thankyou-logo-img" src="./img/whattadata.png" alt="WhattaData logo" />
+  </div>
 
-<div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-10">
   <div v-click class="mb-2">
-    <h1 class="thankyou-title">Thank you<span>.</span></h1>
+    <h1 class="thankyou-title"><span>Thank</span><span>you.</span></h1>
   </div>
 
-  <div v-click class="thankyou-qr-card">
-    <img class="thankyou-qr-image" src="./img/qr.png" alt="HireLight QR code" />
-    <div class="thankyou-qr-copy">
-      <span class="thankyou-code-label">Team Code</span>
-      <span class="thankyou-code-value">T1</span>
-    </div>
-  </div>
+  <a class="thankyou-site-link" href="https://whattadata.it" target="_blank" rel="noopener noreferrer">
+    <span>Sito</span>
+    whattadata.it
+  </a>
 
 </div>

@@ -2,76 +2,68 @@
 
 ## Slide 1: Introduction (20 seconds)
 
-"Good evening everyone
+Good evening everyone. I'm Andrea, and today we're presenting **HireLight**: an AI intelligence layer that helps hiring teams screen CVs faster, more consistently, and with clearer evidence.
 
-My name is Andrea, and today we will present our **AI Pipeline** to improve the hairing process.
+The idea is simple: when a recruiter receives hundreds of applications, the first screening step should not be slow, fragmented, or subjective. HireLight makes that first decision layer faster and more transparent.
 
 ## Slide 2: The Problem (45 seconds)
 
-In fact Small and big companies have the same big problem: hairing is slow.
+Companies of every size face the same bottleneck: hiring is slow, repetitive, and difficult to measure.
 
-Recruiters lose hours every week on repetitive and sabjektive tasks. This can be a problem because it can lead to manual and isolated management,sabjektive evaluation, and ziro KPI visibility. Just think that in a PwC report the hairing prosess is considered inefficency in 40% of cases.
+Recruiters spend hours reviewing CVs one by one, often from multiple sources: email, portals, forms, and spreadsheets. Without automation, volume grows faster than quality.
 
----
+The second issue is consistency. If there is no shared rubric, each reviewer applies different criteria. That can introduce bias and cause strong candidates to be filtered out too early.
+
+Finally, there is very little visibility. Without structured data, teams cannot track cycle time, funnel quality, or the reasons behind each decision. That means the process cannot really improve.
 
 ## Slide 3: The Solution (45 seconds)
 
-_Slide 3: Automated end-to-end pipeline_
+HireLight solves this by turning fragmented CVs into structured, explainable candidate signals.
 
-"Our solution is an **automated pipeline**. It works like a 24/7 assistent.
+First, it extracts the information that matters: skills, experience, education, and context. This gives HR teams comparable signals instead of isolated documents.
 
-First, it automatically checks your email for new CVs.
+Second, the scoring layer is bias-aware. It focuses on experience and education, reducing demographic noise and supporting AI Act-ready transparency.
 
-2. Then, it saves the files in a safe place, like Google Drive.
+Third, HireLight is proactive. A traditional ATS stores candidates. HireLight surfaces fit, risk, and recommended next actions as soon as a CV enters the pipeline.
 
-3. and then AI reads the CV, understands the skills, and gives a score based on what you are looking for.
+The result is less manual screening and a stronger evidence base for decisions.
 
-The pipeline consists of 28 interconnected nodes.
+## Slide 4: Architecture (45 seconds)
 
----
+Under the hood, HireLight is a modular, cloud-native pipeline.
 
-## Slide 4: Real Results (45 seconds)
+It is built from more than 28 orchestration steps. The system parses attachments, normalizes CV data, scores candidates, stores the results, and triggers the next action automatically.
 
-_Slide 4: Dashboard & Report_
+The first channel is email, but the architecture is not limited to email. It can connect to LinkedIn, Indeed, career pages, or internal HR portals through APIs.
 
-The outputs of the pipeline are a dashboard developed with Next.js and Supabase, and a Google Sheets document where all the different fields will be stored.
+The intelligence layer is also model-agnostic. We can use OpenAI APIs, local LLMs for privacy-sensitive contexts, or a model jury when reliability matters most.
 
-the Dashboard. It’s a website where you can see all your candidates in one place. You can filter them, search for skills, see KPI and charts about the process.
+## Slide 5: Market Landscape (45 seconds)
 
-Regarding the Spreadsheet, all the information—such as name, email, phone number, and LinkedIn—is automatically recorded in a Google Sheet.
+The market today is split between legacy HR systems and enterprise talent-intelligence platforms.
 
-Everything is organized and ready to use immediately.
+Legacy HRIS products are useful for administration, but they are often passive: they store candidates instead of helping teams make the next decision.
 
----
+Enterprise AI platforms are powerful, but they are expensive and often designed for very large organizations.
 
-## Slide 5: The Value (30 seconds)
+HireLight sits in the middle. It brings explainable, AI-assisted screening to SMEs and mid-market teams, with three clear advantages: model-jury scoring, a bias-aware core, and AI Act transparency without enterprise-only pricing.
 
-_Slide 5: The value we create_
+## Slide 6: Business Model (35 seconds)
 
-"In this slide, we show the value of our pipeline.”
+The business model is built around adoption.
 
-“ In fact The whole hairing prosess is automated, from screening to final notification.”
+Many SMEs face the same compliance and screening problems as large companies, but they cannot afford enterprise-grade platforms.
 
-“All candidates are evaluated using the same objective criteria.
+HireLight is designed as a compliance democratizer: transparent AI screening, fast deployment, and pricing that scales with CV volume.
 
-” Thanks to cloud and no-code tools, there are no server costs to manage.”
+The Starter tier covers small teams and low-volume hiring. Growth adds model-jury scoring for larger flows. Enterprise supports higher volume, local LLMs, and on-prem requirements.
 
-## and finally “Any tools can be used depending on the needs. The process is completely modular and can be adapted to your needs.
+This makes the solution both commercially sustainable and accessible to the segment that needs it most.
 
-## Slide 6: The Business Model (30 seconds)
+## Slide 7: Team (25 seconds)
 
-"Our business plan is simple. We offer a monthly subscription. Companies pay a small fee based on how many CVs they process.
+To build HireLight, we combined product design, AI, backend engineering, frontend development, and research.
 
-It’s perfect for any size of company, from the largest to the smallest
+That mix matters because hiring is not only a technical challenge. It is also an ethical, operational, and user-experience challenge.
 
-And it grows with you, no matter how many applications you have, the resalt doesn’t change.
-
-## It’s a 'ready-to-go' system: you connect your email, and it starts working. No complicated setup needed."
-
-## Slide 7: The Team (20 seconds)
-
-in conclusion our team is made up of me, Andrea, Marco Cremaschi,
-
-we're done, thank you very much
-
----
+Thank you.
