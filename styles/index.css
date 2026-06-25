@@ -361,13 +361,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 24px;
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
 }
 
 .thankyou-logo-img {
@@ -383,21 +376,18 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  min-width: 260px;
-  padding: 0.82rem 1.18rem;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  border-style: solid !important;
-  border-color: rgba(255,255,255,0.12) !important;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.055);
+  padding: 0;
+  border: 0 !important;
+  border-style: none !important;
+  background: transparent;
   color: rgba(255,255,255,0.9);
   font-size: 1rem;
   font-weight: 800;
   line-height: 1;
   text-decoration: none;
   outline: none;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  box-shadow: none;
+  transition: color 180ms ease;
 }
 
 .thankyou-site-link span {
@@ -409,9 +399,7 @@
 }
 
 .thankyou-site-link:hover {
-  transform: translateY(-2px);
-  border-color: rgba(52, 211, 153, 0.42);
-  background: rgba(255,255,255,0.08);
+  color: #fff;
 }
 
 .thankyou-site-link:focus,
@@ -1183,4 +1171,67 @@
 
 .subtitle--tight {
   margin-top: 2px;
+}
+
+/* PDF export cleanup: Slidev exports with screen media, so target ?print=true. */
+html.is-slidev-export .slidev-layout *,
+html.is-slidev-export .slidev-layout *::before,
+html.is-slidev-export .slidev-layout *::after,
+html.is-slidev-export .deck-progress *,
+html.is-slidev-export .deck-progress *::before,
+html.is-slidev-export .deck-progress *::after {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.is-slidev-export .hero-blob,
+html.is-slidev-export .thankyou-blob,
+html.is-slidev-export .hero-bg::before,
+html.is-slidev-export .sol-bg::before,
+html.is-slidev-export .sol-bg::after,
+html.is-slidev-export .thankyou-bg::before,
+html.is-slidev-export .thankyou-bg::after,
+html.is-slidev-export .prob-bg::before,
+html.is-slidev-export .prob-bg::after,
+html.is-slidev-export .prob-item::before,
+html.is-slidev-export .output-card-dark::before,
+html.is-slidev-export .team-item::before,
+html.is-slidev-export .team-item::after,
+html.is-slidev-export .feat-card::before {
+  content: none !important;
+  display: none !important;
+}
+
+html.is-slidev-export .hero-bg,
+html.is-slidev-export .sol-bg,
+html.is-slidev-export .thankyou-bg,
+html.is-slidev-export .prob-bg {
+  background: #080d1a !important;
+  background-image: none !important;
+  background-size: auto !important;
+}
+
+html.is-slidev-export .hero-title span {
+  color: #f7c948 !important;
+}
+
+html.is-slidev-export .prob-title em {
+  color: #818cf8 !important;
+}
+
+html.is-slidev-export .thankyou-title,
+html.is-slidev-export .thankyou-title span {
+  background: none !important;
+  color: #c7d2fe !important;
+  -webkit-text-fill-color: #c7d2fe !important;
+}
+
+html.is-slidev-export .prob-title em::after,
+html.is-slidev-export .hero-title em::after {
+  background: rgba(255, 255, 255, 0.72) !important;
 }

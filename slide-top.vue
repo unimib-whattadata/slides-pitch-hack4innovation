@@ -1,3 +1,27 @@
+<script setup>
+import { onMounted, onUnmounted } from 'vue'
+
+const exportClass = 'is-slidev-export'
+
+function syncExportClass() {
+  if (typeof window === 'undefined' || typeof document === 'undefined')
+    return
+
+  const isExport = new URLSearchParams(window.location.search).has('print')
+  document.documentElement.classList.toggle(exportClass, isExport)
+}
+
+onMounted(() => {
+  syncExportClass()
+  window.addEventListener('popstate', syncExportClass)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('popstate', syncExportClass)
+  document.documentElement.classList.remove(exportClass)
+})
+</script>
+
 <template>
   <div class="deck-progress" aria-hidden="true">
     <div class="deck-progress__track">
